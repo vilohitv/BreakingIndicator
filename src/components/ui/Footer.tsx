@@ -21,7 +21,7 @@ export function Footer() {
             <div className="flex items-center gap-3 mb-4">
               <div className="w-9 h-9 rounded-xl flex items-center justify-center text-lg flex-shrink-0"
                 style={{ background: 'linear-gradient(135deg, #7c3aed, #4c1d95)', boxShadow: '0 0 20px rgba(124,58,237,0.35)' }}>
-                ⚗
+                pH
               </div>
               <div>
                 <p className="font-display font-bold text-white/90 leading-none">Natural pH Indicator</p>

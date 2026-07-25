@@ -31,7 +31,10 @@ function StepCard({ step, i }: { step: typeof PROCESS_STEPS[0]; i: number }) {
 
       <div className="p-7">
         <div className="flex items-start justify-between mb-5">
-          <span className="text-3xl">{step.icon}</span>
+          <div className="w-10 h-10 rounded-xl flex items-center justify-center font-mono font-bold text-sm mb-5 flex-shrink-0"
+            style={{ background: `${col}20`, border: `1px solid ${col}30`, color: col }}>
+            {step.step}
+          </div>
           <span className="font-mono text-xs px-3 py-1.5 rounded-full"
             style={{ background: `${col}15`, border: `1px solid ${col}25`, color: col }}>
             {step.duration}
@@ -121,7 +124,6 @@ export function ProcessSection() {
                 <div className="flex-1 rounded-2xl p-4 relative overflow-hidden"
                   style={{ background: `${col}0c`, border: `1px solid ${col}20` }}>
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="text-xl">{step.icon}</span>
                     <h3 className="font-display font-bold text-base" style={{ color: 'rgba(255,255,255,0.9)' }}>{step.title}</h3>
                   </div>
                   <p className="text-xs leading-relaxed" style={{ color: 'rgba(255,255,255,0.45)' }}>{step.description}</p>
@@ -133,23 +135,6 @@ export function ProcessSection() {
           })}
         </div>
 
-        {/* Safety note */}
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} transition={{ delay: 0.4 }}
-          className="mt-12 rounded-3xl p-6 relative overflow-hidden"
-          style={{ background: 'rgba(251,191,36,0.05)', border: '1px solid rgba(251,191,36,0.18)' }}>
-          <div className="absolute top-0 left-8 right-8 h-px"
-            style={{ background: 'linear-gradient(90deg, transparent, rgba(251,191,36,0.4), transparent)' }} />
-          <div className="flex items-start gap-4">
-            <span className="text-2xl flex-shrink-0 mt-0.5">⚠️</span>
-            <div>
-              <p className="font-semibold text-sm mb-1.5" style={{ color: '#fde68a' }}>Safety Note</p>
-              <p className="text-xs leading-relaxed" style={{ color: 'rgba(255,255,255,0.42)' }}>
-                Always wear gloves and eye protection. Never mix unknown chemicals. Work in a well-ventilated space. Supervise minors when handling anything beyond mild household acids/bases, and keep running water nearby.
-              </p>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

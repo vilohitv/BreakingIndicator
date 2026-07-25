@@ -7,7 +7,6 @@ import { HowItWorksSection } from './components/sections/HowItWorksSection';
 import { IngredientsSection } from './components/sections/IngredientsSection';
 import { ColorReferenceSection } from './components/sections/ColorReferenceSection';
 import { ProcessSection } from './components/sections/ProcessSection';
-import { GallerySection } from './components/sections/GallerySection';
 import { FAQSection } from './components/sections/FAQSection';
 
 export default function App() {
@@ -33,7 +32,6 @@ export default function App() {
         <IngredientsSection />
         <ColorReferenceSection />
         <ProcessSection />
-        <GallerySection />
         <FAQSection />
       </main>
 

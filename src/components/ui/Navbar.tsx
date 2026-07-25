@@ -63,7 +63,7 @@ export function Navbar() {
                     boxShadow: '0 0 14px rgba(124,58,237,0.5)',
                   }}
                 >
-                  ⚗
+                  pH
                 </div>
                 <span
                   className="text-xs font-display font-bold tracking-wider"

@@ -68,10 +68,9 @@ function IngCard({ veg, detail, i }: { veg: typeof VEGETABLES[0]; detail: typeof
             style={{ background: `${veg.glowColor}20` }} />
 
           <div className="p-7 h-full flex flex-col relative z-10">
-            {/* Emoji */}
-            <div className="text-5xl mb-5 filter drop-shadow-lg group-hover:scale-110 transition-transform duration-300">
-              {i === 0 ? '🥬' : i === 1 ? '🧅' : '🫐'}
-            </div>
+            {/* Colour swatch */}
+            <div className="w-12 h-12 rounded-full mb-5 filter drop-shadow-lg group-hover:scale-110 transition-transform duration-300"
+              style={{ background: veg.glowColor, boxShadow: `0 0 20px ${veg.glowColor}60` }} />
 
             <div className="flex-1">
               <p className="eyebrow mb-2" style={{ color: veg.glowColor }}>{veg.scientificName}</p>
