@@ -1,6 +1,6 @@
 import { useRef, useCallback } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { OrbitControls, Environment, ContactShadows } from '@react-three/drei';
+import { OrbitControls, ContactShadows } from '@react-three/drei';
 import * as THREE from 'three';
 import { ParticleField } from './ParticleField';
 import { VolumetricLights } from './VolumetricLights';
@@ -58,7 +58,11 @@ function HeroScene({ onSelect, selected, mouseX, mouseY }: HeroSceneProps) {
       <pointLight position={[0, -3, 2]} intensity={0.4} color="#1e1b4b" />
       <directionalLight position={[0, 5, 5]} intensity={0.6} color="#e0d5ff" castShadow />
 
-      <Environment preset="night" />
+      {/* Ambient fill replacing Environment preset */}
+      <pointLight position={[0, 8, 0]}  intensity={0.3} color="#1a0040" />
+      <pointLight position={[0, -8, 0]} intensity={0.2} color="#000820" />
+      <pointLight position={[8, 0, 0]}  intensity={0.2} color="#0a0020" />
+      <pointLight position={[-8, 0, 0]} intensity={0.2} color="#0a0020" />
 
       {/* Background elements */}
       <VolumetricLights />
