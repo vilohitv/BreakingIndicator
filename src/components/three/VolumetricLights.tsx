@@ -2,51 +2,37 @@ import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
-export function VolumetricLights() {
-  const orb1Ref = useRef<THREE.Mesh>(null);
-  const orb2Ref = useRef<THREE.Mesh>(null);
-  const orb3Ref = useRef<THREE.Mesh>(null);
-
+function GlowOrb({ color, basePos, speed, size, baseOpacity }: {
+  color: string; basePos: [number,number,number];
+  speed: number; size: number; baseOpacity: number;
+}) {
+  const ref = useRef<THREE.Mesh>(null);
   useFrame(({ clock }) => {
-    const t = clock.elapsedTime;
-    if (orb1Ref.current) {
-      orb1Ref.current.position.y = Math.sin(t * 0.4) * 1.5;
-      orb1Ref.current.position.x = Math.cos(t * 0.3) * 2;
-      (orb1Ref.current.material as THREE.MeshBasicMaterial).opacity =
-        0.06 + Math.sin(t * 0.7) * 0.02;
-    }
-    if (orb2Ref.current) {
-      orb2Ref.current.position.y = Math.cos(t * 0.35) * 1.2;
-      orb2Ref.current.position.x = Math.sin(t * 0.25) * 2.5;
-      (orb2Ref.current.material as THREE.MeshBasicMaterial).opacity =
-        0.04 + Math.sin(t * 0.5) * 0.015;
-    }
-    if (orb3Ref.current) {
-      orb3Ref.current.position.y = Math.sin(t * 0.3 + 2) * 1;
-      (orb3Ref.current.material as THREE.MeshBasicMaterial).opacity =
-        0.03 + Math.cos(t * 0.6) * 0.01;
-    }
+    const t = clock.elapsedTime * speed;
+    if (!ref.current) return;
+    ref.current.position.set(
+      basePos[0] + Math.sin(t * 0.7) * 1.2,
+      basePos[1] + Math.sin(t * 0.5) * 1.0,
+      basePos[2] + Math.cos(t * 0.4) * 0.5,
+    );
+    const mat = ref.current.material as THREE.MeshBasicMaterial;
+    mat.opacity = baseOpacity + Math.sin(t * 1.3) * baseOpacity * 0.3;
   });
+  return (
+    <mesh ref={ref}>
+      <sphereGeometry args={[size, 16, 16]} />
+      <meshBasicMaterial color={color} transparent opacity={baseOpacity} depthWrite={false} />
+    </mesh>
+  );
+}
 
+export function VolumetricLights() {
   return (
     <group>
-      {/* Main violet orb */}
-      <mesh ref={orb1Ref} position={[-2, 0, -3]}>
-        <sphereGeometry args={[3.5, 16, 16]} />
-        <meshBasicMaterial color="#7c3aed" transparent opacity={0.06} depthWrite={false} />
-      </mesh>
-
-      {/* Secondary green orb */}
-      <mesh ref={orb2Ref} position={[3, 0, -4]}>
-        <sphereGeometry args={[2.5, 16, 16]} />
-        <meshBasicMaterial color="#4ade80" transparent opacity={0.04} depthWrite={false} />
-      </mesh>
-
-      {/* Deepest background orb */}
-      <mesh ref={orb3Ref} position={[0, 1, -8]}>
-        <sphereGeometry args={[5, 16, 16]} />
-        <meshBasicMaterial color="#a78bfa" transparent opacity={0.03} depthWrite={false} />
-      </mesh>
+      <GlowOrb color="#7c3aed" basePos={[-3, 1, -4]} speed={0.4}  size={4}   baseOpacity={0.07} />
+      <GlowOrb color="#34d399" basePos={[ 3, -1,-5]} speed={0.35} size={3.5} baseOpacity={0.045}/>
+      <GlowOrb color="#a78bfa" basePos={[ 0, 2, -7]} speed={0.28} size={6}   baseOpacity={0.035}/>
+      <GlowOrb color="#ec4899" basePos={[-2,-2, -3]} speed={0.5}  size={2}   baseOpacity={0.03} />
     </group>
   );
 }

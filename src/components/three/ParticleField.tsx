@@ -2,72 +2,83 @@ import { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
-interface ParticleFieldProps {
-  count?: number;
-}
-
-export function ParticleField({ count = 800 }: ParticleFieldProps) {
+export function ParticleField({ count = 1200 }: { count?: number }) {
   const pointsRef = useRef<THREE.Points>(null);
+  const smallRef  = useRef<THREE.Points>(null);
 
-  const [positions, colors] = useMemo(() => {
-    const positions = new Float32Array(count * 3);
-    const colors = new Float32Array(count * 3);
-
+  const [pos, col] = useMemo(() => {
+    const pos = new Float32Array(count * 3);
+    const col = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
-      // Spread particles in a wide sphere
-      const r = 12 + Math.random() * 8;
+      const r     = 8 + Math.random() * 14;
       const theta = Math.random() * Math.PI * 2;
-      const phi = Math.acos(2 * Math.random() - 1);
-
-      positions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
-      positions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
-      positions[i * 3 + 2] = r * Math.cos(phi);
-
-      // Violet to blue-green palette
+      const phi   = Math.acos(2 * Math.random() - 1);
+      pos[i*3]   = r * Math.sin(phi) * Math.cos(theta);
+      pos[i*3+1] = r * Math.sin(phi) * Math.sin(theta);
+      pos[i*3+2] = r * Math.cos(phi);
       const t = Math.random();
-      if (t < 0.5) {
-        // Violet particles
-        colors[i * 3] = 0.48 + Math.random() * 0.2;
-        colors[i * 3 + 1] = 0.23 + Math.random() * 0.1;
-        colors[i * 3 + 2] = 0.93 + Math.random() * 0.07;
+      if (t < 0.55) {
+        // violet
+        col[i*3] = 0.48 + Math.random()*0.2; col[i*3+1] = 0.22 + Math.random()*0.1; col[i*3+2] = 0.95;
+      } else if (t < 0.85) {
+        // emerald
+        col[i*3] = 0.08; col[i*3+1] = 0.72 + Math.random()*0.28; col[i*3+2] = 0.4 + Math.random()*0.2;
       } else {
-        // Green tint particles
-        colors[i * 3] = 0.1 + Math.random() * 0.2;
-        colors[i * 3 + 1] = 0.7 + Math.random() * 0.3;
-        colors[i * 3 + 2] = 0.3 + Math.random() * 0.2;
+        // white
+        col[i*3] = 0.8; col[i*3+1] = 0.8; col[i*3+2] = 0.9;
       }
     }
-
-    return [positions, colors];
+    return [pos, col];
   }, [count]);
 
+  // Dense inner sparkle layer
+  const [sPos, sCol] = useMemo(() => {
+    const n = 400;
+    const p = new Float32Array(n * 3);
+    const c = new Float32Array(n * 3);
+    for (let i = 0; i < n; i++) {
+      const r = 3 + Math.random() * 6;
+      const theta = Math.random() * Math.PI * 2;
+      const phi   = Math.acos(2 * Math.random() - 1);
+      p[i*3]   = r * Math.sin(phi) * Math.cos(theta);
+      p[i*3+1] = r * Math.sin(phi) * Math.sin(theta);
+      p[i*3+2] = r * Math.cos(phi);
+      // Mostly white/violet for sparkle
+      c[i*3] = 0.7 + Math.random()*0.3;
+      c[i*3+1] = 0.6 + Math.random()*0.3;
+      c[i*3+2] = 1.0;
+    }
+    return [p, c];
+  }, []);
+
   useFrame(({ clock }) => {
+    const t = clock.elapsedTime;
     if (pointsRef.current) {
-      pointsRef.current.rotation.y = clock.elapsedTime * 0.012;
-      pointsRef.current.rotation.x = Math.sin(clock.elapsedTime * 0.008) * 0.05;
+      pointsRef.current.rotation.y = t * 0.008;
+      pointsRef.current.rotation.x = Math.sin(t * 0.006) * 0.06;
+    }
+    if (smallRef.current) {
+      smallRef.current.rotation.y = -t * 0.012;
+      smallRef.current.rotation.z = t * 0.005;
     }
   });
 
   return (
-    <points ref={pointsRef}>
-      <bufferGeometry>
-        <bufferAttribute
-          attach="attributes-position"
-          args={[positions, 3]}
-        />
-        <bufferAttribute
-          attach="attributes-color"
-          args={[colors, 3]}
-        />
-      </bufferGeometry>
-      <pointsMaterial
-        size={0.035}
-        vertexColors
-        transparent
-        opacity={0.7}
-        sizeAttenuation
-        depthWrite={false}
-      />
-    </points>
+    <group>
+      <points ref={pointsRef}>
+        <bufferGeometry>
+          <bufferAttribute attach="attributes-position" args={[pos, 3]} />
+          <bufferAttribute attach="attributes-color"    args={[col, 3]} />
+        </bufferGeometry>
+        <pointsMaterial size={0.03} vertexColors transparent opacity={0.65} sizeAttenuation depthWrite={false} />
+      </points>
+      <points ref={smallRef}>
+        <bufferGeometry>
+          <bufferAttribute attach="attributes-position" args={[sPos, 3]} />
+          <bufferAttribute attach="attributes-color"    args={[sCol, 3]} />
+        </bufferGeometry>
+        <pointsMaterial size={0.018} vertexColors transparent opacity={0.45} sizeAttenuation depthWrite={false} />
+      </points>
+    </group>
   );
 }

@@ -1,11 +1,11 @@
-import { useRef, useState, useCallback } from 'react';
+import React, { useRef, useState, useCallback } from 'react';
 import { useFrame } from '@react-three/fiber';
 import type { ThreeEvent } from '@react-three/fiber';
 import { Text, Sphere, Torus, Cylinder } from '@react-three/drei';
 import * as THREE from 'three';
 import type { Vegetable } from '../../types';
 
-interface VegetableMeshProps {
+interface Props {
   vegetable: Vegetable;
   index: number;
   onSelect: (v: Vegetable | null) => void;
@@ -14,233 +14,193 @@ interface VegetableMeshProps {
   mouseY?: number;
 }
 
-export function VegetableMesh({
-  vegetable,
-  index,
-  onSelect,
-  isSelected,
-  mouseX,
-}: VegetableMeshProps) {
-  const groupRef = useRef<THREE.Group>(null);
-  const innerRef = useRef<THREE.Group>(null);
-  const glowRef = useRef<THREE.Mesh>(null);
+export function VegetableMesh({ vegetable, index, onSelect, isSelected, mouseX }: Props) {
+  const groupRef  = useRef<THREE.Group>(null);
+  const innerRef  = useRef<THREE.Group>(null);
+  const glowRef   = useRef<THREE.Mesh>(null);
+  const ringRef   = useRef<THREE.Mesh>(null);
   const [hovered, setHovered] = useState(false);
 
-  // Target scale based on state
-  const targetScale = isSelected ? 1.25 : hovered ? 1.12 : 1.0;
-  const currentScale = useRef(1.0);
-  const floatOffset = index * 2.1;
+  const targetScale   = isSelected ? 1.3 : hovered ? 1.15 : 1.0;
+  const currentScale  = useRef(1.0);
+  const floatOffset   = index * 2.1;
+  const active        = hovered || isSelected;
 
   useFrame(({ clock }) => {
     if (!groupRef.current || !innerRef.current) return;
     const t = clock.elapsedTime;
 
-    // Smooth scale lerp
-    currentScale.current = THREE.MathUtils.lerp(currentScale.current, targetScale, 0.08);
+    // Scale lerp
+    currentScale.current = THREE.MathUtils.lerp(currentScale.current, targetScale, 0.07);
     groupRef.current.scale.setScalar(currentScale.current);
 
-    // Floating animation
-    const floatY = Math.sin(t * 0.6 + floatOffset) * 0.18;
-    groupRef.current.position.y = vegetable.position[1] + floatY;
+    // Float
+    groupRef.current.position.y = vegetable.position[1] + Math.sin(t * 0.55 + floatOffset) * 0.22;
 
-    // Gentle rotation
-    innerRef.current.rotation.y += 0.004;
-    innerRef.current.rotation.x = Math.sin(t * 0.3 + floatOffset) * 0.08;
+    // Mouse parallax
+    groupRef.current.position.x = THREE.MathUtils.lerp(
+      groupRef.current.position.x,
+      vegetable.position[0] + mouseX * 0.18,
+      0.04
+    );
 
-    // Mouse parallax (subtle)
-    groupRef.current.position.x = vegetable.position[0] + mouseX * 0.15;
+    // Gentle auto-rotate
+    innerRef.current.rotation.y += 0.003;
+    innerRef.current.rotation.x = Math.sin(t * 0.28 + floatOffset) * 0.07;
 
-    // Glow pulse
+    // Glow aura
     if (glowRef.current) {
-      const glowMat = glowRef.current.material as THREE.MeshBasicMaterial;
-      glowMat.opacity = hovered || isSelected
-        ? 0.25 + Math.sin(t * 2) * 0.08
-        : 0.05 + Math.sin(t * 1.2) * 0.02;
-      const glowScale = hovered || isSelected
-        ? 1.4 + Math.sin(t * 2) * 0.05
-        : 1.2;
-      glowRef.current.scale.setScalar(glowScale);
+      const mat = glowRef.current.material as THREE.MeshBasicMaterial;
+      mat.opacity = active
+        ? 0.28 + Math.sin(t * 2.2) * 0.08
+        : 0.06 + Math.sin(t * 1.1) * 0.02;
+      glowRef.current.scale.setScalar(active ? 1.5 + Math.sin(t * 2.2) * 0.06 : 1.25);
+    }
+
+    // Orbit ring
+    if (ringRef.current) {
+      ringRef.current.rotation.z += 0.006;
+      ringRef.current.rotation.x = Math.PI / 2 + Math.sin(t * 0.4) * 0.2;
+      const rmat = ringRef.current.material as THREE.MeshBasicMaterial;
+      rmat.opacity = active ? 0.6 : 0.0;
     }
   });
 
-  const handleClick = useCallback((e: ThreeEvent<MouseEvent>) => {
-    e.stopPropagation();
-    onSelect(isSelected ? null : vegetable);
-  }, [isSelected, vegetable, onSelect]);
+  const handleClick        = useCallback((e: ThreeEvent<MouseEvent>)   => { e.stopPropagation(); onSelect(isSelected ? null : vegetable); }, [isSelected, vegetable, onSelect]);
+  const handlePointerOver  = useCallback((e: ThreeEvent<PointerEvent>) => { e.stopPropagation(); setHovered(true);  document.body.style.cursor = 'pointer'; }, []);
+  const handlePointerOut   = useCallback(()                            => { setHovered(false); document.body.style.cursor = 'auto'; }, []);
 
-  const handlePointerOver = useCallback((e: ThreeEvent<PointerEvent>) => {
-    e.stopPropagation();
-    setHovered(true);
-    document.body.style.cursor = 'pointer';
-  }, []);
-
-  const handlePointerOut = useCallback(() => {
-    setHovered(false);
-    document.body.style.cursor = 'auto';
-  }, []);
-
-  // Different geometric shapes for each vegetable
-  const VegetableShape = () => {
-    if (vegetable.id === 'red-cabbage') {
-      return (
-        <group>
-          {/* Cabbage layers */}
-          {[1.0, 0.82, 0.64].map((s, i) => (
-            <Sphere key={i} args={[s, 24, 24]} scale={[1, 0.72, 1]}>
-              <meshStandardMaterial
-                color={vegetable.color}
-                roughness={0.3}
-                metalness={0.05}
-                emissive={vegetable.glowColor}
-                emissiveIntensity={hovered || isSelected ? 0.25 : 0.08}
-                transparent
-                opacity={0.9 - i * 0.12}
-              />
-            </Sphere>
-          ))}
-          {/* Core highlight */}
-          <Sphere args={[0.45, 16, 16]} position={[0, 0.15, 0]}>
-            <meshStandardMaterial
-              color="#d06090"
-              roughness={0.2}
-              metalness={0.1}
-              emissive="#c044aa"
-              emissiveIntensity={0.15}
-            />
-          </Sphere>
-        </group>
-      );
-    }
-
-    if (vegetable.id === 'red-onion') {
-      return (
-        <group>
-          {/* Onion body */}
-          <Sphere args={[0.85, 24, 24]} scale={[1, 1.2, 1]}>
-            <meshStandardMaterial
-              color={vegetable.color}
-              roughness={0.35}
-              metalness={0.08}
-              emissive={vegetable.glowColor}
-              emissiveIntensity={hovered || isSelected ? 0.2 : 0.06}
-            />
-          </Sphere>
-          {/* Onion layers - rings */}
-          {[0.86, 0.68, 0.52].map((r, i) => (
-            <Torus key={i} args={[r * 0.7, 0.04, 8, 32]} rotation={[Math.PI / 2, 0, 0]} position={[0, (i - 1) * 0.22, 0]}>
-              <meshStandardMaterial
-                color="#9b4070"
-                roughness={0.4}
-                transparent
-                opacity={0.6 - i * 0.1}
-              />
-            </Torus>
-          ))}
-          {/* Top stub */}
-          <Cylinder args={[0.06, 0.08, 0.35, 8]} position={[0, 1.1, 0]}>
-            <meshStandardMaterial color="#4a7a3a" roughness={0.5} />
-          </Cylinder>
-        </group>
-      );
-    }
-
-    // Beetroot
-    return (
-      <group>
-        {/* Main bulb */}
-        <Sphere args={[0.9, 24, 24]} scale={[1, 1.15, 1]}>
+  // ── Cabbage ─────────────────────────────────────────────────────────────
+  const Cabbage = () => (
+    <group>
+      {[1.0, 0.78, 0.58, 0.38].map((s, i) => (
+        <Sphere key={i} args={[s, 32, 32]} scale={[1, 0.68, 1]}>
           <meshStandardMaterial
-            color={vegetable.color}
-            roughness={0.28}
-            metalness={0.12}
+            color={i === 0 ? '#6b1f5e' : i === 1 ? '#7e2470' : i === 2 ? '#9b3085' : '#c04aaa'}
+            roughness={0.25} metalness={0.08}
             emissive={vegetable.glowColor}
-            emissiveIntensity={hovered || isSelected ? 0.22 : 0.07}
+            emissiveIntensity={active ? 0.3 : 0.06}
+            transparent opacity={1 - i * 0.08}
           />
         </Sphere>
-        {/* Surface texture rings */}
-        {[0, 1, 2].map((i) => (
-          <Torus key={i} args={[0.55 - i * 0.12, 0.025, 6, 24]} rotation={[Math.PI / 2, 0, 0]} position={[0, -0.1 + i * 0.22, 0]}>
-            <meshStandardMaterial
-              color="#3d0518"
-              roughness={0.6}
-              transparent
-              opacity={0.5}
-            />
-          </Torus>
-        ))}
-        {/* Taproot */}
-        <Cylinder args={[0.05, 0.02, 0.6, 6]} position={[0, -1.05, 0]}>
-          <meshStandardMaterial color="#7a2040" roughness={0.7} />
-        </Cylinder>
-        {/* Leaf stems */}
-        {[-0.15, 0, 0.15].map((x, i) => (
-          <Cylinder key={i} args={[0.03, 0.025, 0.5, 6]} position={[x, 1.0, 0]} rotation={[0, 0, (i - 1) * 0.3]}>
-            <meshStandardMaterial color="#2d6a2a" roughness={0.6} />
+      ))}
+      {/* Leaf veins */}
+      {[0,1,2,3,4].map(i => {
+        const angle = (i / 5) * Math.PI * 2;
+        return (
+          <mesh key={i} position={[Math.cos(angle)*0.6, 0.1, Math.sin(angle)*0.6]} rotation={[0, -angle, 0.3]}>
+            <boxGeometry args={[0.55, 0.03, 0.06]} />
+            <meshStandardMaterial color="#3d0a35" roughness={0.5} transparent opacity={0.5} />
+          </mesh>
+        );
+      })}
+    </group>
+  );
+
+  // ── Red Onion ────────────────────────────────────────────────────────────
+  const Onion = () => (
+    <group>
+      <Sphere args={[0.88, 32, 32]} scale={[1, 1.22, 1]}>
+        <meshStandardMaterial color="#5c1a3a" roughness={0.28} metalness={0.12}
+          emissive={vegetable.glowColor} emissiveIntensity={active ? 0.25 : 0.05} />
+      </Sphere>
+      {/* Skin layers */}
+      {[0.89, 0.72, 0.55].map((r, i) => (
+        <Torus key={i} args={[r*0.65, 0.035, 8, 40]} rotation={[Math.PI/2, 0, 0]} position={[0, (i-1)*0.2, 0]}>
+          <meshStandardMaterial color="#8b2558" roughness={0.4} transparent opacity={0.55 - i*0.12} />
+        </Torus>
+      ))}
+      {/* Outer papery skin — slightly translucent */}
+      <Sphere args={[0.91, 20, 20]} scale={[1, 1.22, 1]}>
+        <meshStandardMaterial color="#4a1030" roughness={0.6} transparent opacity={0.35} side={THREE.FrontSide} />
+      </Sphere>
+      {/* Root stub */}
+      <Cylinder args={[0.05, 0.07, 0.3, 8]} position={[0, -1.12, 0]}>
+        <meshStandardMaterial color="#2d0c1c" roughness={0.8} />
+      </Cylinder>
+      {/* Neck */}
+      <Cylinder args={[0.06, 0.04, 0.45, 8]} position={[0, 1.12, 0]}>
+        <meshStandardMaterial color="#4a7c3a" roughness={0.6} />
+      </Cylinder>
+    </group>
+  );
+
+  // ── Beetroot ─────────────────────────────────────────────────────────────
+  const Beet = () => (
+    <group>
+      <Sphere args={[0.92, 32, 32]} scale={[1, 1.12, 1]}>
+        <meshStandardMaterial color="#4a0518" roughness={0.22} metalness={0.14}
+          emissive={vegetable.glowColor} emissiveIntensity={active ? 0.28 : 0.06} />
+      </Sphere>
+      {/* Surface rings */}
+      {[-0.15, 0.08, 0.3].map((y, i) => (
+        <Torus key={i} args={[0.6 - i*0.1, 0.02, 8, 32]} rotation={[Math.PI/2, 0, 0]} position={[0, y, 0]}>
+          <meshStandardMaterial color="#2a0010" roughness={0.7} transparent opacity={0.45} />
+        </Torus>
+      ))}
+      {/* Taproot */}
+      <Cylinder args={[0.06, 0.015, 0.75, 8]} position={[0, -1.15, 0]}>
+        <meshStandardMaterial color="#6a1830" roughness={0.7} />
+      </Cylinder>
+      {/* Leaf stems */}
+      {([-0.18, 0, 0.18] as number[]).map((x, i) => (
+        <group key={i}>
+          <Cylinder args={[0.03, 0.025, 0.55, 6]} position={[x, 1.08, 0]} rotation={[0, 0, (i-1)*0.28]}>
+            <meshStandardMaterial color="#2d6a28" roughness={0.6} />
           </Cylinder>
-        ))}
-      </group>
-    );
+          {/* Tiny leaf blade */}
+          <mesh position={[x + (i-1)*0.12, 1.42, 0]} rotation={[0.3, 0, (i-1)*0.5]}>
+            <boxGeometry args={[0.22, 0.12, 0.02]} />
+            <meshStandardMaterial color="#3a8032" roughness={0.5} transparent opacity={0.85} />
+          </mesh>
+        </group>
+      ))}
+    </group>
+  );
+
+const shapes: Record<string, React.ReactElement> = {
+    'red-cabbage': <Cabbage />,
+    'red-onion':   <Onion  />,
+    'beetroot':    <Beet   />,
   };
 
   return (
-    <group
-      ref={groupRef}
-      position={vegetable.position}
-      onClick={handleClick}
-      onPointerOver={handlePointerOver}
-      onPointerOut={handlePointerOut}
-    >
-      {/* Glow sphere */}
+    <group ref={groupRef} position={vegetable.position}
+      onClick={handleClick} onPointerOver={handlePointerOver} onPointerOut={handlePointerOut}>
+
+      {/* Aura glow */}
       <mesh ref={glowRef}>
-        <sphereGeometry args={[1.1, 16, 16]} />
-        <meshBasicMaterial
-          color={vegetable.glowColor}
-          transparent
-          opacity={0.05}
-          depthWrite={false}
-          side={THREE.BackSide}
-        />
+        <sphereGeometry args={[1.15, 16, 16]} />
+        <meshBasicMaterial color={vegetable.glowColor} transparent opacity={0.06} depthWrite={false} side={THREE.BackSide} />
       </mesh>
 
-      {/* Main vegetable geometry */}
-      <group ref={innerRef}>
-        <VegetableShape />
-      </group>
+      {/* Orbit ring (visible on hover/select) */}
+      <mesh ref={ringRef} rotation={[Math.PI/2, 0, 0]}>
+        <torusGeometry args={[1.6, 0.012, 8, 64]} />
+        <meshBasicMaterial color={vegetable.glowColor} transparent opacity={0} depthWrite={false} />
+      </mesh>
 
-      {/* Shadow (darkened plane below) */}
-      <mesh position={[0, -1.4, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-        <circleGeometry args={[0.8, 32]} />
-        <meshBasicMaterial
-          color="#000000"
-          transparent
-          opacity={0.25}
-          depthWrite={false}
-        />
+      {/* Geometry */}
+      <group ref={innerRef}>{shapes[vegetable.id]}</group>
+
+      {/* Shadow */}
+      <mesh position={[0, -1.5, 0]} rotation={[-Math.PI/2, 0, 0]}>
+        <circleGeometry args={[0.9, 32]} />
+        <meshBasicMaterial color="#000" transparent opacity={0.2} depthWrite={false} />
       </mesh>
 
       {/* Hover label */}
-      {(hovered || isSelected) && (
-        <Text
-          position={[0, 1.6, 0]}
-          fontSize={0.18}
-          color="#f5f5f5"
-          font="https://fonts.gstatic.com/s/dmsans/v15/rP2Hp2ywxg089UriCZOIHQ.woff"
-          anchorX="center"
-          anchorY="middle"
-        >
-          {vegetable.name}
-        </Text>
-      )}
-      {(hovered || isSelected) && (
-        <Text
-          position={[0, 1.35, 0]}
-          fontSize={0.11}
-          color={vegetable.glowColor}
-          anchorX="center"
-          anchorY="middle"
-        >
-          {vegetable.scientificName}
-        </Text>
+      {active && (
+        <>
+          <Text position={[0, 1.75, 0]} fontSize={0.16} color="#ffffff"
+            anchorX="center" anchorY="middle" font="https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2">
+            {vegetable.name}
+          </Text>
+          <Text position={[0, 1.52, 0]} fontSize={0.1} color={vegetable.glowColor}
+            anchorX="center" anchorY="middle" font="https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxjPVmUsaaDhw.woff2">
+            {vegetable.scientificName}
+          </Text>
+        </>
       )}
     </group>
   );

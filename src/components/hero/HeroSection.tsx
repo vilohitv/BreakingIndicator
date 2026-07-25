@@ -5,193 +5,146 @@ import { VegetableInfoCard } from './VegetableInfoCard';
 import { useMousePosition } from '../../hooks/useMousePosition';
 import type { Vegetable } from '../../types';
 
+const ease = [0.22, 1, 0.36, 1] as const;
+
 export function HeroSection() {
   const [selected, setSelected] = useState<Vegetable | null>(null);
   const mouse = useMousePosition();
 
-  const handleSelect = useCallback((v: Vegetable | null) => {
-    setSelected(v);
-  }, []);
-
-  const handleDeselect = useCallback(() => {
-    setSelected(null);
-  }, []);
-
-  const scrollToNext = () => {
-    const next = document.getElementById('how-it-works');
-    if (next) next.scrollIntoView({ behavior: 'smooth' });
-  };
+  const handleSelect   = useCallback((v: Vegetable | null) => setSelected(v), []);
+  const handleDeselect = useCallback(() => setSelected(null), []);
 
   return (
-    <section
-      id="hero"
-      className="relative w-full overflow-hidden"
-      style={{
-        height: '100vh',
-        minHeight: '600px',
-        background: 'radial-gradient(ellipse 100% 80% at 50% 30%, #1e0a4a 0%, #0d0a1a 70%)',
-      }}
-    >
-      {/* Radial gradient overlays */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: 'radial-gradient(ellipse 60% 50% at 50% 60%, rgba(124,58,237,0.12) 0%, transparent 70%)',
-        }}
-      />
+    <section id="hero" className="relative w-full overflow-hidden scanlines"
+      style={{ height: '100vh', minHeight: 640, background: 'var(--space)' }}>
+
+      {/* Deep background gradient */}
+      <div className="absolute inset-0 pointer-events-none" style={{
+        background: 'radial-gradient(ellipse 90% 70% at 50% 35%, #12063a 0%, #04030a 65%)'
+      }} />
+
+      {/* Spatial grid */}
+      <div className="absolute inset-0 pointer-events-none grid-bg opacity-30" />
 
       {/* 3D Canvas */}
-      <Suspense fallback={<CanvasFallback />}>
-        <HeroCanvas
-          onSelect={handleSelect}
-          selected={selected}
-          mouseX={mouse.normalX}
-          mouseY={mouse.normalY}
-        />
+      <Suspense fallback={
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-ping" />
+        </div>
+      }>
+        <HeroCanvas onSelect={handleSelect} selected={selected} mouseX={mouse.normalX} mouseY={mouse.normalY} />
       </Suspense>
 
-      {/* Overlay gradient at bottom */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-64 pointer-events-none"
-        style={{
-          background: 'linear-gradient(to bottom, transparent, #0d0a1a)',
-        }}
-      />
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-72 pointer-events-none"
+        style={{ background: 'linear-gradient(to bottom, transparent, var(--space))' }} />
 
-      {/* Hero text overlay */}
-      <div className="absolute inset-0 flex flex-col items-center justify-end pb-32 pointer-events-none z-10">
+      {/* Side vignettes */}
+      <div className="absolute inset-y-0 left-0 w-32 pointer-events-none"
+        style={{ background: 'linear-gradient(to right, rgba(4,3,10,0.6), transparent)' }} />
+      <div className="absolute inset-y-0 right-0 w-32 pointer-events-none"
+        style={{ background: 'linear-gradient(to left, rgba(4,3,10,0.6), transparent)' }} />
+
+      {/* Hero overlay text — pinned to bottom */}
+      <div className="absolute inset-0 flex flex-col items-center justify-end pb-28 pointer-events-none z-10">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          className="text-center px-6 max-w-2xl"
+          initial={{ opacity: 0, y: 48 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center px-4 max-w-3xl"
+          transition={{ duration: 1.1, delay: 0.3, ease }}
         >
-          {/* Lab tag */}
-          <motion.p
-            className="hero-label mb-4 flex items-center justify-center gap-3"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-          >
-            <span
-              className="inline-block w-8 h-px"
-              style={{ background: 'rgba(167,139,250,0.5)' }}
-            />
-            Science Project
-            <span
-              className="inline-block w-8 h-px"
-              style={{ background: 'rgba(167,139,250,0.5)' }}
-            />
-          </motion.p>
+          {/* Eyebrow */}
+          <motion.div className="flex items-center justify-center gap-3 mb-5"
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.55 }}>
+            <span className="h-px w-10 block" style={{ background: 'linear-gradient(to right, transparent, rgba(167,139,250,0.5))' }} />
+            <p className="eyebrow">Science Project</p>
+            <span className="h-px w-10 block" style={{ background: 'linear-gradient(to left, transparent, rgba(167,139,250,0.5))' }} />
+          </motion.div>
 
-          {/* Main title */}
+          {/* Title */}
           <motion.h1
-            className="font-display font-black leading-none mb-3"
-            initial={{ opacity: 0, y: 20 }}
+            className="font-display font-bold leading-[1.0] tracking-tight mb-4"
+            style={{ fontSize: 'clamp(2.8rem, 7vw, 6rem)' }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            style={{ fontSize: 'clamp(2.4rem, 6vw, 5rem)' }}
+            transition={{ delay: 0.65, duration: 0.9, ease }}
           >
-            <span className="gradient-text-white">Natural pH</span>
+            <span className="text-gradient">Natural pH</span>
             <br />
-            <span className="gradient-text">Indicator</span>
+            <span style={{ color: 'rgba(255,255,255,0.9)' }}>Indicator</span>
           </motion.h1>
 
           {/* Subtitle */}
           <motion.p
-            className="text-white/50 font-body mt-4 max-w-lg mx-auto leading-relaxed"
-            style={{ fontSize: 'clamp(0.9rem, 2vw, 1.1rem)' }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.9 }}
+            className="text-sm leading-relaxed max-w-md mx-auto"
+            style={{ color: 'rgba(255,255,255,0.42)', fontSize: 'clamp(0.82rem,1.8vw,1rem)' }}
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.85 }}
           >
-            A natural pH indicator crafted from{' '}
-            <span className="text-violet-300">Red Cabbage</span>,{' '}
-            <span className="text-pink-300">Red Onion</span> &{' '}
-            <span className="text-rose-300">Beetroot</span>.
-            <br />
-            Interact with the scene above to explore each ingredient.
+            A pH-sensitive extract from{' '}
+            <span style={{ color: 'rgba(196,130,200,0.85)' }}>Red Cabbage</span>,{' '}
+            <span style={{ color: 'rgba(220,120,160,0.85)' }}>Red Onion</span> &{' '}
+            <span style={{ color: 'rgba(200,80,110,0.85)' }}>Beetroot</span>.
+            <br />Click a vegetable above to explore it.
           </motion.p>
 
-          {/* CTA Buttons */}
-          <motion.div
-            className="flex gap-4 justify-center mt-8 pointer-events-auto"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.1 }}
-          >
-            <button
-              onClick={scrollToNext}
-              className="relative group px-8 py-3.5 rounded-full font-body font-medium text-sm overflow-hidden transition-all duration-300"
+          {/* CTAs */}
+          <motion.div className="flex gap-3 justify-center mt-8 pointer-events-auto"
+            initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.05 }}>
+
+            <a href="#how-it-works"
+              className="relative group overflow-hidden rounded-full px-7 py-3 text-sm font-semibold text-white"
               style={{
-                background: 'linear-gradient(135deg, #7c3aed, #5b21b6)',
-                boxShadow: '0 0 30px rgba(124,58,237,0.4)',
-              }}
-            >
-              <span className="relative z-10 text-white">Explore</span>
-              <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                style={{ background: 'linear-gradient(135deg, #8b5cf6, #6d28d9)' }}
-              />
-            </button>
-            <a
-              href="#how-it-works"
-              className="px-8 py-3.5 rounded-full font-body font-medium text-sm transition-all duration-300 text-white/70 hover:text-white"
+                background: 'linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%)',
+                boxShadow: '0 0 28px rgba(124,58,237,0.45), 0 4px 12px rgba(0,0,0,0.4)',
+              }}>
+              <span className="relative z-10">Explore</span>
+              {/* Shine sweep */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%)' }} />
+            </a>
+
+            <a href="#how-it-works"
+              className="rounded-full px-7 py-3 text-sm font-medium transition-all duration-300"
               style={{
-                background: 'rgba(255,255,255,0.06)',
-                border: '1px solid rgba(255,255,255,0.12)',
-                backdropFilter: 'blur(10px)',
+                background: 'rgba(255,255,255,0.05)',
+                border: '1px solid rgba(255,255,255,0.1)',
+                backdropFilter: 'blur(12px)',
+                color: 'rgba(255,255,255,0.65)',
               }}
-            >
+              onMouseEnter={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.9)')}
+              onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.65)')}>
               Learn More
             </a>
           </motion.div>
         </motion.div>
       </div>
 
-      {/* Vegetable info card */}
+      {/* Info card */}
       <div className="absolute inset-0 pointer-events-none z-20">
         <VegetableInfoCard vegetable={selected} onClose={handleDeselect} />
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.6 }}
-      >
-        <p className="hero-label" style={{ fontSize: '9px' }}>Scroll to explore</p>
-        <motion.div
-          className="w-px h-8"
-          style={{ background: 'linear-gradient(to bottom, rgba(167,139,250,0.6), transparent)' }}
-          animate={{ scaleY: [1, 0.5, 1], opacity: [0.6, 1, 0.6] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        />
+      {/* Scroll cue */}
+      <motion.div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20"
+        initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.7 }}>
+        <p className="eyebrow" style={{ fontSize: '9px', color: 'rgba(255,255,255,0.25)' }}>Scroll</p>
+        <motion.div className="w-px h-8"
+          style={{ background: 'linear-gradient(to bottom, rgba(167,139,250,0.5), transparent)' }}
+          animate={{ scaleY: [1, 0.4, 1], opacity: [0.5, 1, 0.5] }}
+          transition={{ duration: 2.4, repeat: Infinity }} />
       </motion.div>
 
-      {/* Hint to interact */}
+      {/* Hint badge */}
       {!selected && (
-        <motion.div
-          className="absolute top-24 right-6 z-20 hidden md:block"
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 1.8 }}
-        >
-          <div className="glass rounded-xl px-3 py-2 text-center">
-            <p className="hero-label" style={{ fontSize: '9px' }}>Click a vegetable</p>
-            <p className="text-white/30 text-xs mt-0.5">to inspect it</p>
+        <motion.div className="absolute top-24 right-6 z-20 hidden lg:block"
+          initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 2 }}>
+          <div className="rounded-2xl px-3.5 py-2.5"
+            style={{ background: 'rgba(14,11,30,0.7)', backdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.07)' }}>
+            <p className="eyebrow" style={{ fontSize: '9px' }}>Click a vegetable</p>
+            <p className="font-mono text-center mt-0.5" style={{ fontSize: '10px', color: 'rgba(255,255,255,0.28)' }}>to inspect</p>
           </div>
         </motion.div>
       )}
     </section>
-  );
-}
-
-function CanvasFallback() {
-  return (
-    <div className="absolute inset-0 flex items-center justify-center">
-      <div className="w-2 h-2 rounded-full bg-violet-400 animate-ping" />
-    </div>
   );
 }

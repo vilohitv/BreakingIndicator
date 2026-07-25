@@ -3,184 +3,165 @@ import { motion } from 'framer-motion';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import { VEGETABLES } from '../../utils/data';
 
-const VEG_DETAILS = [
+const DETAILS = [
   {
     id: 'red-cabbage',
-    emoji: '🥬',
-    pigments: ['Cyanidin-3-glucoside', 'Peonidin glycosides', 'Delphinidin'],
-    color: 'red-purple → blue-green',
-    contribution: '70%',
+    contrib: 72,
     contribLabel: 'Primary indicator compound',
-    fact: 'Contains over 36 different anthocyanin compounds — more than almost any other common vegetable.',
+    pigments: ['Cyanidin-3-glucoside', 'Peonidin glycosides', 'Delphinidin'],
+    range: 'Bright Red → Vivid Yellow-Green',
+    fact: 'Contains over 36 distinct anthocyanin compounds — more than almost any other common vegetable.',
+    bgGradient: 'linear-gradient(145deg, rgba(139,26,94,0.18) 0%, rgba(14,11,30,0.8) 100%)',
   },
   {
     id: 'red-onion',
-    emoji: '🧅',
-    pigments: ['Quercetin glucosides', 'Isorhamnetin', 'Anthocyanin-3,4-diglucoside'],
-    color: 'pink → blue',
-    contribution: '20%',
+    contrib: 20,
     contribLabel: 'Stability & range enhancer',
-    fact: 'Onion flavonoids act as co-pigments, binding with anthocyanins to intensify color and extend shelf life.',
+    pigments: ['Quercetin glucosides', 'Isorhamnetin', 'Anthocyanin-3,4-diglucoside'],
+    range: 'Pink-Red → Deep Blue',
+    fact: 'Onion flavonoids act as co-pigments, binding with anthocyanins to intensify colour and extend shelf life by up to 3×.',
+    bgGradient: 'linear-gradient(145deg, rgba(107,26,58,0.18) 0%, rgba(14,11,30,0.8) 100%)',
   },
   {
     id: 'beetroot',
-    emoji: '🫐',
-    pigments: ['Betanin', 'Isobetanin', 'Vulgaxanthin I & II'],
-    color: 'deep red → yellow',
-    contribution: '10%',
+    contrib: 8,
     contribLabel: 'Depth & contrast agent',
-    fact: 'Betalains are unique to the order Caryophyllales — they are chemically unrelated to anthocyanins and cannot co-exist with them in nature.',
+    pigments: ['Betanin', 'Isobetanin', 'Vulgaxanthin I & II'],
+    range: 'Deep Red → Pale Yellow',
+    fact: 'Betalains are unique to the order Caryophyllales and chemically unrelated to anthocyanins — they never co-exist in nature.',
+    bgGradient: 'linear-gradient(145deg, rgba(92,10,40,0.18) 0%, rgba(14,11,30,0.8) 100%)',
   },
 ];
 
-function IngredientCard({ veg, detail, index }: {
-  veg: typeof VEGETABLES[0];
-  detail: typeof VEG_DETAILS[0];
-  index: number;
-}) {
+function IngCard({ veg, detail, i }: { veg: typeof VEGETABLES[0]; detail: typeof DETAILS[0]; i: number }) {
   const [flipped, setFlipped] = useState(false);
-  const { ref, isVisible } = useScrollReveal(0.1);
+  const { ref, isVisible } = useScrollReveal(0.08);
 
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 60 }}
-      animate={isVisible ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.7, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
-      className="relative h-80 cursor-pointer"
-      style={{ perspective: '1200px' }}
-      onClick={() => setFlipped(!flipped)}
-    >
-      <motion.div
-        className="w-full h-full relative"
-        style={{ transformStyle: 'preserve-3d' }}
-        animate={{ rotateY: flipped ? 180 : 0 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      >
-        {/* Front */}
-        <div
-          className="absolute inset-0 glass rounded-2xl p-6 overflow-hidden"
-          style={{
-            backfaceVisibility: 'hidden',
-            WebkitBackfaceVisibility: 'hidden',
-            border: `1px solid ${veg.glowColor}25`,
-          }}
-        >
-          {/* Glow background */}
-          <div
-            className="absolute inset-0 rounded-2xl opacity-40"
-            style={{
-              background: `radial-gradient(ellipse at top left, ${veg.glowColor}20, transparent 60%)`,
-            }}
-          />
+    <motion.div ref={ref}
+      initial={{ opacity: 0, y: 56 }} animate={isVisible ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.75, delay: i * 0.13, ease: [0.22,1,0.36,1] }}
+      className="relative cursor-pointer" style={{ height: 360, perspective: 1400 }}
+      onClick={() => setFlipped(!flipped)}>
 
-          <div className="relative z-10 h-full flex flex-col">
-            {/* Emoji display */}
-            <div className="text-6xl mb-4 filter drop-shadow-lg">{detail.emoji}</div>
+      <motion.div className="w-full h-full relative" style={{ transformStyle: 'preserve-3d' }}
+        animate={{ rotateY: flipped ? 180 : 0 }}
+        transition={{ duration: 0.65, ease: [0.22,1,0.36,1] }}>
+
+        {/* ── Front ─────────────────────────────────────────────────── */}
+        <div className="absolute inset-0 rounded-3xl overflow-hidden group"
+          style={{
+            background: detail.bgGradient,
+            backdropFilter: 'blur(40px)',
+            WebkitBackdropFilter: 'blur(40px)',
+            border: `1px solid ${veg.glowColor}20`,
+            boxShadow: `0 1px 0 rgba(255,255,255,0.07) inset, 0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,0,0,0.3)`,
+            backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden',
+          }}>
+
+          {/* Top edge glow */}
+          <div className="absolute top-0 left-8 right-8 h-px"
+            style={{ background: `linear-gradient(90deg, transparent, ${veg.glowColor}70, transparent)` }} />
+
+          {/* Ambient inner glow */}
+          <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-48 h-24 rounded-full blur-3xl pointer-events-none"
+            style={{ background: `${veg.glowColor}20` }} />
+
+          <div className="p-7 h-full flex flex-col relative z-10">
+            {/* Emoji */}
+            <div className="text-5xl mb-5 filter drop-shadow-lg group-hover:scale-110 transition-transform duration-300">
+              {i === 0 ? '🥬' : i === 1 ? '🧅' : '🫐'}
+            </div>
 
             <div className="flex-1">
-              <h3 className="font-display text-2xl font-bold text-white mb-1">{veg.name}</h3>
-              <p className="text-xs font-mono italic mb-3" style={{ color: veg.glowColor }}>
-                {veg.scientificName}
-              </p>
-              <p className="text-sm text-white/50 leading-relaxed line-clamp-3">
-                {veg.reason.substring(0, 120)}...
+              <p className="eyebrow mb-2" style={{ color: veg.glowColor }}>{veg.scientificName}</p>
+              <h3 className="font-display font-bold text-2xl mb-2" style={{ color: 'rgba(255,255,255,0.95)' }}>
+                {veg.name}
+              </h3>
+              <p className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.42)' }}>
+                {veg.reason.substring(0, 130)}…
               </p>
             </div>
 
-            <div className="mt-4">
-              {/* Contribution bar */}
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-xs text-white/40 font-mono">{detail.contribLabel}</span>
-                <span className="text-xs font-mono font-bold" style={{ color: veg.glowColor }}>
-                  {detail.contribution}
+            {/* Contribution bar */}
+            <div className="mt-5">
+              <div className="flex justify-between items-center mb-2">
+                <span className="font-mono" style={{ fontSize: '11px', color: 'rgba(255,255,255,0.3)' }}>
+                  {detail.contribLabel}
+                </span>
+                <span className="font-mono font-bold text-sm" style={{ color: veg.glowColor }}>
+                  {detail.contrib}%
                 </span>
               </div>
-              <div className="h-1.5 rounded-full bg-white/10 overflow-hidden">
-                <motion.div
-                  className="h-full rounded-full"
+              <div className="h-1 rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.07)' }}>
+                <motion.div className="h-full rounded-full"
                   style={{ background: `linear-gradient(90deg, ${veg.color}, ${veg.glowColor})` }}
                   initial={{ width: 0 }}
-                  animate={isVisible ? { width: detail.contribution } : { width: 0 }}
-                  transition={{ duration: 1, delay: index * 0.15 + 0.5, ease: 'easeOut' }}
-                />
+                  animate={isVisible ? { width: `${detail.contrib}%` } : { width: 0 }}
+                  transition={{ duration: 1.1, delay: i * 0.13 + 0.5, ease: 'easeOut' }} />
               </div>
             </div>
 
-            <p className="text-xs text-white/25 text-center mt-3 font-mono">Tap to flip →</p>
+            <p className="font-mono text-center mt-4" style={{ fontSize: '10px', color: 'rgba(255,255,255,0.2)' }}>
+              Tap to see chemical profile →
+            </p>
           </div>
         </div>
 
-        {/* Back */}
-        <div
-          className="absolute inset-0 glass rounded-2xl p-6 overflow-hidden"
+        {/* ── Back ──────────────────────────────────────────────────── */}
+        <div className="absolute inset-0 rounded-3xl overflow-hidden"
           style={{
-            backfaceVisibility: 'hidden',
-            WebkitBackfaceVisibility: 'hidden',
+            background: detail.bgGradient,
+            backdropFilter: 'blur(40px)',
+            WebkitBackdropFilter: 'blur(40px)',
+            border: `1px solid ${veg.glowColor}28`,
+            boxShadow: `0 1px 0 rgba(255,255,255,0.06) inset, 0 32px 80px rgba(0,0,0,0.6)`,
+            backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden',
             transform: 'rotateY(180deg)',
-            border: `1px solid ${veg.glowColor}35`,
-          }}
-        >
-          <div
-            className="absolute inset-0 rounded-2xl"
-            style={{
-              background: `radial-gradient(ellipse at bottom right, ${veg.glowColor}15, transparent 60%)`,
-            }}
-          />
+          }}>
+          <div className="absolute top-0 left-8 right-8 h-px"
+            style={{ background: `linear-gradient(90deg, transparent, ${veg.glowColor}60, transparent)` }} />
 
-          <div className="relative z-10 h-full flex flex-col">
-            <p className="hero-label mb-4" style={{ color: veg.glowColor }}>Chemical Profile</p>
+          <div className="p-7 h-full flex flex-col relative z-10">
+            <p className="eyebrow mb-5" style={{ color: veg.glowColor }}>Chemical Profile</p>
 
-            <div className="flex-1 space-y-3">
-              {/* Pigments */}
+            <div className="flex-1 space-y-4">
               <div>
-                <p className="text-xs text-white/40 mb-2 font-mono uppercase tracking-wider">Active Pigments</p>
-                <div className="flex flex-col gap-1.5">
-                  {detail.pigments.map((p) => (
-                    <div
-                      key={p}
-                      className="text-xs font-mono px-3 py-1.5 rounded-lg"
-                      style={{
-                        background: `${veg.glowColor}12`,
-                        border: `1px solid ${veg.glowColor}20`,
-                        color: 'rgba(255,255,255,0.7)',
-                      }}
-                    >
+                <p className="font-mono mb-2" style={{ fontSize: '10px', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+                  Active Pigments
+                </p>
+                <div className="space-y-1.5">
+                  {detail.pigments.map(p => (
+                    <div key={p} className="font-mono text-xs px-3 py-2 rounded-xl"
+                      style={{ background: `${veg.glowColor}10`, border: `1px solid ${veg.glowColor}18`, color: 'rgba(255,255,255,0.62)' }}>
                       {p}
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Color range */}
               <div>
-                <p className="text-xs text-white/40 mb-1.5 font-mono uppercase tracking-wider">Color Range</p>
-                <div
-                  className="text-xs font-mono px-3 py-1.5 rounded-lg"
-                  style={{
-                    background: 'rgba(255,255,255,0.04)',
-                    border: '1px solid rgba(255,255,255,0.1)',
-                    color: 'rgba(255,255,255,0.6)',
-                  }}
-                >
-                  {detail.color}
+                <p className="font-mono mb-2" style={{ fontSize: '10px', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+                  Colour Range
+                </p>
+                <div className="font-mono text-xs px-3 py-2 rounded-xl"
+                  style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.55)' }}>
+                  {detail.range}
                 </div>
               </div>
 
-              {/* Fun fact */}
-              <div
-                className="p-3 rounded-xl"
-                style={{
-                  background: `${veg.glowColor}10`,
-                  border: `1px solid ${veg.glowColor}20`,
-                }}
-              >
-                <p className="text-xs text-white/40 mb-1 font-mono">Did you know?</p>
-                <p className="text-xs text-white/60 leading-relaxed">{detail.fact}</p>
+              <div className="rounded-xl p-3.5"
+                style={{ background: `${veg.glowColor}0c`, border: `1px solid ${veg.glowColor}1a` }}>
+                <p className="font-mono mb-1.5" style={{ fontSize: '10px', color: 'rgba(255,255,255,0.28)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                  Did you know?
+                </p>
+                <p className="text-xs leading-relaxed" style={{ color: 'rgba(255,255,255,0.5)' }}>{detail.fact}</p>
               </div>
             </div>
 
-            <p className="text-xs text-white/25 text-center mt-3 font-mono">← Tap to flip back</p>
+            <p className="font-mono text-center mt-4" style={{ fontSize: '10px', color: 'rgba(255,255,255,0.2)' }}>
+              ← Tap to flip back
+            </p>
           </div>
         </div>
       </motion.div>
@@ -190,44 +171,30 @@ function IngredientCard({ veg, detail, index }: {
 
 export function IngredientsSection() {
   const { ref, isVisible } = useScrollReveal(0.2);
-
   return (
     <section id="ingredients" className="section-padding relative">
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: 'radial-gradient(ellipse 50% 50% at 80% 50%, rgba(74,222,128,0.04) 0%, transparent 70%)',
-        }}
-      />
+      <div className="orb w-80 h-80 -right-20 top-40 opacity-30 pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(52,211,153,0.3), transparent 70%)' }} />
 
       <div className="max-w-6xl mx-auto px-6">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <p className="hero-label mb-3">Components</p>
-          <h2 className="font-display text-4xl md:text-5xl font-black gradient-text-white">
-            The Ingredients
+        <motion.div ref={ref}
+          initial={{ opacity: 0, y: 32 }} animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }} className="mb-20">
+          <p className="eyebrow mb-4">Components</p>
+          <h2 className="font-display font-bold leading-none mb-6"
+            style={{ fontSize: 'clamp(2.4rem, 5.5vw, 4.5rem)' }}>
+            <span style={{ color: 'rgba(255,255,255,0.9)' }}>The </span>
+            <span className="text-gradient-green">Ingredients</span>
           </h2>
-          <p className="text-white/40 mt-4 max-w-md mx-auto text-sm leading-relaxed">
-            Three natural vegetables, each contributing unique pigments. Tap each card to reveal its chemical profile.
+          <p className="text-sm leading-relaxed max-w-md" style={{ color: 'rgba(255,255,255,0.4)' }}>
+            Three vegetables, each contributing unique pigments. Tap each card to reveal its chemical profile.
           </p>
-          <div className="flex items-center justify-center gap-3 mt-6">
-            <div className="h-px w-16 bg-gradient-to-r from-transparent to-green-500/50" />
-            <div className="w-1.5 h-1.5 rounded-full bg-green-400" />
-            <div className="h-px w-16 bg-gradient-to-l from-transparent to-green-500/50" />
-          </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {VEGETABLES.map((veg, i) => {
-            const detail = VEG_DETAILS.find((d) => d.id === veg.id)!;
-            return (
-              <IngredientCard key={veg.id} veg={veg} detail={detail} index={i} />
-            );
+            const detail = DETAILS.find(d => d.id === veg.id)!;
+            return <IngCard key={veg.id} veg={veg} detail={detail} i={i} />;
           })}
         </div>
       </div>
