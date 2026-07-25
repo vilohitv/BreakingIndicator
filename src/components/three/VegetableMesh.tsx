@@ -1,7 +1,7 @@
 import React, { useRef, useState, useCallback } from 'react';
 import { useFrame } from '@react-three/fiber';
 import type { ThreeEvent } from '@react-three/fiber';
-import { Text, Sphere, Torus, Cylinder } from '@react-three/drei';
+import { Html, Sphere, Torus, Cylinder } from '@react-three/drei';
 import * as THREE from 'three';
 import type { Vegetable } from '../../types';
 
@@ -191,16 +191,16 @@ const shapes: Record<string, React.ReactElement> = {
 
       {/* Hover label */}
       {active && (
-        <>
-          <Text position={[0, 1.75, 0]} fontSize={0.16} color="#ffffff"
-            anchorX="center" anchorY="middle" font="https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2">
-            {vegetable.name}
-          </Text>
-          <Text position={[0, 1.52, 0]} fontSize={0.1} color={vegetable.glowColor}
-            anchorX="center" anchorY="middle" font="https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxjPVmUsaaDhw.woff2">
-            {vegetable.scientificName}
-          </Text>
-        </>
+        <Html position={[0, 1.9, 0]} center distanceFactor={6} zIndexRange={[10, 0]}>
+          <div style={{ textAlign: 'center', pointerEvents: 'none', userSelect: 'none' }}>
+            <p style={{ fontFamily: 'Inter, system-ui, sans-serif', fontSize: '13px', fontWeight: 600, color: '#ffffff', margin: 0, textShadow: '0 1px 8px rgba(0,0,0,0.8)', whiteSpace: 'nowrap' }}>
+              {vegetable.name}
+            </p>
+            <p style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: '9px', color: vegetable.glowColor, margin: '2px 0 0', textShadow: '0 1px 6px rgba(0,0,0,0.8)', whiteSpace: 'nowrap' }}>
+              {vegetable.scientificName}
+            </p>
+          </div>
+        </Html>
       )}
     </group>
   );
