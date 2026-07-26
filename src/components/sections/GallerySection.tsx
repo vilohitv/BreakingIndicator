@@ -12,6 +12,10 @@ const ITEMS = [
   { id:'3', label:'Neutral', sublabel:'pH 7 · Distilled water',
     grad:'linear-gradient(160deg, #2e1065 0%, #7c3aed 50%, #4c1d95 100%)', accent:'#a78bfa', h:'h-64',
     desc:'At neutral pH the anthocyanins rest in equilibrium — a deep, saturated violet. The indicator\'s natural resting colour.' },
+  { id:'9', label:'pH Range Test', sublabel:'Full spectrum · Lab photo',
+    grad:'linear-gradient(90deg, #7c3aed, #dc2626, #ea580c, #fbbf24)', accent:'#c4b5fd', h:'h-56',
+    img: '/ph_test.jpg',
+    desc:'The actual test results showing the full colour range of our indicator, from purple-violet on the acidic side through to bright yellow on the alkaline end.' },
   { id:'4', label:'Weak Base', sublabel:'pH 8–9 · Baking soda',
     grad:'linear-gradient(160deg, #064e3b 0%, #059669 50%, #065f46 100%)', accent:'#34d399', h:'h-48',
     desc:'Partial deprotonation shifts the molecule into a quinonoidal form — the indicator turns a striking blue-green.' },
@@ -43,9 +47,15 @@ function GalleryCard({ item, i, onClick }: { item: typeof ITEMS[0]; i: number; o
         style={{ border: '1px solid rgba(255,255,255,0.06)' }}
         onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)} onClick={onClick}>
 
-        {/* Colour BG */}
-        <div className="absolute inset-0 transition-transform duration-700"
-          style={{ background: item.grad, transform: hov ? 'scale(1.05)' : 'scale(1)' }} />
+        {/* Background: real photo or gradient */}
+        {item.img ? (
+          <img src={item.img} alt={item.label}
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700"
+            style={{ transform: hov ? 'scale(1.05)' : 'scale(1)' }} />
+        ) : (
+          <div className="absolute inset-0 transition-transform duration-700"
+            style={{ background: item.grad, transform: hov ? 'scale(1.05)' : 'scale(1)' }} />
+        )}
 
         {/* Noise */}
         <div className="absolute inset-0 opacity-10"
@@ -102,12 +112,18 @@ function Lightbox({ item, onClose }: { item: typeof ITEMS[0] | null; onClose: ()
             transition={{ type: 'spring', stiffness: 300, damping: 26 }}
             onClick={e => e.stopPropagation()}>
 
-            {/* Colour panel */}
+            {/* Image or colour panel */}
             <div className="h-56 relative overflow-hidden" style={{ background: item.grad }}>
-              <div className="absolute inset-0 opacity-10"
-                style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")", backgroundSize: '200px' }} />
-              <div className="absolute w-36 h-36 rounded-full blur-3xl opacity-60 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                style={{ background: item.accent }} />
+              {item.img ? (
+                <img src={item.img} alt={item.label} className="absolute inset-0 w-full h-full object-cover" />
+              ) : (
+                <>
+                  <div className="absolute inset-0 opacity-10"
+                    style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")", backgroundSize: '200px' }} />
+                  <div className="absolute w-36 h-36 rounded-full blur-3xl opacity-60 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                    style={{ background: item.accent }} />
+                </>
+              )}
               <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'rgba(255,255,255,0.25)' }} />
               <button onClick={onClose}
                 className="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center text-white transition-colors"

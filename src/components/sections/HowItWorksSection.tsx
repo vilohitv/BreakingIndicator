@@ -7,56 +7,24 @@ const CONCEPTS = [
     color: '#7c3aed', glow: 'rgba(124,58,237,0.2)',
     body: 'Water-soluble flavonoid pigments found inside plant cell vacuoles. Their core structure — a flavylium cation — is uniquely sensitive to hydrogen ion concentration, triggering dramatic colour shifts across the entire pH spectrum.',
     tag: 'Flavonoids · Flavylium cation',
-    icon: (
-      <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
-        <circle cx="16" cy="16" r="7" stroke="#c4b5fd" strokeWidth="1.5"/>
-        <circle cx="16" cy="16" r="3" fill="#7c3aed"/>
-        <path d="M16 4v4M16 24v4M4 16h4M24 16h4" stroke="#c4b5fd" strokeWidth="1.5" strokeLinecap="round"/>
-        <circle cx="8.5" cy="8.5" r="1.5" fill="rgba(196,181,253,0.5)"/>
-        <circle cx="23.5" cy="8.5" r="1.5" fill="rgba(196,181,253,0.5)"/>
-        <circle cx="8.5" cy="23.5" r="1.5" fill="rgba(196,181,253,0.5)"/>
-        <circle cx="23.5" cy="23.5" r="1.5" fill="rgba(196,181,253,0.5)"/>
-      </svg>
-    ),
   },
   {
     n: '02', title: 'Natural Pigments',
     color: '#ec4899', glow: 'rgba(236,72,153,0.2)',
     body: 'Unlike synthetic indicators, plant pigments are extracted by gentle simmering — no chemical synthesis. The vacuolar anthocyanins dissolve directly into water, producing a richly coloured stock solution that is entirely food-safe.',
     tag: 'Betalains · Flavonoids',
-    icon: (
-      <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
-        <path d="M16 6c0 0-8 5-8 12a8 8 0 0016 0c0-7-8-12-8-12z" stroke="#f9a8d4" strokeWidth="1.5" strokeLinejoin="round"/>
-        <path d="M16 14c0 0-3 2-3 4a3 3 0 006 0c0-2-3-4-3-4z" fill="rgba(249,168,212,0.3)" stroke="#f9a8d4" strokeWidth="1"/>
-      </svg>
-    ),
   },
   {
     n: '03', title: 'Acid–Base Reaction',
     color: '#34d399', glow: 'rgba(52,211,153,0.2)',
     body: 'In acid (high H⁺), anthocyanins are fully protonated — the flavylium cation absorbs green light and appears red. As pH rises, sequential deprotonation blue-shifts absorption through purple, blue, green, and finally yellow-green in strong base.',
     tag: 'pH range 1 – 14',
-    icon: (
-      <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
-        <path d="M6 24L13 8l6 10 4-6 3 12" stroke="#6ee7b7" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <circle cx="6" cy="24" r="1.5" fill="#34d399"/>
-        <circle cx="26" cy="24" r="1.5" fill="#34d399"/>
-      </svg>
-    ),
   },
   {
     n: '04', title: 'Reversibility',
     color: '#fbbf24', glow: 'rgba(251,191,36,0.2)',
     body: 'Every colour change is fully reversible. Add acid to a blue solution and it snaps back to red instantly. This makes our indicator reusable across many experiments and ideal for demonstrating equilibrium chemistry in real time.',
     tag: 'Reversible · Equilibrium',
-    icon: (
-      <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
-        <path d="M8 12a8 8 0 0116 0" stroke="#fde68a" strokeWidth="1.5" strokeLinecap="round"/>
-        <path d="M24 20a8 8 0 01-16 0" stroke="#fde68a" strokeWidth="1.5" strokeLinecap="round"/>
-        <path d="M22 9l2 3-3 1" stroke="#fde68a" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M10 23l-2-3 3-1" stroke="#fde68a" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
-    ),
   },
 ];
 
@@ -83,13 +51,9 @@ function ConceptCard({ c, i }: { c: typeof CONCEPTS[0]; i: number }) {
         style={{ background: `linear-gradient(90deg, transparent, ${c.color}60, transparent)` }} />
 
       <div className="p-7 relative z-10">
-        {/* Number + icon row */}
-        <div className="flex items-start justify-between mb-5">
+        {/* Number */}
+        <div className="mb-5">
           <span className="font-mono font-bold" style={{ fontSize: '11px', color: c.color, letterSpacing: '0.08em' }}>{c.n}</span>
-          <div className="w-11 h-11 rounded-2xl flex items-center justify-center"
-            style={{ background: `${c.color}14`, border: `1px solid ${c.color}22` }}>
-            {c.icon}
-          </div>
         </div>
 
         <h3 className="font-display font-bold text-xl mb-3" style={{ color: 'rgba(255,255,255,0.92)' }}>

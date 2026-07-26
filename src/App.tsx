@@ -6,30 +6,31 @@ import { HowItWorksSection } from './components/sections/HowItWorksSection';
 import { IngredientsSection } from './components/sections/IngredientsSection';
 import { ColorReferenceSection } from './components/sections/ColorReferenceSection';
 import { ProcessSection } from './components/sections/ProcessSection';
+import { GallerySection } from './components/sections/GallerySection';
+import { VilohitSection } from './components/sections/VilohitSection';
+import { YanLinSection } from './components/sections/YanLinSection';
+import { KoenSection } from './components/sections/KoenSection';
 
 export default function App() {
   useLenis();
 
   return (
     <>
-      {/* Noise texture overlay */}
       <div className="noise-overlay" />
-
-      {/* Cursor glow - desktop only */}
       <div className="hidden md:block">
         <CursorGlow />
       </div>
-
-      {/* Navigation */}
       <Navbar />
-
-      {/* Main content */}
       <main>
         <HeroSection />
         <HowItWorksSection />
         <IngredientsSection />
         <ColorReferenceSection />
         <ProcessSection />
+        <GallerySection />
+        <VilohitSection />
+        <YanLinSection />
+        <KoenSection />
       </main>
     </>
   );

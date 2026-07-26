@@ -128,11 +128,7 @@ export function ColorReferenceSection() {
           {PH_LEVELS.map((level, i) => <PHCard key={level.label} level={level} index={i} />)}
         </div>
 
-        <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
-          transition={{ delay: 0.8 }} className="font-mono text-center mt-8"
-          style={{ fontSize: '11px', color: 'rgba(255,255,255,0.2)' }}>
-          Colours may vary ± 0.5 pH units based on indicator concentration and temperature.
-        </motion.p>
+
       </div>
     </section>
   );
