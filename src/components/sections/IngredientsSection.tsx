@@ -73,7 +73,6 @@ function IngCard({ veg, detail, i }: { veg: typeof VEGETABLES[0]; detail: typeof
               style={{ background: veg.glowColor, boxShadow: `0 0 20px ${veg.glowColor}60` }} />
 
             <div className="flex-1">
-              <p className="eyebrow mb-2" style={{ color: veg.glowColor }}>{veg.scientificName}</p>
               <h3 className="font-display font-bold text-2xl mb-2" style={{ color: 'rgba(255,255,255,0.95)' }}>
                 {veg.name}
               </h3>
