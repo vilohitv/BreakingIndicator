@@ -1,13 +1,11 @@
 import { useLenis } from './hooks/useLenis';
 import { Navbar } from './components/ui/Navbar';
-import { Footer } from './components/ui/Footer';
 import { CursorGlow } from './components/ui/CursorGlow';
 import { HeroSection } from './components/hero/HeroSection';
 import { HowItWorksSection } from './components/sections/HowItWorksSection';
 import { IngredientsSection } from './components/sections/IngredientsSection';
 import { ColorReferenceSection } from './components/sections/ColorReferenceSection';
 import { ProcessSection } from './components/sections/ProcessSection';
-import { FAQSection } from './components/sections/FAQSection';
 
 export default function App() {
   useLenis();
@@ -32,10 +30,7 @@ export default function App() {
         <IngredientsSection />
         <ColorReferenceSection />
         <ProcessSection />
-        <FAQSection />
       </main>
-
-      <Footer />
     </>
   );
 }

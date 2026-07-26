@@ -29,15 +29,7 @@ export function Footer() {
               </div>
             </div>
 
-            {/* Ingredient pills */}
-            <div className="flex gap-2 flex-wrap">
-              {VEG.map((v, i) => (
-                <span key={v} className="font-mono text-xs px-3 py-1.5 rounded-full"
-                  style={{ background: `${VEG_C[i]}12`, border: `1px solid ${VEG_C[i]}25`, color: VEG_C[i] }}>
-                  {v}
-                </span>
-              ))}
-            </div>
+
           </motion.div>
 
           {/* Spectrum strip */}

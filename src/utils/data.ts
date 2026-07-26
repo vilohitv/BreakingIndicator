@@ -4,7 +4,6 @@ export const VEGETABLES: Vegetable[] = [
   {
     id: 'red-cabbage',
     name: 'Red Cabbage',
-    scientificName: 'Brassica oleracea',
     role: 'Primary Anthocyanin Source',
     reason: 'Red cabbage contains the highest concentration of anthocyanins among common vegetables. These pigments undergo dramatic color shifts across the full pH spectrum — from vivid red in acids to deep green-yellow in strong bases — making it the backbone of our indicator.',
     color: '#8b1a5e',
@@ -15,7 +14,6 @@ export const VEGETABLES: Vegetable[] = [
   {
     id: 'red-onion',
     name: 'Red Onion',
-    scientificName: 'Allium cepa',
     role: 'Stability Enhancer',
     reason: 'Red onion provides a complementary anthocyanin profile that broadens the indicator\'s sensitivity range. Its flavonoids stabilize the pigment mixture, preventing degradation and ensuring consistent color readings across temperature variations.',
     color: '#6b1a3a',
@@ -26,7 +24,6 @@ export const VEGETABLES: Vegetable[] = [
   {
     id: 'beetroot',
     name: 'Beetroot',
-    scientificName: 'Beta vulgaris',
     role: 'Color Depth Agent',
     reason: 'Beetroot\'s betalain pigments — betacyanins and betaxanthins — add richness and depth to the indicator\'s color transitions. While less pH-sensitive than anthocyanins, they enhance visual contrast and help distinguish subtle pH differences in the neutral range.',
     color: '#5c0a2a',

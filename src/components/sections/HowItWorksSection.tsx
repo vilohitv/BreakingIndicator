@@ -98,10 +98,7 @@ function ConceptCard({ c, i }: { c: typeof CONCEPTS[0]; i: number }) {
         <p className="text-sm leading-relaxed mb-5" style={{ color: 'rgba(255,255,255,0.45)' }}>
           {c.body}
         </p>
-        <span className="font-mono text-xs px-3 py-1.5 rounded-full"
-          style={{ background: `${c.color}12`, border: `1px solid ${c.color}22`, color: c.color }}>
-          {c.tag}
-        </span>
+
       </div>
     </motion.div>
   );
@@ -179,19 +176,9 @@ export function HowItWorksSection() {
           <div className="absolute top-0 left-1/4 right-1/4 h-px"
             style={{ background: 'linear-gradient(90deg, transparent, rgba(167,139,250,0.5), transparent)' }} />
           <p className="eyebrow text-center mb-5">Reaction Summary</p>
-          <div className="flex items-center justify-center gap-3 flex-wrap">
-            {[
-              { label: 'Anthocyanin', bg: 'rgba(124,58,237,0.15)', color: '#c4b5fd', border: 'rgba(124,58,237,0.3)' },
-              { label: '+  H⁺  (acid)', bg: 'rgba(239,68,68,0.1)', color: '#fca5a5', border: 'rgba(239,68,68,0.25)' },
-              { label: '→', bg: 'transparent', color: 'rgba(255,255,255,0.2)', border: 'transparent' },
-              { label: 'Red Form ·  Low pH', bg: 'rgba(239,68,68,0.12)', color: '#f87171', border: 'rgba(239,68,68,0.2)' },
-            ].map((item, i) => (
-              <span key={i} className="font-mono text-sm px-4 py-2.5 rounded-xl"
-                style={{ background: item.bg, color: item.color, border: `1px solid ${item.border}` }}>
-                {item.label}
-              </span>
-            ))}
-          </div>
+          <p className="font-mono text-sm text-center" style={{ color: 'rgba(255,255,255,0.55)' }}>
+            Anthocyanin + H⁺ (acid) → Red Form · Low pH
+          </p>
           <p className="font-mono text-center mt-5" style={{ fontSize: '11px', color: 'rgba(255,255,255,0.22)' }}>
             Fully reversible — the equilibrium shifts with every pH change
           </p>

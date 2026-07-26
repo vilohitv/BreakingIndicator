@@ -7,7 +7,9 @@ const NAV_LINKS = [
   { label: 'pH Chart',    href: '#colors'        },
   { label: 'Process',     href: '#process'       },
   { label: 'Gallery',     href: '#gallery'       },
-  { label: 'FAQ',         href: '#faq'           },
+  { label: 'Vilohit',     href: '#vilohit'       },
+  { label: 'Yan Lin',     href: '#yan-lin'       },
+  { label: 'Koen',        href: '#koen'          },
 ];
 
 export function Navbar() {

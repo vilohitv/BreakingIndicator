@@ -1,7 +1,6 @@
 export interface Vegetable {
   id: string;
   name: string;
-  scientificName: string;
   role: string;
   reason: string;
   color: string;

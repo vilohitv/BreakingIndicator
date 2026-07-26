@@ -6,7 +6,7 @@ import { VEGETABLES } from '../../utils/data';
 const DETAILS = [
   {
     id: 'red-cabbage',
-    contrib: 72,
+    contrib: 90,
     contribLabel: 'Primary indicator compound',
     pigments: ['Cyanidin-3-glucoside', 'Peonidin glycosides', 'Delphinidin'],
     range: 'Bright Red → Vivid Yellow-Green',
@@ -15,7 +15,7 @@ const DETAILS = [
   },
   {
     id: 'red-onion',
-    contrib: 20,
+    contrib: 5,
     contribLabel: 'Stability & range enhancer',
     pigments: ['Quercetin glucosides', 'Isorhamnetin', 'Anthocyanin-3,4-diglucoside'],
     range: 'Pink-Red → Deep Blue',
@@ -24,7 +24,7 @@ const DETAILS = [
   },
   {
     id: 'beetroot',
-    contrib: 8,
+    contrib: 5,
     contribLabel: 'Depth & contrast agent',
     pigments: ['Betanin', 'Isobetanin', 'Vulgaxanthin I & II'],
     range: 'Deep Red → Pale Yellow',
@@ -41,7 +41,7 @@ function IngCard({ veg, detail, i }: { veg: typeof VEGETABLES[0]; detail: typeof
     <motion.div ref={ref}
       initial={{ opacity: 0, y: 56 }} animate={isVisible ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.75, delay: i * 0.13, ease: [0.22,1,0.36,1] }}
-      className="relative cursor-pointer" style={{ height: 360, perspective: 1400 }}
+      className="relative cursor-pointer" style={{ height: 420, perspective: 1400 }}
       onClick={() => setFlipped(!flipped)}>
 
       <motion.div className="w-full h-full relative" style={{ transformStyle: 'preserve-3d' }}
@@ -108,7 +108,7 @@ function IngCard({ veg, detail, i }: { veg: typeof VEGETABLES[0]; detail: typeof
         </div>
 
         {/* ── Back ──────────────────────────────────────────────────── */}
-        <div className="absolute inset-0 rounded-3xl overflow-hidden"
+        <div className="absolute inset-0 rounded-3xl"
           style={{
             background: detail.bgGradient,
             backdropFilter: 'blur(40px)',
@@ -121,7 +121,7 @@ function IngCard({ veg, detail, i }: { veg: typeof VEGETABLES[0]; detail: typeof
           <div className="absolute top-0 left-8 right-8 h-px"
             style={{ background: `linear-gradient(90deg, transparent, ${veg.glowColor}60, transparent)` }} />
 
-          <div className="p-7 h-full flex flex-col relative z-10">
+          <div className="p-7 h-full flex flex-col relative z-10 overflow-y-auto">
             <p className="eyebrow mb-5" style={{ color: veg.glowColor }}>Chemical Profile</p>
 
             <div className="flex-1 space-y-4">

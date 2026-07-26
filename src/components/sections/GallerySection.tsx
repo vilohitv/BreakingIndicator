@@ -68,10 +68,6 @@ function GalleryCard({ item, i, onClick }: { item: typeof ITEMS[0]; i: number; o
         {/* Labels */}
         <div className="absolute inset-0 p-4 flex flex-col justify-end"
           style={{ opacity: hov ? 1 : 0.65, transform: hov ? 'translateY(0)' : 'translateY(4px)', transition: 'all 0.3s ease' }}>
-          <span className="font-mono text-xs px-2.5 py-1 rounded-full self-start mb-2"
-            style={{ background: `${item.accent}28`, border: `1px solid ${item.accent}45`, color: 'rgba(255,255,255,0.85)' }}>
-            {item.sublabel}
-          </span>
           <h4 className="font-display font-bold text-white text-sm leading-tight">{item.label}</h4>
         </div>
 

@@ -30,22 +30,15 @@ function StepCard({ step, i }: { step: typeof PROCESS_STEPS[0]; i: number }) {
         style={{ boxShadow: `0 0 60px ${col}15 inset` }} />
 
       <div className="p-7">
-        <div className="flex items-start justify-between mb-5">
+        <div className="mb-5">
           <div className="w-10 h-10 rounded-xl flex items-center justify-center font-mono font-bold text-sm mb-5 flex-shrink-0"
             style={{ background: `${col}20`, border: `1px solid ${col}30`, color: col }}>
             {step.step}
           </div>
-          <span className="font-mono text-xs px-3 py-1.5 rounded-full"
-            style={{ background: `${col}15`, border: `1px solid ${col}25`, color: col }}>
-            {step.duration}
-          </span>
         </div>
-        <h3 className="font-display font-bold text-xl mb-3" style={{ color: 'rgba(255,255,255,0.92)' }}>
+        <h3 className="font-display font-bold text-xl" style={{ color: 'rgba(255,255,255,0.92)' }}>
           {step.title}
         </h3>
-        <p className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.45)' }}>
-          {step.description}
-        </p>
       </div>
     </motion.div>
   );
@@ -123,12 +116,7 @@ export function ProcessSection() {
                 </div>
                 <div className="flex-1 rounded-2xl p-4 relative overflow-hidden"
                   style={{ background: `${col}0c`, border: `1px solid ${col}20` }}>
-                  <div className="flex items-center gap-2 mb-2">
-                    <h3 className="font-display font-bold text-base" style={{ color: 'rgba(255,255,255,0.9)' }}>{step.title}</h3>
-                  </div>
-                  <p className="text-xs leading-relaxed" style={{ color: 'rgba(255,255,255,0.45)' }}>{step.description}</p>
-                  <span className="font-mono text-xs mt-2 inline-block px-2 py-0.5 rounded-full"
-                    style={{ background: `${col}15`, color: col }}>{step.duration}</span>
+                  <h3 className="font-display font-bold text-base" style={{ color: 'rgba(255,255,255,0.9)' }}>{step.title}</h3>
                 </div>
               </motion.div>
             );

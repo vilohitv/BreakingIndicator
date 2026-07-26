@@ -39,12 +39,8 @@ function PHCard({ level, index }: { level: typeof PH_LEVELS[0]; index: number })
         style={{ background: 'rgba(255,255,255,0.4)' }} />
 
       <div className="relative z-10 p-5">
-        {/* pH badge + circle */}
-        <div className="flex items-start justify-between mb-5">
-          <span className="font-mono font-bold text-xs px-3 py-1.5 rounded-full"
-            style={{ background: `${level.color}18`, border: `1px solid ${level.color}28`, color: level.color }}>
-            pH {level.range}
-          </span>
+        {/* Circle */}
+        <div className="flex items-start justify-end mb-5">
           <motion.div
             className="w-9 h-9 rounded-full flex-shrink-0"
             style={{
