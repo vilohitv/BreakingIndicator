@@ -8,27 +8,21 @@ const DETAILS = [
     id: 'red-cabbage',
     contrib: 90,
     contribLabel: 'Primary indicator compound',
-    pigments: ['Cyanidin-3-glucoside', 'Peonidin glycosides', 'Delphinidin'],
-    range: 'Bright Red → Vivid Yellow-Green',
-    fact: 'Contains over 36 distinct anthocyanin compounds — more than almost any other common vegetable.',
+    research: 'Red cabbage was chosen because it is one of the most colour-rich vegetables you can find at any grocery store. The deep purple colour comes from natural pigments that are extremely sensitive to changes in acidity. When we tested different vegetables, red cabbage produced the most dramatic and clear colour shifts across the widest range, going from bright red in acidic conditions all the way to yellow-green in strongly basic ones. It is also safe to handle, easy to prepare, and produces a stable solution that holds its colour well over time. That combination of accessibility and performance made it the obvious backbone of this experiment.',
     bgGradient: 'linear-gradient(145deg, rgba(139,26,94,0.18) 0%, rgba(14,11,30,0.8) 100%)',
   },
   {
     id: 'red-onion',
     contrib: 5,
-    contribLabel: 'Stability & range enhancer',
-    pigments: ['Quercetin glucosides', 'Isorhamnetin', 'Anthocyanin-3,4-diglucoside'],
-    range: 'Pink-Red → Deep Blue',
-    fact: 'Onion flavonoids act as co-pigments, binding with anthocyanins to intensify colour and extend shelf life by up to 3×.',
+    contribLabel: 'Stability enhancer',
+    research: 'Red onion was added in small amounts because its natural compounds help the overall indicator stay stable for longer. On its own it does not produce as dramatic a colour change as red cabbage, but it contains flavonoids that bind with the cabbage pigments and slow down how quickly they break down. Think of it as a preservative that comes from the vegetable itself. Without it, the indicator solution would start to lose its reactivity faster, especially if left out at room temperature. A small amount goes a long way, which is why it only makes up five percent of the mixture.',
     bgGradient: 'linear-gradient(145deg, rgba(107,26,58,0.18) 0%, rgba(14,11,30,0.8) 100%)',
   },
   {
     id: 'beetroot',
     contrib: 5,
-    contribLabel: 'Depth & contrast agent',
-    pigments: ['Betanin', 'Isobetanin', 'Vulgaxanthin I & II'],
-    range: 'Deep Red → Pale Yellow',
-    fact: 'Betalains are unique to the order Caryophyllales and chemically unrelated to anthocyanins — they never co-exist in nature.',
+    contribLabel: 'Depth and contrast agent',
+    research: 'Beetroot was included because its pigments are chemically different from those in red cabbage and red onion. While the other two rely on anthocyanins, beetroot uses a separate class of pigments called betalains. These do not shift colour as dramatically with pH changes, but they add a richness and depth to the solution that makes it easier to read subtle differences, especially in the middle of the pH scale where colours can look similar. It also gives the mixture a more vivid starting colour, which makes the changes more visually striking when you first add it to a test solution.',
     bgGradient: 'linear-gradient(145deg, rgba(92,10,40,0.18) 0%, rgba(14,11,30,0.8) 100%)',
   },
 ];
@@ -59,16 +53,12 @@ function IngCard({ veg, detail, i }: { veg: typeof VEGETABLES[0]; detail: typeof
             backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden',
           }}>
 
-          {/* Top edge glow */}
           <div className="absolute top-0 left-8 right-8 h-px"
             style={{ background: `linear-gradient(90deg, transparent, ${veg.glowColor}70, transparent)` }} />
-
-          {/* Ambient inner glow */}
           <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-48 h-24 rounded-full blur-3xl pointer-events-none"
             style={{ background: `${veg.glowColor}20` }} />
 
           <div className="p-7 h-full flex flex-col relative z-10">
-            {/* Colour swatch */}
             <div className="w-12 h-12 rounded-full mb-5 filter drop-shadow-lg group-hover:scale-110 transition-transform duration-300"
               style={{ background: veg.glowColor, boxShadow: `0 0 20px ${veg.glowColor}60` }} />
 
@@ -81,7 +71,6 @@ function IngCard({ veg, detail, i }: { veg: typeof VEGETABLES[0]; detail: typeof
               </p>
             </div>
 
-            {/* Contribution bar */}
             <div className="mt-5">
               <div className="flex justify-between items-center mb-2">
                 <span className="font-mono" style={{ fontSize: '11px', color: 'rgba(255,255,255,0.3)' }}>
@@ -101,7 +90,7 @@ function IngCard({ veg, detail, i }: { veg: typeof VEGETABLES[0]; detail: typeof
             </div>
 
             <p className="font-mono text-center mt-4" style={{ fontSize: '10px', color: 'rgba(255,255,255,0.2)' }}>
-              Tap to see chemical profile →
+              Tap to find out why →
             </p>
           </div>
         </div>
@@ -121,42 +110,10 @@ function IngCard({ veg, detail, i }: { veg: typeof VEGETABLES[0]; detail: typeof
             style={{ background: `linear-gradient(90deg, transparent, ${veg.glowColor}60, transparent)` }} />
 
           <div className="p-7 h-full flex flex-col relative z-10 overflow-y-auto">
-            <p className="eyebrow mb-5" style={{ color: veg.glowColor }}>Chemical Profile</p>
-
-            <div className="flex-1 space-y-4">
-              <div>
-                <p className="font-mono mb-2" style={{ fontSize: '10px', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-                  Active Pigments
-                </p>
-                <div className="space-y-1.5">
-                  {detail.pigments.map(p => (
-                    <div key={p} className="font-mono text-xs px-3 py-2 rounded-xl"
-                      style={{ background: `${veg.glowColor}10`, border: `1px solid ${veg.glowColor}18`, color: 'rgba(255,255,255,0.62)' }}>
-                      {p}
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <p className="font-mono mb-2" style={{ fontSize: '10px', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-                  Colour Range
-                </p>
-                <div className="font-mono text-xs px-3 py-2 rounded-xl"
-                  style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.55)' }}>
-                  {detail.range}
-                </div>
-              </div>
-
-              <div className="rounded-xl p-3.5"
-                style={{ background: `${veg.glowColor}0c`, border: `1px solid ${veg.glowColor}1a` }}>
-                <p className="font-mono mb-1.5" style={{ fontSize: '10px', color: 'rgba(255,255,255,0.28)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-                  Did you know?
-                </p>
-                <p className="text-xs leading-relaxed" style={{ color: 'rgba(255,255,255,0.5)' }}>{detail.fact}</p>
-              </div>
-            </div>
-
+            <p className="eyebrow mb-4" style={{ color: veg.glowColor }}>Why we chose it</p>
+            <p className="text-sm leading-relaxed flex-1" style={{ color: 'rgba(255,255,255,0.6)' }}>
+              {detail.research}
+            </p>
             <p className="font-mono text-center mt-4" style={{ fontSize: '10px', color: 'rgba(255,255,255,0.2)' }}>
               ← Tap to flip back
             </p>
@@ -185,7 +142,7 @@ export function IngredientsSection() {
             <span className="text-gradient-green">Ingredients</span>
           </h2>
           <p className="text-sm leading-relaxed max-w-md" style={{ color: 'rgba(255,255,255,0.4)' }}>
-            Three vegetables, each contributing unique pigments. Tap each card to reveal its chemical profile.
+            Three vegetables, each contributing unique pigments. Tap each card to find out why it was chosen.
           </p>
         </motion.div>
 
