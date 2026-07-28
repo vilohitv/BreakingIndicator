@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import type { StudentModal } from '../../App';
 
 const NAV_LINKS = [
   { label: 'Science',     href: '#how-it-works' },
@@ -7,12 +8,19 @@ const NAV_LINKS = [
   { label: 'pH Chart',    href: '#colors'        },
   { label: 'Process',     href: '#process'       },
   { label: 'Gallery',     href: '#gallery'       },
-  { label: 'Vilohit',     href: '#vilohit'       },
-  { label: 'Yan Lin',     href: '#yan-lin'       },
-  { label: 'Koen',        href: '#koen'          },
 ];
 
-export function Navbar() {
+const STUDENT_LINKS: { label: string; id: StudentModal }[] = [
+  { label: 'Vilohit',  id: 'vilohit'  },
+  { label: 'Yan Lin',  id: 'yan-lin'  },
+  { label: 'Koen',     id: 'koen'     },
+];
+
+interface NavbarProps {
+  onStudentClick: (id: StudentModal) => void;
+}
+
+export function Navbar({ onStudentClick }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [active,   setActive]   = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
@@ -92,6 +100,30 @@ export function Navbar() {
                     {link.label}
                   </a>
                 ))}
+
+                {/* Divider */}
+                <div
+                  className="w-px h-4 mx-1"
+                  style={{ background: 'rgba(255,255,255,0.1)' }}
+                />
+
+                {/* Student buttons */}
+                {STUDENT_LINKS.map((s) => (
+                  <button
+                    key={s.id}
+                    onMouseEnter={() => setActive(s.id!)}
+                    onMouseLeave={() => setActive('')}
+                    onClick={() => onStudentClick(s.id)}
+                    className="relative px-3.5 py-1.5 text-xs font-medium rounded-full transition-colors duration-200"
+                    style={{
+                      color: active === s.id ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.55)',
+                      background: active === s.id ? 'rgba(124,58,237,0.2)' : 'rgba(124,58,237,0.06)',
+                      border: '1px solid rgba(124,58,237,0.15)',
+                    }}
+                  >
+                    {s.label}
+                  </button>
+                ))}
               </div>
 
               {/* Mobile toggle */}
@@ -131,6 +163,22 @@ export function Navbar() {
               >
                 {link.label}
               </motion.a>
+            ))}
+
+            <div className="w-16 h-px mb-6" style={{ background: 'rgba(255,255,255,0.1)' }} />
+
+            {STUDENT_LINKS.map((s, i) => (
+              <motion.button
+                key={s.id}
+                className="font-display text-3xl font-bold mb-6"
+                style={{ color: 'rgba(167,139,250,0.8)' }}
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: (NAV_LINKS.length + i) * 0.07 }}
+                onClick={() => { setMenuOpen(false); onStudentClick(s.id); }}
+              >
+                {s.label}
+              </motion.button>
             ))}
           </motion.div>
         )}
