@@ -17,29 +17,24 @@ function PHCard({ level, index }: { level: typeof PH_LEVELS[0]; index: number })
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}>
 
-      {/* Background */}
       <div className="absolute inset-0 transition-opacity duration-500"
         style={{
           background: `linear-gradient(160deg, ${level.color}16 0%, rgba(14,11,30,0.75) 60%)`,
           opacity: hovered ? 1 : 0.7,
         }} />
 
-      {/* Glow on hover */}
       <div className="absolute inset-0 pointer-events-none transition-opacity duration-500 rounded-3xl"
         style={{
           boxShadow: `0 0 0 1px ${level.color}15, 0 0 40px ${level.color}${hovered ? '22' : '00'}`,
           opacity: hovered ? 1 : 0,
         }} />
 
-      {/* Top colour band */}
       <div className="relative h-3 w-full"
         style={{ background: level.color, boxShadow: `0 0 20px ${level.color}` }} />
-      {/* Band shine */}
       <div className="absolute top-0 left-0 right-0 h-px"
         style={{ background: 'rgba(255,255,255,0.4)' }} />
 
       <div className="relative z-10 p-5">
-        {/* Circle */}
         <div className="flex items-start justify-end mb-5">
           <motion.div
             className="w-9 h-9 rounded-full flex-shrink-0"
@@ -97,38 +92,31 @@ export function ColorReferenceSection() {
             <span style={{ color: 'rgba(255,255,255,0.9)' }}>Chart</span>
           </h2>
           <p className="text-sm leading-relaxed max-w-md" style={{ color: 'rgba(255,255,255,0.4)' }}>
-            Match your indicator colour to the chart below to determine the approximate pH of your solution.
+            Match the colour of your indicator to the chart below to get a rough idea of the pH of your solution.
           </p>
         </motion.div>
 
-        {/* Spectrum bar */}
         <motion.div initial={{ opacity: 0, scaleX: 0 }} whileInView={{ opacity: 1, scaleX: 1 }}
           viewport={{ once: true }} transition={{ duration: 1.2, ease: [0.22,1,0.36,1] }}
           style={{ transformOrigin: 'left' }} className="mb-16">
           <div className="relative h-20 rounded-3xl overflow-hidden ph-spectrum"
             style={{ boxShadow: '0 0 60px rgba(124,58,237,0.2), 0 8px 40px rgba(0,0,0,0.6)' }}>
-            {/* Glass shine */}
             <div className="absolute inset-0"
               style={{ background: 'linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, transparent 50%)' }} />
-            {/* Label row */}
             <div className="absolute inset-0 flex items-center justify-between px-6">
               {['Strong Acid','Weak Acid','Neutral','Weak Base','Strong Base'].map(l => (
                 <span key={l} className="font-mono font-bold text-white/80 drop-shadow-lg hidden sm:block"
                   style={{ fontSize: '11px', letterSpacing: '0.06em' }}>{l}</span>
               ))}
             </div>
-            {/* Border */}
             <div className="absolute inset-0 rounded-3xl" style={{ border: '1px solid rgba(255,255,255,0.15)' }} />
             <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'rgba(255,255,255,0.25)' }} />
           </div>
         </motion.div>
 
-        {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {PH_LEVELS.map((level, i) => <PHCard key={level.label} level={level} index={i} />)}
         </div>
-
-
       </div>
     </section>
   );

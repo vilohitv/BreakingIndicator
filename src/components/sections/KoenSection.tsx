@@ -3,16 +3,16 @@ import { useScrollReveal } from '../../hooks/useScrollReveal';
 
 const PREP_STEPS = [
   { n: '01', title: 'Prepare the leaves', body: 'Leaves of red cabbage were placed into a bag or bowl.' },
-  { n: '02', title: 'Add warm water and crush', body: 'Warm water was added to the bowl and the leaves were crushed until the water turned dark blue, indicating the anthocyanin pigments had been released.' },
+  { n: '02', title: 'Add warm water and crush', body: 'Warm water was added and the leaves were crushed until the water turned a dark blue colour, which means the anthocyanin pigments had been released.' },
   { n: '03', title: 'Strain the liquid', body: 'The liquid was strained into another bowl to remove the solid leaf material.' },
-  { n: '04', title: 'Indicator is ready', body: 'The dark blue liquid collected in the bowl is ready to be used as a pH indicator.' },
+  { n: '04', title: 'Indicator is ready', body: 'The dark blue liquid in the bowl is now ready to use as a pH indicator.' },
 ];
 
 const TEST_STEPS = [
   { n: '01', title: 'Separate into equal amounts', body: 'The red cabbage extract was divided into 3 equal portions.' },
-  { n: '02', title: 'Add test solutions', body: 'An acidic liquid (e.g. lemon juice) was poured into one portion, a neutral liquid (water) into another, and an alkaline liquid (dissolved baking soda) into the last.' },
+  { n: '02', title: 'Add test solutions', body: 'Lemon juice was poured into one portion, water into another, and dissolved baking soda into the last.' },
   { n: '03', title: 'Record observations', body: 'The colour of each portion was observed and recorded after adding the test solution.' },
-  { n: '04', title: 'Observations', body: 'The red cabbage indicator turned from dark purple to pink upon contact with vinegar. It remained dark purple upon contact with water. It turned from dark purple to dark blue upon contact with dissolved baking soda. As such, vinegar is a weak acid, water is neutral, and dissolved baking soda is a weak alkaline.' },
+  { n: '04', title: 'What we saw', body: 'With vinegar it turned from dark purple to pink. With water it stayed dark purple. With baking soda it shifted from dark purple to dark blue. So vinegar is a weak acid, water is neutral and baking soda is a weak alkaline.' },
 ];
 
 const accent = '#16a34a';
@@ -88,8 +88,8 @@ export function KoenSection() {
           </div>
 
           <InfoCard label="Reason" title="Why red cabbage changes colour">
-            <p>Red cabbage contains anthocyanin (C15H11O+), a natural pigment that changes colour based on pH. At a lower pH range (1–3), the anthocyanin molecule changes structure and gains hydrogen ions, forming a positively charged flavylium cation. This cation absorbs blue-green light, which makes it appear red to the human eye.</p>
-            <p className="mt-3">As the pH increases toward neutral and alkaline conditions, the anthocyanin progressively loses hydrogen ions and its molecular structure changes again, shifting the colour through purple, blue, and eventually green-yellow at strongly alkaline pH levels.</p>
+            <p>Red cabbage contains anthocyanin (C15H11O+), a natural pigment that changes colour based on pH. At a low pH range of around 1 to 3, the anthocyanin molecule gains hydrogen ions and forms a positively charged flavylium cation. This cation absorbs blue-green light, which makes it look red to the human eye.</p>
+            <p className="mt-3">As the pH increases toward neutral and then alkaline conditions, the anthocyanin gradually loses hydrogen ions and its molecular structure changes again. This shifts the colour through purple, blue and eventually green-yellow at strongly alkaline pH levels.</p>
           </InfoCard>
 
           <InfoCard label="Colour Reference" title="What the colours mean">
@@ -102,7 +102,7 @@ export function KoenSection() {
                 <div key={r.meaning} className="flex items-center gap-3">
                   <div className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ background: r.dot }} />
                   <span style={{ color: 'rgba(255,255,255,0.7)' }}>{r.colour}</span>
-                  <span style={{ color: 'rgba(255,255,255,0.3)' }}>—</span>
+                  <span style={{ color: 'rgba(255,255,255,0.3)' }}>·</span>
                   <span style={{ color: 'rgba(255,255,255,0.5)' }}>{r.meaning}</span>
                 </div>
               ))}
@@ -110,7 +110,7 @@ export function KoenSection() {
           </InfoCard>
 
           <InfoCard label="Conclusion" title="Red cabbage is a reliable pH indicator">
-            <p>Red cabbage extract produces clear, distinct, and reversible colour changes across the full pH range. The shift from pink in acidic conditions to dark purple in neutral and dark blue in alkaline conditions is easy to observe with the naked eye, making it a highly effective natural pH indicator.</p>
+            <p>Red cabbage extract produces clear, distinct and reversible colour changes across the full pH range. The shift from pink in acidic conditions to dark purple in neutral and dark blue in alkaline conditions is easy to see with the naked eye, which makes it a really effective natural pH indicator.</p>
           </InfoCard>
         </div>
       </div>

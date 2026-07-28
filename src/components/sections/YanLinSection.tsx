@@ -6,14 +6,14 @@ const PREP_STEPS = [
   { n: '02', title: 'Place in bowl', body: 'The chopped pieces were placed into a bowl or zip-lock bag.' },
   { n: '03', title: 'Add warm water and crush', body: 'Warm water was added and the onion pieces were crushed or mashed until the water turned purple.' },
   { n: '04', title: 'Strain the mixture', body: 'The mixture was strained through a sieve or filter paper into another container to separate the solids from the liquid.' },
-  { n: '05', title: 'Extract is ready', body: 'The purple liquid extract is ready to be used as a pH indicator.' },
+  { n: '05', title: 'Extract is ready', body: 'The purple liquid extract is now ready to be used as a pH indicator.' },
 ];
 
 const TEST_STEPS = [
   { n: '01', title: 'Divide into equal amounts', body: 'The red onion extract was separated into 3 equal portions.' },
-  { n: '02', title: 'Add test solutions', body: 'Lemon juice (acidic) was added to one portion, distilled water (neutral) to another, and dissolved baking soda (alkaline) to the last.' },
-  { n: '03', title: 'Observe and record', body: 'The colour change of each portion was observed and recorded.' },
-  { n: '04', title: 'Expected observations', body: 'Acid (lemon juice): Bright pink. Neutral (water): Purple. Base (baking soda): Yellowish green.' },
+  { n: '02', title: 'Add test solutions', body: 'Lemon juice was added to one portion, distilled water to another, and dissolved baking soda to the last.' },
+  { n: '03', title: 'Observe and record', body: 'The colour change of each portion was observed and written down.' },
+  { n: '04', title: 'What we saw', body: 'With lemon juice it turned bright pink. With water it stayed purple. With baking soda it went a yellowish green.' },
 ];
 
 const accent = '#7c3aed';
@@ -89,12 +89,12 @@ export function YanLinSection() {
           </div>
 
           <InfoCard label="Reason" title="Why red onion changes colour">
-            <p>Red onion contains anthocyanins, one of the most common natural pigments used as pH indicators. Anthocyanins are widely found in many red, purple and blue fruits, vegetables and flowers, such as red cabbage, purple sweet potatoes and berries. These pigments change their molecular structure depending on the pH of the solution, resulting in different colours.</p>
-            <p className="mt-3">In acidic solutions, anthocyanins gain hydrogen ions (H⁺) and form a positively charged flavylium cation, giving the extract a bright pink or red colour. In neutral solutions, the pigment remains purple. In alkaline solutions, the anthocyanins lose hydrogen ions and rearrange into different molecular structures, causing the extract to appear yellowish green.</p>
+            <p>Red onion contains anthocyanins, which are one of the most common natural pigments used as pH indicators. You find them in a lot of red, purple and blue fruits and vegetables like red cabbage, purple sweet potatoes and berries. These pigments change their molecular structure depending on the pH of the solution around them, which is what causes the different colours.</p>
+            <p className="mt-3">In acidic solutions, anthocyanins pick up hydrogen ions and form a positively charged flavylium cation, which gives the extract a bright pink or red colour. In neutral solutions the pigment stays purple. In alkaline solutions the anthocyanins lose hydrogen ions and rearrange into different molecular structures, which shifts the colour to a yellowish green.</p>
           </InfoCard>
 
-          <InfoCard label="Conclusion" title="Red onion is an effective pH indicator">
-            <p>Because anthocyanins produce distinct and reversible colour changes over different pH levels, red onion extract can be used as an effective natural pH indicator. The colour shifts from bright pink in acid, to purple in neutral, to yellowish green in alkaline conditions are clear enough to identify the nature of a solution reliably.</p>
+          <InfoCard label="Conclusion" title="Red onion works as a pH indicator">
+            <p>Because anthocyanins produce distinct and reversible colour changes at different pH levels, red onion extract can be used as a natural pH indicator. The shift from bright pink in acid, to purple in neutral, to yellowish green in alkaline conditions is clear enough to identify the nature of a solution fairly reliably.</p>
           </InfoCard>
         </div>
       </div>

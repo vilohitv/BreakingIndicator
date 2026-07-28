@@ -19,8 +19,6 @@ export default function App() {
   useLenis();
   const [activeStudent, setActiveStudent] = useState<StudentModal>(null);
 
-  // Pause Lenis smooth scroll while a modal is open so the modal's
-  // native overflow-y-auto scroll works correctly.
   useEffect(() => {
     const lenis = getLenis();
     if (!lenis) return;
@@ -49,40 +47,47 @@ export default function App() {
         <GallerySection />
       </main>
 
-      {/* Student section modals */}
       <AnimatePresence>
         {activeStudent && (
           <motion.div
             key={activeStudent}
-            className="fixed inset-0 z-50 overflow-y-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
+            style={{
+              position: 'fixed',
+              inset: 0,
+              zIndex: 50,
+              background: '#04030a',
+              overflowY: 'scroll',
+              scrollbarWidth: 'none',
+            }}
           >
-            {/* Backdrop */}
-            <div
-              className="absolute inset-0"
-              style={{ background: 'rgba(4,3,10,0.96)', backdropFilter: 'blur(40px)' }}
-              onClick={closeModal}
-            />
+            {/* hide webkit scrollbar */}
+            <style>{`
+              .modal-scroll::-webkit-scrollbar { display: none; }
+            `}</style>
 
-            {/* Scrollable content wrapper */}
-            <motion.div
-              className="relative min-h-full"
-              initial={{ y: 40, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: 24, opacity: 0 }}
-              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            >
-              {/* Close button — fixed so it stays visible while scrolling */}
+            <div className="modal-scroll">
+              {/* Close button */}
               <button
                 onClick={closeModal}
-                className="fixed top-6 right-6 z-50 w-10 h-10 rounded-full flex items-center justify-center transition-colors"
                 style={{
+                  position: 'fixed',
+                  top: '1.5rem',
+                  right: '1.5rem',
+                  zIndex: 60,
+                  width: '2.5rem',
+                  height: '2.5rem',
+                  borderRadius: '9999px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
                   background: 'rgba(255,255,255,0.08)',
                   backdropFilter: 'blur(12px)',
                   border: '1px solid rgba(255,255,255,0.12)',
+                  cursor: 'pointer',
                 }}
                 aria-label="Close"
               >
@@ -91,11 +96,10 @@ export default function App() {
                 </svg>
               </button>
 
-              {/* Section content */}
               {activeStudent === 'vilohit' && <VilohitSection />}
               {activeStudent === 'yan-lin' && <YanLinSection />}
               {activeStudent === 'koen' && <KoenSection />}
-            </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

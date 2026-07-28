@@ -3,17 +3,17 @@ import { useScrollReveal } from '../../hooks/useScrollReveal';
 
 const PREP_STEPS = [
   { n: '01', title: 'Gather the beetroots', body: '5 fresh beetroots were selected as the base material for the indicator solution.' },
-  { n: '02', title: 'Cut into pieces', body: 'Each beetroot was cut into 8 equal pieces, giving 40 pieces in total. Smaller pieces increase the surface area, helping the pigments release more easily during blending.' },
-  { n: '03', title: 'Add water', body: '50ml of water was added to the beetroot pieces before blending. This gives the blender enough liquid to work with and dilutes the pigment into a workable solution.' },
-  { n: '04', title: 'Blend', body: 'All the pieces were blended together until smooth. The blending breaks down the cell walls of the beetroot, releasing the betalain pigments into the water.' },
-  { n: '05', title: 'Filter the liquid', body: 'The blended mixture was filtered to separate the solid pulp from the liquid. The deep red liquid that passed through is the beetroot indicator.' },
+  { n: '02', title: 'Cut into pieces', body: 'Each beetroot was cut into 8 equal pieces, giving 40 pieces total. Smaller pieces mean more surface area, which helps the pigments come out more easily during blending.' },
+  { n: '03', title: 'Add water', body: '50ml of water was added to the beetroot pieces before blending. This gives the blender enough liquid to work with and starts diluting the pigment into something usable.' },
+  { n: '04', title: 'Blend', body: 'Everything was blended together until smooth. Blending breaks down the cell walls of the beetroot and releases the betalain pigments into the water.' },
+  { n: '05', title: 'Filter the liquid', body: 'The blended mixture was filtered to separate the solid pulp from the liquid. The deep red liquid that came through is the beetroot indicator.' },
 ];
 
 const TEST_STEPS = [
   { n: '01', title: 'Separate into equal amounts', body: 'The beetroot extract was divided into 3 equal portions, one for each test solution.' },
-  { n: '02', title: 'Add test solutions', body: 'An acidic liquid (lemon juice) was added to one portion, distilled water to another, and dissolved baking soda to the last.' },
+  { n: '02', title: 'Add test solutions', body: 'Lemon juice was added to one portion, distilled water to another, and dissolved baking soda to the last.' },
   { n: '03', title: 'Record observations', body: 'The colour of each portion was observed and recorded after adding the test solution.' },
-  { n: '04', title: 'Observations', body: 'The beetroot indicator showed very little colour change across all three solutions. The colour remained a similar deep red-pink regardless of whether the solution was acidic, neutral, or alkaline, making the differences very difficult to distinguish.' },
+  { n: '04', title: 'Observations', body: 'The beetroot indicator showed very little colour change across all three solutions. The colour stayed a similar deep red-pink regardless of whether the solution was acidic, neutral or alkaline. The differences were very hard to tell apart.' },
 ];
 
 const accent = '#be185d';
@@ -88,12 +88,12 @@ export function VilohitSection() {
             <StepList steps={TEST_STEPS} />
           </div>
 
-          <InfoCard label="Reason" title="Why beetroot changes colour">
-            <p>Beetroot contains betalain pigments, which give it its deep red colour. Unlike anthocyanins found in red cabbage and red onion, betalains do not shift colour significantly across the pH scale. The molecular structure of betalains is not sensitive enough to hydrogen ion concentration to produce clear, distinct colour changes between acidic, neutral, and alkaline conditions.</p>
+          <InfoCard label="Reason" title="Why beetroot barely changes colour">
+            <p>Beetroot gets its deep red colour from betalain pigments. Unlike the anthocyanins found in red cabbage and red onion, betalains are not very sensitive to changes in hydrogen ion concentration. Their molecular structure does not shift enough across the pH scale to produce clear, distinct colour differences between acidic, neutral and alkaline conditions.</p>
           </InfoCard>
 
           <InfoCard label="Conclusion" title="Beetroot is not a reliable pH indicator">
-            <p>Because the colour stays a similar deep red-pink regardless of the pH level, it is very difficult to use beetroot extract as a reliable indicator in practice. The difference between an acidic, neutral, and basic solution is not obvious to the naked eye, which means results can easily be misread or missed entirely.</p>
+            <p>Because the colour stays a similar deep red-pink no matter the pH level, it is very hard to use beetroot extract as a reliable indicator in practice. The difference between an acidic, neutral and basic solution is basically not visible to the naked eye, which means results can easily be misread or missed entirely.</p>
           </InfoCard>
         </div>
       </div>

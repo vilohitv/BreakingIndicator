@@ -5,25 +5,25 @@ const CONCEPTS = [
   {
     n: '01', title: 'Anthocyanins',
     color: '#7c3aed', glow: 'rgba(124,58,237,0.2)',
-    body: 'Water-soluble flavonoid pigments found inside plant cell vacuoles. Their core structure — a flavylium cation — is uniquely sensitive to hydrogen ion concentration, triggering dramatic colour shifts across the entire pH spectrum.',
+    body: 'These are water-soluble pigments that sit inside plant cells. Their core structure, the flavylium cation, is really sensitive to hydrogen ions, which is what causes those dramatic colour changes you see when you add acid or base.',
     tag: 'Flavonoids · Flavylium cation',
   },
   {
     n: '02', title: 'Natural Pigments',
     color: '#ec4899', glow: 'rgba(236,72,153,0.2)',
-    body: 'Unlike synthetic indicators, plant pigments are extracted by gentle simmering — no chemical synthesis. The vacuolar anthocyanins dissolve directly into water, producing a richly coloured stock solution that is entirely food-safe.',
+    body: 'Unlike synthetic indicators, plant pigments are released just by simmering in water. No chemical synthesis needed at all. The anthocyanins dissolve straight into the water and the result is entirely food-safe.',
     tag: 'Betalains · Flavonoids',
   },
   {
-    n: '03', title: 'Acid–Base Reaction',
+    n: '03', title: 'Acid-Base Reaction',
     color: '#34d399', glow: 'rgba(52,211,153,0.2)',
-    body: 'In acid (high H⁺), anthocyanins are fully protonated — the flavylium cation absorbs green light and appears red. As pH rises, sequential deprotonation blue-shifts absorption through purple, blue, green, and finally yellow-green in strong base.',
-    tag: 'pH range 1 – 14',
+    body: 'In acid, the anthocyanins are fully protonated and absorb green light, so they look red. As the pH goes up, they gradually lose hydrogen ions and the colour shifts through purple, blue, green and eventually yellow-green in strong base.',
+    tag: 'pH range 1 to 14',
   },
   {
     n: '04', title: 'Reversibility',
     color: '#fbbf24', glow: 'rgba(251,191,36,0.2)',
-    body: 'Every colour change is fully reversible. Add acid to a blue solution and it snaps back to red instantly. This makes our indicator reusable across many experiments and ideal for demonstrating equilibrium chemistry in real time.',
+    body: 'Every colour change can be undone. Add acid to a blue solution and it goes straight back to red. This means the indicator can be reused across many experiments and it is a great way to actually see equilibrium chemistry happening in front of you.',
     tag: 'Reversible · Equilibrium',
   },
 ];
@@ -42,16 +42,13 @@ function ConceptCard({ c, i }: { c: typeof CONCEPTS[0]; i: number }) {
         boxShadow: '0 1px 0 0 rgba(255,255,255,0.07) inset, 0 24px 64px rgba(0,0,0,0.5)',
       }}>
 
-      {/* Hover glow */}
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl pointer-events-none"
         style={{ background: `radial-gradient(ellipse at top left, ${c.glow}, transparent 65%)` }} />
 
-      {/* Accent bar */}
       <div className="absolute top-0 left-6 right-6 h-px"
         style={{ background: `linear-gradient(90deg, transparent, ${c.color}60, transparent)` }} />
 
       <div className="p-7 relative z-10">
-        {/* Number */}
         <div className="mb-5">
           <span className="font-mono font-bold" style={{ fontSize: '11px', color: c.color, letterSpacing: '0.08em' }}>{c.n}</span>
         </div>
@@ -62,7 +59,6 @@ function ConceptCard({ c, i }: { c: typeof CONCEPTS[0]; i: number }) {
         <p className="text-sm leading-relaxed mb-5" style={{ color: 'rgba(255,255,255,0.45)' }}>
           {c.body}
         </p>
-
       </div>
     </motion.div>
   );
@@ -72,12 +68,10 @@ export function HowItWorksSection() {
   const { ref, isVisible } = useScrollReveal(0.2);
   return (
     <section id="how-it-works" className="section-padding relative">
-      {/* Orb */}
       <div className="orb w-96 h-96 -left-32 top-20 opacity-40 pointer-events-none"
         style={{ background: 'radial-gradient(circle, rgba(124,58,237,0.25), transparent 70%)' }} />
 
       <div className="max-w-6xl mx-auto px-6">
-        {/* Header */}
         <motion.div ref={ref}
           initial={{ opacity: 0, y: 32 }} animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }} className="mb-20">
@@ -89,30 +83,25 @@ export function HowItWorksSection() {
             <span style={{ color: 'rgba(255,255,255,0.9)' }}>Works</span>
           </h2>
           <p className="text-sm leading-relaxed max-w-lg" style={{ color: 'rgba(255,255,255,0.4)' }}>
-            From molecular structure to visible colour change — the science behind our natural pH indicator.
+            From the molecular structure to the colour you actually see. Here is the science behind how our natural pH indicator works.
           </p>
         </motion.div>
 
-        {/* pH spectrum strip */}
         <motion.div initial={{ opacity: 0, scaleX: 0 }} whileInView={{ opacity: 1, scaleX: 1 }}
           viewport={{ once: true }} transition={{ duration: 1.1, ease: [0.22,1,0.36,1] }}
           style={{ transformOrigin: 'left' }}
           className="mb-20 relative">
           <div className="relative h-14 rounded-2xl overflow-hidden ph-spectrum"
             style={{ boxShadow: '0 0 40px rgba(124,58,237,0.2), 0 8px 32px rgba(0,0,0,0.5)' }}>
-            {/* Glass overlay */}
             <div className="absolute inset-0" style={{
               background: 'linear-gradient(to bottom, rgba(255,255,255,0.08), transparent 60%)',
             }} />
-            {/* Labels */}
             <div className="absolute inset-0 flex items-center justify-between px-5">
               {['1','2','3','4','5','6','7','8','9','10','11','12','13','14'].map(n => (
                 <span key={n} className="font-mono font-bold text-white/75 drop-shadow-lg" style={{ fontSize: '11px' }}>{n}</span>
               ))}
             </div>
-            {/* Border */}
             <div className="absolute inset-0 rounded-2xl" style={{ border: '1px solid rgba(255,255,255,0.12)' }} />
-            {/* Top highlight */}
             <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'rgba(255,255,255,0.2)' }} />
           </div>
           <div className="flex justify-between mt-2 px-1">
@@ -123,12 +112,10 @@ export function HowItWorksSection() {
           </div>
         </motion.div>
 
-        {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {CONCEPTS.map((c, i) => <ConceptCard key={c.n} c={c} i={i} />)}
         </div>
 
-        {/* Reaction equation */}
         <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} transition={{ delay: 0.3 }}
           className="mt-8 rounded-3xl p-7 relative overflow-hidden"
@@ -144,7 +131,7 @@ export function HowItWorksSection() {
             Anthocyanin + H⁺ (acid) → Red Form · Low pH
           </p>
           <p className="font-mono text-center mt-5" style={{ fontSize: '11px', color: 'rgba(255,255,255,0.22)' }}>
-            Fully reversible — the equilibrium shifts with every pH change
+            Fully reversible. The equilibrium shifts with every pH change.
           </p>
         </motion.div>
       </div>

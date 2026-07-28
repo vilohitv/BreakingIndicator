@@ -8,21 +8,21 @@ const DETAILS = [
     id: 'red-cabbage',
     contrib: 90,
     contribLabel: 'Primary indicator compound',
-    research: 'Red cabbage is packed with natural pigments that are highly sensitive to acidity, making it the most effective and accessible choice for a pH indicator. It produces clear, dramatic colour shifts across the full pH range, from bright red in acids to yellow-green in strong bases.',
+    research: 'Red cabbage is loaded with natural pigments that are very sensitive to acidity, which makes it the most effective and accessible choice for a pH indicator. It produces clear and dramatic colour shifts across the full pH range, from bright red in acids all the way to yellow-green in strong bases.',
     bgGradient: 'linear-gradient(145deg, rgba(139,26,94,0.18) 0%, rgba(14,11,30,0.8) 100%)',
   },
   {
     id: 'red-onion',
     contrib: 5,
     contribLabel: 'Stability enhancer',
-    research: 'Red onion was added because its natural compounds help the indicator stay stable for longer by slowing down how quickly the pigments break down. It acts like a natural preservative, which is why only a small amount is needed.',
+    research: 'Red onion was added because its natural compounds help the indicator stay stable for longer by slowing down how quickly the pigments break down. It acts a bit like a natural preservative, which is why only a small amount is needed.',
     bgGradient: 'linear-gradient(145deg, rgba(107,26,58,0.18) 0%, rgba(14,11,30,0.8) 100%)',
   },
   {
     id: 'beetroot',
     contrib: 5,
     contribLabel: 'Depth and contrast agent',
-    research: 'Beetroot uses a different type of pigment to the other two vegetables, which adds depth and richness to the mixture. This makes subtle colour differences easier to see, particularly in the middle of the pH scale where changes can look very similar.',
+    research: 'Beetroot uses a different type of pigment to the other two vegetables, which adds depth and richness to the mixture. This makes subtle colour differences easier to see, especially in the middle of the pH scale where changes can look quite similar.',
     bgGradient: 'linear-gradient(145deg, rgba(92,10,40,0.18) 0%, rgba(14,11,30,0.8) 100%)',
   },
 ];
@@ -42,7 +42,6 @@ function IngCard({ veg, detail, i }: { veg: typeof VEGETABLES[0]; detail: typeof
         animate={{ rotateY: flipped ? 180 : 0 }}
         transition={{ duration: 0.65, ease: [0.22,1,0.36,1] }}>
 
-        {/* ── Front ─────────────────────────────────────────────────── */}
         <div className="absolute inset-0 rounded-3xl overflow-hidden group"
           style={{
             background: detail.bgGradient,
@@ -95,7 +94,6 @@ function IngCard({ veg, detail, i }: { veg: typeof VEGETABLES[0]; detail: typeof
           </div>
         </div>
 
-        {/* ── Back ──────────────────────────────────────────────────── */}
         <div className="absolute inset-0 rounded-3xl"
           style={{
             background: detail.bgGradient,
@@ -142,7 +140,7 @@ export function IngredientsSection() {
             <span className="text-gradient-green">Ingredients</span>
           </h2>
           <p className="text-sm leading-relaxed max-w-md" style={{ color: 'rgba(255,255,255,0.4)' }}>
-            Three vegetables, each contributing unique pigments. Tap each card to find out why it was chosen.
+            Three vegetables, each one contributing something different. Tap a card to see why we picked it.
           </p>
         </motion.div>
 

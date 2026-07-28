@@ -21,11 +21,9 @@ function StepCard({ step, i }: { step: typeof PROCESS_STEPS[0]; i: number }) {
         boxShadow: `0 1px 0 rgba(255,255,255,0.06) inset, 0 24px 60px rgba(0,0,0,0.5)`,
       }}>
 
-      {/* Top edge */}
       <div className="absolute top-0 left-8 right-8 h-px"
         style={{ background: `linear-gradient(90deg, transparent, ${col}60, transparent)` }} />
 
-      {/* Hover glow */}
       <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
         style={{ boxShadow: `0 0 60px ${col}15 inset` }} />
 
@@ -62,13 +60,11 @@ export function ProcessSection() {
             <span className="text-gradient-green">Experiment</span>
           </h2>
           <p className="text-sm leading-relaxed max-w-md" style={{ color: 'rgba(255,255,255,0.4)' }}>
-            Four precise steps to conduct a reproducible, visually striking pH experiment.
+            Four steps to run the experiment. Pretty straightforward once you have everything ready.
           </p>
         </motion.div>
 
-        {/* Desktop zigzag timeline */}
         <div className="hidden md:block relative">
-          {/* Centre line */}
           <div className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2"
             style={{ background: 'linear-gradient(to bottom, transparent, rgba(124,58,237,0.3) 15%, rgba(124,58,237,0.3) 85%, transparent)' }} />
 
@@ -79,7 +75,6 @@ export function ProcessSection() {
               <div key={step.step} className="relative flex justify-between items-center mb-14">
                 <div className="w-[45%]">{isLeft && <StepCard step={step} i={i} />}</div>
 
-                {/* Node */}
                 <motion.div
                   initial={{ scale: 0, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }}
                   viewport={{ once: true }} transition={{ delay: i * 0.12 + 0.2, type: 'spring', stiffness: 280 }}
@@ -89,7 +84,6 @@ export function ProcessSection() {
                     boxShadow: `0 0 0 4px rgba(14,11,30,1), 0 0 30px ${col}60`,
                   }}>
                   {step.step}
-                  {/* Pulse */}
                   <motion.div className="absolute inset-0 rounded-full"
                     style={{ border: `2px solid ${col}50` }}
                     animate={{ scale: [1, 1.7], opacity: [0.7, 0] }}
@@ -102,7 +96,6 @@ export function ProcessSection() {
           })}
         </div>
 
-        {/* Mobile vertical */}
         <div className="md:hidden space-y-5">
           {PROCESS_STEPS.map((step, i) => {
             const col = STEP_COLORS[i];
@@ -122,7 +115,6 @@ export function ProcessSection() {
             );
           })}
         </div>
-
       </div>
     </section>
   );

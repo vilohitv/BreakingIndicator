@@ -31,8 +31,7 @@ export function GallerySection() {
             className="text-sm leading-relaxed max-w-md"
             style={{ color: 'rgba(255,255,255,0.4)' }}
           >
-            The actual photo of our pH testing — beakers showing the full colour range of
-            all three vegetable indicators across acidic, neutral, and alkaline solutions.
+            The actual photo from our pH testing. You can see the beakers showing the full colour range across acidic, neutral and alkaline solutions.
           </p>
         </motion.div>
 
@@ -48,7 +47,6 @@ export function GallerySection() {
             alt="pH test results showing beakers with colour changes"
             className="w-full h-auto object-cover block"
           />
-          {/* Subtle bottom fade */}
           <div
             className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none"
             style={{ background: 'linear-gradient(to top, rgba(4,3,10,0.4), transparent)' }}
