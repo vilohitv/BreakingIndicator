@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useLenis } from './hooks/useLenis';
+import { useLenis, getLenis } from './hooks/useLenis';
 import { Navbar } from './components/ui/Navbar';
 import { CursorGlow } from './components/ui/CursorGlow';
 import { HeroSection } from './components/hero/HeroSection';
@@ -18,6 +18,18 @@ export type StudentModal = 'vilohit' | 'yan-lin' | 'koen' | null;
 export default function App() {
   useLenis();
   const [activeStudent, setActiveStudent] = useState<StudentModal>(null);
+
+  // Pause Lenis smooth scroll while a modal is open so the modal's
+  // native overflow-y-auto scroll works correctly.
+  useEffect(() => {
+    const lenis = getLenis();
+    if (!lenis) return;
+    if (activeStudent) {
+      lenis.stop();
+    } else {
+      lenis.start();
+    }
+  }, [activeStudent]);
 
   const closeModal = () => setActiveStudent(null);
 
