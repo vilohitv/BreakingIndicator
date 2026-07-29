@@ -28,7 +28,8 @@
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:auto; }
+html { scroll-behavior:auto; overflow-x: hidden; scrollbar-width: none; }
+html::-webkit-scrollbar { display: none; }
 
 body {
   background: var(--space);
@@ -39,10 +40,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ─── Scrollbar ──────────────────────────────────────────────── */
-::-webkit-scrollbar { width: 3px; }
-::-webkit-scrollbar-track { background: var(--space); }
-::-webkit-scrollbar-thumb { background: var(--violet); border-radius: 2px; }
+/* ─── Scrollbar — hidden everywhere ─────────────────────────── */
+* { scrollbar-width: none; -ms-overflow-style: none; }
+*::-webkit-scrollbar { display: none; width: 0; height: 0; }
 
 /* ─── Spatial glass system ───────────────────────────────────── */
 

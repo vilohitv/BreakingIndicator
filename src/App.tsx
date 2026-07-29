@@ -60,7 +60,7 @@ export default function App() {
               inset: 0,
               zIndex: 50,
               background: '#04030a',
-              overflowY: 'scroll',
+              overflowY: 'auto',
               scrollbarWidth: 'none',
             }}
           >
