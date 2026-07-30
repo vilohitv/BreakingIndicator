@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useLenis, getLenis } from './hooks/useLenis';
+import { useLenis, pauseLenis, resumeLenis } from './hooks/useLenis';
 import { Navbar } from './components/ui/Navbar';
 import { CursorGlow } from './components/ui/CursorGlow';
 import { HeroSection } from './components/hero/HeroSection';
@@ -20,12 +20,12 @@ export default function App() {
   const [activeStudent, setActiveStudent] = useState<StudentModal>(null);
 
   useEffect(() => {
-    const lenis = getLenis();
-    if (!lenis) return;
     if (activeStudent) {
-      lenis.stop();
+      // Fully destroy Lenis so it cannot intercept wheel/touch events at all
+      pauseLenis();
     } else {
-      lenis.start();
+      // Recreate Lenis for the main page
+      resumeLenis();
     }
   }, [activeStudent]);
 
@@ -60,10 +60,8 @@ export default function App() {
               inset: 0,
               zIndex: 50,
               background: '#04030a',
-              // No overflow here — let the inner div handle it
             }}
           >
-            {/* Scrollable inner container — plain div, no framer motion */}
             <div
               style={{
                 position: 'absolute',
@@ -99,7 +97,6 @@ export default function App() {
                 </svg>
               </button>
 
-              {/* Clear the float so content flows below the button */}
               <div style={{ clear: 'both' }}>
                 {activeStudent === 'vilohit' && <VilohitSection />}
                 {activeStudent === 'yan-lin' && <YanLinSection />}
