@@ -165,6 +165,38 @@ export function YanLinSection() {
             </motion.div>
           </AnimatePresence>
 
+          <div>
+            <p className="eyebrow mb-6" style={{ color: accentLight }}>Photos</p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {[
+                { src: '/onion_acid.png', label: 'Acid', caption: 'Lemon juice. The extract shifted to a light peachy pink. The change is subtle but visible compared to the neutral result.', dot: '#ef4444' },
+                { src: '/onion_neutral.png', label: 'Neutral', caption: 'Distilled water. The extract stayed an orange-pink tone, which is the baseline colour of the skin extract on its own.', dot: '#7c3aed' },
+                { src: '/onion_alkali.png', label: 'Alkali', caption: 'Baking soda. The extract shifted to a slightly deeper orange-brown. Less dramatic than red cabbage but still a noticeable shift from the neutral.', dot: '#3b82f6' },
+              ].map((photo, i) => (
+                <motion.div key={photo.label}
+                  initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-40px' }}
+                  transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                  className="rounded-2xl overflow-hidden"
+                  style={{ border: '1px solid rgba(255,255,255,0.08)' }}>
+                  <div className="relative">
+                    <img src={photo.src} alt={`Red onion indicator in ${photo.label}`}
+                      className="w-full h-48 object-cover block" />
+                    <div className="absolute top-3 left-3">
+                      <span className="font-mono font-bold text-xs px-2.5 py-1 rounded-full"
+                        style={{ background: `${photo.dot}30`, border: `1px solid ${photo.dot}60`, color: photo.dot }}>
+                        {photo.label}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="p-4" style={{ background: 'rgba(124,58,237,0.05)' }}>
+                    <p className="text-xs leading-relaxed" style={{ color: 'rgba(255,255,255,0.45)' }}>{photo.caption}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
           <div className="space-y-6">
             <p className="eyebrow mb-2" style={{ color: accentLight }}>Literature Review</p>
 

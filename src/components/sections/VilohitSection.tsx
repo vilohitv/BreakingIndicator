@@ -88,6 +88,38 @@ export function VilohitSection() {
             <StepList steps={TEST_STEPS} />
           </div>
 
+          <div>
+            <p className="eyebrow mb-6" style={{ color: accentLight }}>Photos</p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {[
+                { src: '/beetroot_acid.jpeg', label: 'Acid', caption: 'Lemon juice. The colour barely shifted from the original deep red-pink.', dot: '#ef4444' },
+                { src: '/beetroot_neutral.jpeg', label: 'Neutral', caption: 'Distilled water. Stayed a similar red-pink, almost indistinguishable from the acid result.', dot: '#7c3aed' },
+                { src: '/beetroot_base.jpeg', label: 'Base', caption: 'Baking soda. A very slight shift toward a cooler pink-purple, but still hard to tell apart.', dot: '#3b82f6' },
+              ].map((photo, i) => (
+                <motion.div key={photo.label}
+                  initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-40px' }}
+                  transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                  className="rounded-2xl overflow-hidden"
+                  style={{ border: '1px solid rgba(255,255,255,0.08)' }}>
+                  <div className="relative">
+                    <img src={photo.src} alt={`Beetroot indicator in ${photo.label}`}
+                      className="w-full h-48 object-cover block" />
+                    <div className="absolute top-3 left-3">
+                      <span className="font-mono font-bold text-xs px-2.5 py-1 rounded-full"
+                        style={{ background: `${photo.dot}30`, border: `1px solid ${photo.dot}60`, color: photo.dot }}>
+                        {photo.label}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="p-4" style={{ background: 'rgba(190,24,93,0.05)' }}>
+                    <p className="text-xs leading-relaxed" style={{ color: 'rgba(255,255,255,0.45)' }}>{photo.caption}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
           <div className="space-y-6">
             <p className="eyebrow mb-2" style={{ color: accentLight }}>Literature Review</p>
 
