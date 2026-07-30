@@ -3,33 +3,33 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 
 const FLESH_PREP_STEPS = [
-  { n: '01', title: 'Peel and chop the flesh', body: 'The outer skin was removed and set aside. The inner white-purple flesh of the red onion was chopped into small pieces.' },
-  { n: '02', title: 'Place in bowl', body: 'The chopped flesh pieces were placed into a bowl.' },
-  { n: '03', title: 'Add warm water and crush', body: 'Warm water was added and the flesh was crushed until the water took on a faint purple tinge.' },
-  { n: '04', title: 'Strain the mixture', body: 'The mixture was strained through a sieve or filter paper to separate the solids from the liquid.' },
-  { n: '05', title: 'Extract is ready', body: 'The lightly coloured liquid is ready to be tested as a pH indicator, though it is noticeably less pigmented than the skin extract.' },
+  { n: '01', title: 'Peel and chop the flesh', body: 'The papery outer skin was removed and set aside. The inner flesh — white-purple and much milder looking — was chopped into small pieces for extraction.' },
+  { n: '02', title: 'Place in bowl', body: 'The chopped pieces went into a bowl. At this point there is not much colour visible yet — the flesh holds its pigment until the cell walls get broken down.' },
+  { n: '03', title: 'Add warm water and crush', body: 'Warm water was added and the flesh was crushed until the water picked up a faint purple tinge. Warm water helps pull the pigment out faster than cold.' },
+  { n: '04', title: 'Strain the mixture', body: 'The mixture was strained through filter paper to separate the liquid from the solids. The liquid that came through was noticeably paler than what the skin produces.' },
+  { n: '05', title: 'Extract is ready', body: 'The pale purple liquid is ready for testing. It works as an indicator, but the low pigment concentration means any colour changes will be harder to read clearly.' },
 ];
 
 const FLESH_TEST_STEPS = [
-  { n: '01', title: 'Divide into equal amounts', body: 'The flesh extract was separated into 3 equal portions.' },
-  { n: '02', title: 'Add test solutions', body: 'Lemon juice was added to one portion, tap water to another, and dissolved baking soda to the last.' },
-  { n: '03', title: 'Observe and record', body: 'The colour change of each portion was observed and written down.' },
-  { n: '04', title: 'What we saw', body: 'The colour changes were present but quite faint. In lemon juice it shifted to a very pale pink. In water it stayed a light purple. In baking soda it turned a pale greenish tone. The differences were harder to read clearly compared to the skin extract.' },
+  { n: '01', title: 'Divide into equal amounts', body: 'The flesh extract was split into 3 equal portions. Equal volumes matter — more indicator in one glass than another would skew the colour and make comparisons unreliable.' },
+  { n: '02', title: 'Add test solutions', body: 'Lemon juice into the first, tap water into the second, dissolved baking soda into the third. A standard acid-neutral-alkali spread.' },
+  { n: '03', title: 'Observe and record', body: 'Each portion was observed immediately after adding the solution and the resulting colour was written down.' },
+  { n: '04', title: 'What we saw', body: 'Changes did happen, but they were faint. Lemon juice pushed it toward a pale pink. Water left it a light purple. Baking soda gave a slight greenish cast. You could see the shifts if you looked for them, but they were not obvious.' },
 ];
 
 const SKIN_PREP_STEPS = [
-  { n: '01', title: 'Separate the skin', body: 'The dry outer skin layers of the red onion were peeled off and collected. These papery dark red-purple layers contain a much higher concentration of anthocyanins than the inner flesh.' },
-  { n: '02', title: 'Place in bowl', body: 'The skin pieces were placed into a bowl or zip-lock bag.' },
-  { n: '03', title: 'Add warm water and crush', body: 'Warm water was added and the skin was crushed and pressed until the water turned a deep purple.' },
-  { n: '04', title: 'Strain the mixture', body: 'The mixture was strained through a sieve or filter paper into another container to separate the solids from the liquid.' },
-  { n: '05', title: 'Extract is ready', body: 'The deep purple liquid extract is now ready to be used as a pH indicator. The colour is noticeably richer than the flesh extract.' },
+  { n: '01', title: 'Separate the skin', body: 'The dry outer layers of the red onion were peeled off and collected. These papery, dark-purple pieces are where most of the anthocyanins are concentrated — far more than in the flesh underneath.' },
+  { n: '02', title: 'Place in bowl', body: 'The skin pieces went into a bowl. A zip-lock bag also works well here — you can crush everything without making a mess.' },
+  { n: '03', title: 'Add warm water and crush', body: 'Warm water was added and the skin was crushed and pressed until the water turned a deep, vivid purple. The difference in colour from the flesh extraction is immediately obvious at this stage.' },
+  { n: '04', title: 'Strain the mixture', body: 'The liquid was strained into a clean container, leaving the spent skin behind. The extract that came through was a strong, dark purple.' },
+  { n: '05', title: 'Extract is ready', body: 'This is the indicator we used in the final experiment. The concentration is high enough that colour changes will be clear and readable without needing to squint.' },
 ];
 
 const SKIN_TEST_STEPS = [
-  { n: '01', title: 'Divide into equal amounts', body: 'The skin extract was separated into 3 equal portions.' },
-  { n: '02', title: 'Add test solutions', body: 'Lemon juice was added to one portion, tap water to another, and dissolved baking soda to the last.' },
-  { n: '03', title: 'Observe and record', body: 'The colour change of each portion was observed and written down.' },
-  { n: '04', title: 'What we saw', body: 'With lemon juice it turned a clear bright pink. With water it stayed deep purple. With baking soda it shifted to a yellowish green. The colour differences were much more distinct than with the flesh extract.' },
+  { n: '01', title: 'Divide into equal amounts', body: 'The skin extract was split into 3 equal portions, the same approach as the flesh test, to keep the comparison fair.' },
+  { n: '02', title: 'Add test solutions', body: 'Lemon juice into one, tap water into the second, dissolved baking soda into the third.' },
+  { n: '03', title: 'Observe and record', body: 'Each portion was checked immediately after adding the solution. The results were much easier to read than the flesh test.' },
+  { n: '04', title: 'What we saw', body: 'Lemon juice turned it a clear bright pink. Water left it a deep purple. Baking soda shifted it toward a yellowish green. Three distinct, readable colours — exactly what you want from an indicator.' },
 ];
 
 const REFERENCES = [
@@ -227,30 +227,31 @@ export function YanLinSection() {
             <p className="eyebrow mb-2" style={{ color: accentLight }}>Literature Review</p>
 
             <InfoCard label="Background Chemistry" title="Anthocyanins and how they work">
-              <p>According to the National Library of Medicine, anthocyanins are water-soluble flavonoid pigments commonly found in red onions, fruits, vegetables and other foods with high natural pigment content. They are responsible for the purple and red colours in those plants. The colour produced by an anthocyanin depends on its molecular structure — different structures reflect different colours of light at different pH levels.</p>
-              <p className="mt-3">There are different types of anthocyanins, including pelargonidin, delphinidin and malvidin. Chemically, they are glycosylated derivatives of anthocyanidins — meaning a carbohydrate molecule has been attached to a basic pigment molecule. Their core structure contains a flavylium cation made up of three aromatic rings (A, B and C) connected by a conjugated π-electron system, where electrons can move freely across the molecule. This is what allows anthocyanins to absorb visible light and produce colour. The positively charged oxygen atom in the C ring is particularly important for light absorption.</p>
+              <p>Anthocyanins are water-soluble flavonoid pigments — the ones that give red onions, blueberries and a lot of other plant foods their colour. What makes them useful as indicators is that the colour they produce is not fixed. It depends on the molecular structure, and that structure changes depending on how acidic or alkaline the environment around it is.</p>
+              <p className="mt-3">The core structure is a flavylium cation, built from three aromatic rings (A, B and C) connected by a conjugated π-electron system — electrons that can move freely across the whole molecule. That mobility is what lets the molecule absorb visible light and appear coloured. The positively charged oxygen in the C ring is particularly important for how light absorption works, and it is the part that changes when the pH shifts.</p>
             </InfoCard>
 
             <InfoCard label="Scientific Explanation" title="What happens at each pH level">
-              <p><strong style={{ color: 'rgba(255,255,255,0.75)' }}>Acid:</strong> In an acidic solution, anthocyanins exist as the flavylium cation (AH⁺). The conjugated π-electron system allows the molecule to absorb green light, which causes the solution to appear red or pink.</p>
-              <p className="mt-3"><strong style={{ color: 'rgba(255,255,255,0.75)' }}>Neutral:</strong> As pH increases, deprotonation occurs — a hydrogen ion is removed, which changes the shape and colour of the molecule. The flavylium cation converts into a quinonoidal base (A), changing electron distribution and extending electron delocalisation. This shifts the absorption spectrum toward longer wavelengths, so the solution appears purple or blue.</p>
-              <p className="mt-3"><strong style={{ color: 'rgba(255,255,255,0.75)' }}>Alkali:</strong> In alkaline conditions, anthocyanins become very unstable. Hydroxide ions (OH⁻) promote hydration, ring opening and oxidation reactions, forming colourless chalcone intermediates and other degradation products. These reactions disrupt the conjugated π-electron system, which causes fading or the appearance of yellowish degradation products.</p>
+              <p><strong style={{ color: 'rgba(255,255,255,0.75)' }}>Acid:</strong> In acidic conditions the anthocyanin exists as the flavylium cation (AH⁺). The π-electron system absorbs green light, so the solution looks red or pink.</p>
+              <p className="mt-3"><strong style={{ color: 'rgba(255,255,255,0.75)' }}>Neutral:</strong> As pH rises, the molecule loses a hydrogen ion. The flavylium cation becomes a quinonoidal base (A) — the electron distribution changes, delocalisation extends further, and the absorption shifts toward longer wavelengths. The solution turns purple or blue.</p>
+              <p className="mt-3"><strong style={{ color: 'rgba(255,255,255,0.75)' }}>Alkali:</strong> In strongly alkaline conditions things get more complicated. Hydroxide ions promote ring-opening and oxidation reactions, forming chalcone intermediates that have no useful colour. The result is fading, or a yellowish product that has nothing to do with the anthocyanin's original structure.</p>
             </InfoCard>
 
             <InfoCard label="Relevant Variables" title="Things that could affect the results">
-              <p>Anthocyanin stability is affected by temperature and light exposure. Prolonged exposure to either can accelerate degradation of the flavylium structure and reduce anthocyanin concentration. In aged red onion skins, this degradation may allow quercetin or yellow degradation products to become more prominent, producing an orange-yellow extract instead of the characteristic purple seen in fresh skins.</p>
+              <p>Temperature and light are the two main ones. Both accelerate degradation of the flavylium structure over time, gradually reducing the anthocyanin concentration in the extract. In practice this means an older or poorly stored extract will give weaker colour changes than a fresh one.</p>
+              <p className="mt-3">There is also a less obvious factor specific to red onion: quercetin. This is a yellow flavonoid present in the skin, and in aged onions it can become concentrated enough to dominate the extract's colour — producing an orange-yellow liquid instead of the expected purple. Our extract had this quality, which is worth noting when interpreting the results.</p>
             </InfoCard>
 
             <InfoCard label="Results & Discussion" title="What the literature means for our results">
-              <p>The anthocyanin solution should be purple, but in our experiment the quercetin in the red onion skin caused the extract to turn yellowish orange instead. The red onion indicator changes colour because the anthocyanin pigment (C₁₅H₁₁O₆) gains or loses protons (H⁺ ions) depending on the pH of the solution.</p>
-              <p className="mt-3"><strong style={{ color: 'rgba(255,255,255,0.75)' }}>In vinegar (acid):</strong> Acetic acid dissociates to release free protons. The extra H⁺ ions attach to the anthocyanin and convert it from its yellow form to a red form that reflects pinkish or red light.<br />CH₃COOH ⇌ CH₃COO⁻ + H⁺ &nbsp;·&nbsp; A⁻ + H⁺ → HA</p>
-              <p className="mt-3"><strong style={{ color: 'rgba(255,255,255,0.75)' }}>In baking soda (alkali):</strong> Sodium bicarbonate dissolves into Na⁺ and HCO₃⁻ ions. The bicarbonate reacts with water to produce hydroxide ions (OH⁻), which remove free H⁺ from the solution. The anthocyanin then releases its proton and shifts to the yellow/orange form (A⁻). Because baking soda is a weak alkali, the colour does not change fully to yellow.<br />NaHCO₃ → Na⁺ + HCO₃⁻ &nbsp;·&nbsp; HCO₃⁻ + H₂O ⇌ H₂CO₃ + OH⁻ &nbsp;·&nbsp; HA → A⁻ + H⁺</p>
-              <p className="mt-3"><strong style={{ color: 'rgba(255,255,255,0.75)' }}>In water (neutral):</strong> At pH around 7, H⁺ and OH⁻ from water's self-ionisation are balanced, so the anthocyanin stays as a mixture of HA and A⁻, giving a natural yellow colour.<br />H₂O ⇌ H⁺ + OH⁻ &nbsp;·&nbsp; HA ⇌ A⁻ + H⁺ &nbsp;·&nbsp; OH⁻ + H⁺ → H₂O</p>
+              <p>Our extract came out orange-yellow rather than purple, suggesting quercetin was prominent in the onion skin we used. The indicator still responded to pH — because the underlying anthocyanin chemistry (C₁₅H₁₁O₆) was still present — just from a different baseline colour.</p>
+              <p className="mt-3"><strong style={{ color: 'rgba(255,255,255,0.75)' }}>In vinegar (acid):</strong> Acetic acid releases free protons. Those H⁺ ions attach to the anthocyanin and push it toward the protonated red form.<br />CH₃COOH ⇌ CH₃COO⁻ + H⁺ &nbsp;·&nbsp; A⁻ + H⁺ → HA</p>
+              <p className="mt-3"><strong style={{ color: 'rgba(255,255,255,0.75)' }}>In baking soda (alkali):</strong> Sodium bicarbonate produces hydroxide ions, which pull H⁺ out of solution. The anthocyanin releases its proton and shifts toward the deprotonated yellow-orange form. Baking soda is only a weak alkali, so the shift is partial rather than complete.<br />NaHCO₃ → Na⁺ + HCO₃⁻ &nbsp;·&nbsp; HCO₃⁻ + H₂O ⇌ H₂CO₃ + OH⁻ &nbsp;·&nbsp; HA → A⁻ + H⁺</p>
+              <p className="mt-3"><strong style={{ color: 'rgba(255,255,255,0.75)' }}>In water (neutral):</strong> Water's self-ionisation leaves H⁺ and OH⁻ in balance, so the anthocyanin sits between its two forms — giving the natural baseline colour of the extract.<br />H₂O ⇌ H⁺ + OH⁻ &nbsp;·&nbsp; HA ⇌ A⁻ + H⁺ &nbsp;·&nbsp; OH⁻ + H⁺ → H₂O</p>
             </InfoCard>
           </div>
 
           <InfoCard label="Conclusion" title="Red onion works as a pH indicator">
-            <p>Because anthocyanins produce distinct and reversible colour changes at different pH levels, red onion extract can be used as a natural pH indicator. Between the two variants we tested, the skin extract was clearly more effective — the higher anthocyanin concentration in the outer skin produced more vivid and easier-to-read colour changes, which is why it was used in the final version of our experiment.</p>
+            <p>The skin extract produced clear, readable colour changes across all three test solutions, which is enough to confirm it works as a natural pH indicator. Of the two variants we tested, the skin was clearly better — a higher anthocyanin concentration means more visible shifts and less ambiguity in the result. That is why the skin extract went into the final experiment rather than the flesh.</p>
           </InfoCard>
 
           <ReferencesCard />

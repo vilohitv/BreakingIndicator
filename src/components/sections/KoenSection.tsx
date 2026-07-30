@@ -2,17 +2,17 @@ import { motion } from 'framer-motion';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 
 const PREP_STEPS = [
-  { n: '01', title: 'Prepare the leaves', body: 'Leaves of red cabbage were placed into a bag or bowl.' },
-  { n: '02', title: 'Add warm water and crush', body: 'Warm water was added and the leaves were crushed until the water turned a dark blue colour, which means the anthocyanin pigments had been released.' },
-  { n: '03', title: 'Strain the liquid', body: 'The liquid was strained into another bowl to remove the solid leaf material.' },
-  { n: '04', title: 'Indicator is ready', body: 'The dark blue liquid in the bowl is now ready to use as a pH indicator.' },
+  { n: '01', title: 'Prepare the leaves', body: 'Red cabbage leaves were torn and placed into a bag. Tearing rather than cutting helps break some of the surface cells, which makes the extraction faster.' },
+  { n: '02', title: 'Add warm water and crush', body: 'Warm water was added and the leaves were pressed and crushed until the water darkened to a deep blue-purple. That colour change is the anthocyanins coming out of the cells and into the liquid.' },
+  { n: '03', title: 'Strain the liquid', body: 'The liquid was strained into a separate container. The spent leaves came out, and what remained was a deep, clear purple extract ready to use.' },
+  { n: '04', title: 'Indicator is ready', body: 'The dark purple liquid is the indicator. Even at this stage it is quite striking — and the colour shifts that happen during testing are just as dramatic.' },
 ];
 
 const TEST_STEPS = [
-  { n: '01', title: 'Separate into equal amounts', body: 'The red cabbage extract was divided into 3 equal portions.' },
-  { n: '02', title: 'Add test solutions', body: 'Lemon juice was poured into one portion, water into another, and dissolved baking soda into the last.' },
-  { n: '03', title: 'Record observations', body: 'The colour of each portion was observed and recorded after adding the test solution.' },
-  { n: '04', title: 'What we saw', body: 'With vinegar it turned from dark purple to pink. With water it stayed dark purple. With baking soda it shifted from dark purple to dark blue. So vinegar is a weak acid, water is neutral and baking soda is a weak alkaline.' },
+  { n: '01', title: 'Separate into equal amounts', body: 'The red cabbage extract was divided into 3 equal portions. Consistent amounts matter — you want each glass to have the same concentration of indicator so the comparisons are fair.' },
+  { n: '02', title: 'Add test solutions', body: 'Lemon juice into the first portion, plain water into the second, dissolved baking soda into the third. These represent three broad pH categories.' },
+  { n: '03', title: 'Record observations', body: 'Each portion was observed straight after adding the solution. The changes were fast — in most cases the colour had shifted within a few seconds.' },
+  { n: '04', title: 'What we saw', body: 'Vinegar turned it pink. Water left it dark purple, which became our neutral baseline. Baking soda shifted it to a dark blue. Three clearly different colours that made classification straightforward.' },
 ];
 
 const REFERENCES = [
@@ -149,33 +149,33 @@ export function KoenSection() {
             <p className="eyebrow mb-2" style={{ color: accentLight }}>Literature Review</p>
 
             <InfoCard label="Background Chemistry" title="Red cabbage and its pigments">
-              <p>Red cabbage has a very high anthocyanin content compared to most other food plants. Its main pigment compound is cyanidin-3-diglucoside-5-glucoside, and several other anthocyanins are present alongside it. Together they make up a rich pigment mixture, which is why researchers have recognised red cabbage as one of the most widely used natural acid-base indicators.</p>
-              <p className="mt-3">These anthocyanins are stored inside the vacuoles of the plant's cells. When the cell walls are broken down by pounding or heating in water, a dark purplish solution is released from the leaves and stems — and that liquid is what we use as the indicator.</p>
+              <p>Red cabbage has one of the highest anthocyanin concentrations of any common food plant. Its main pigment compound is cyanidin-3-diglucoside-5-glucoside, though several other anthocyanins are present in smaller quantities. That combination is part of why the extract produces such a wide and readable colour range — it is not a single pigment doing all the work.</p>
+              <p className="mt-3">Like other anthocyanins, these pigments are stored inside the vacuoles of the plant's cells. Crushing or heating the leaves in water breaks those cell walls open and releases the pigments into the liquid. What you end up with is a deep purple solution that is ready to use straight away.</p>
             </InfoCard>
 
             <InfoCard label="Previous Research" title="What researchers have found about red cabbage">
-              <p>The acid-base properties of anthocyanins from red cabbage and other plant sources have been studied in a lot of detail. Bridle and Timberlake (1997) looked at how anthocyanin colour changes across different pH levels and found that red cabbage showed some of the most vivid transitions of any natural indicator. At pH 1 to 2 the extract is bright red, at pH 4 to 5 it turns purple, at pH 7 it looks violet-blue, and above pH 10 it shifts to green and then yellow.</p>
-              <p className="mt-3">When red cabbage has been compared to other natural indicators like red onion, grape juice and blackberries, it consistently comes out on top for classroom use. The colour changes are clear and easy to read, the transitions are well spread across the pH scale, and the extract is simple to prepare. More recent studies have also confirmed that the indicator lets you visually estimate pH just by comparing the colour against a standard reference table.</p>
+              <p>Red cabbage's properties as an acid-base indicator have been documented in detail. Bridle and Timberlake (1997) mapped the colour shifts against pH and found some of the most vivid transitions of any natural indicator tested. At pH 1 to 2 the extract is bright red; at pH 4 to 5 it goes purple; by pH 7 it sits at violet-blue; and above pH 10 it moves through green to yellow.</p>
+              <p className="mt-3">When compared against other natural options — red onion, grape juice, blackberries — red cabbage consistently performs best for practical classroom use. The colour changes are spread across the full pH scale, they are distinct enough to read by eye, and the extraction is simple. Studies have confirmed that you can visually estimate pH just by matching the colour to a reference chart, which is not something most other natural indicators can claim.</p>
             </InfoCard>
 
             <InfoCard label="Scientific Explanation" title="Why the colour changes so dramatically">
-              <p>The reason red cabbage works so well as an indicator comes down to how its flavylium cation behaves at different pH levels. In strongly acidic conditions (pH 1 to 3), the cation is protonated and dominates, giving the extract a red colour. As pH rises above 3, the protonated cation starts losing hydrogen ions and converts into a neutral quinoidal base, which looks purple. Keep raising the pH and it shifts into an ionised anthocyanin form that appears blue. At very high pH levels (above 10), the structure rearranges into a chalcone, producing the green and yellow colours.</p>
-              <p className="mt-3">Every one of these changes is reversible. If you add a few drops of acid to the green solution, you can watch the colours shift back in the opposite direction — a direct result of the equilibrium between the different molecular forms.</p>
+              <p>It comes down to what the flavylium cation does at each pH level. In strongly acidic conditions (pH 1 to 3), the cation is fully protonated and the extract looks red. As pH climbs above 3, protons start being lost and the cation converts to a quinoidal base — the electron distribution shifts and the colour moves to purple, then blue. Push beyond pH 10 and the structure opens into a chalcone form, producing the green and yellow colours at the far end of the scale.</p>
+              <p className="mt-3">Add acid back to the green solution and the whole thing runs in reverse — the colour comes back. That reversibility is one of the things that makes this indicator particularly satisfying to work with.</p>
             </InfoCard>
 
             <InfoCard label="Relevant Variables" title="Factors that can affect the results">
-              <p>The starting pH of the water used to prepare the extract matters. If slightly alkaline tap water is used, the indicator may start with a more blue-toned colour than expected. Temperature during extraction is also important — boiling pulls more anthocyanin out of the leaves, but boiling for too long starts to break down the molecular structure and degrade the pigment.</p>
-              <p className="mt-3">The amount of indicator added relative to each test sample is another key variable. Too little and the colour change is too faint to read clearly. Too much and the indicator itself can shift the pH of the test solution, making the result unreliable. Keeping the number of drops consistent across all samples is essential for fair comparison.</p>
+              <p>The pH of the water used to prepare the extract has an effect. Tap water is often slightly alkaline, which can push the indicator's starting colour toward blue rather than purple. Using distilled water gives a more neutral baseline.</p>
+              <p className="mt-3">Temperature during extraction matters too. Higher temperatures pull more anthocyanin out of the leaves, which gives a stronger indicator — but sustained boiling starts to degrade the pigment structure and weakens the colour response over time. The amount of indicator added to each test sample also needs to stay consistent. Too little and the change is hard to read; too much and the indicator can alter the pH of the solution you are trying to measure.</p>
             </InfoCard>
 
             <InfoCard label="Connection to Our Experiment" title="How this connects to our investigation">
-              <p>Our experiment tested red cabbage extract against vinegar, water and dissolved baking soda to check whether the colour changes were clear enough to identify each solution's pH. Based on the existing research, we expected it to work well — and it did. The extract shifted from pink with vinegar, stayed dark purple with water, and turned dark blue with baking soda, exactly matching what the anthocyanin chemistry predicts.</p>
-              <p className="mt-3">Compared to the beetroot and red onion experiments, red cabbage gave the clearest and most distinct colour differences. This lines up with what previous researchers have reported, and it confirms why red cabbage is consistently the first choice for this kind of natural indicator experiment.</p>
+              <p>We tested red cabbage extract against vinegar, plain water and dissolved baking soda. Going in, the research strongly suggested it would perform well. It did — the extract went pink with vinegar, held its purple in water, and shifted to dark blue with baking soda. Each result matched what the anthocyanin chemistry would predict.</p>
+              <p className="mt-3">The contrast with beetroot and red onion was noticeable. Red cabbage gave the most distinct colour differences by some margin, and reading the results required no interpretation — each one was unambiguous. That is what makes it the standard choice for this kind of experiment.</p>
             </InfoCard>
           </div>
 
           <InfoCard label="Reason" title="Why red cabbage changes colour">
-            <p>Red cabbage contains anthocyanin (C₁₅H₁₁O⁺), a natural pigment that changes colour based on pH. At low pH (around 1 to 3), the anthocyanin molecule picks up hydrogen ions and forms a positively charged flavylium cation. This cation absorbs blue-green light, so the extract looks red to the human eye. As the pH rises toward neutral and then alkaline conditions, the molecule progressively loses hydrogen ions and its structure changes — shifting the colour through purple, blue and eventually yellow-green at strongly alkaline pH levels.</p>
+            <p>Red cabbage contains anthocyanin (C₁₅H₁₁O⁺), a natural pigment whose colour is directly tied to pH. When hydrogen ion concentration is high (pH 1 to 3), the molecule picks up protons and forms a flavylium cation that absorbs blue-green light — so the solution looks red. As pH rises, those protons are progressively lost, the molecular structure changes, and the colour moves through purple, blue, and eventually yellow-green at the strongly alkaline end of the scale.</p>
           </InfoCard>
 
           <InfoCard label="Chemical Reactions" title="What happens at each pH level">
@@ -216,7 +216,7 @@ export function KoenSection() {
           </InfoCard>
 
           <InfoCard label="Conclusion" title="Red cabbage is a reliable pH indicator">
-            <p>Red cabbage extract produces clear, distinct and reversible colour changes across the full pH range. The shift from pink in acidic conditions to dark purple in neutral and dark blue in alkaline conditions is easy to see with the naked eye, which makes it a really effective natural pH indicator.</p>
+            <p>Red cabbage extract shifts through a wide range of distinct, readable colours across the pH scale — pink in acid, purple in neutral, dark blue in base. Every change is visible to the naked eye without any equipment, and each one can be reversed by adding the opposite substance. As natural indicators go, it is hard to find one that performs more clearly or more consistently than this.</p>
           </InfoCard>
 
           <ReferencesCard />

@@ -37,7 +37,7 @@ export function GallerySection() {
             <span className="text-gradient">Test Results</span>
           </h2>
           <p className="text-sm leading-relaxed max-w-md" style={{ color: 'rgba(255,255,255,0.4)' }}>
-            We tested our combined indicator on six unknown substances and identified each one based on the colour it produced. The photo below shows the actual beakers from the experiment.
+            Our combined indicator was tested against six unmarked substances. Each one was identified purely from the colour it produced. The photo shows the actual beakers from the experiment.
           </p>
         </motion.div>
 
@@ -69,9 +69,6 @@ export function GallerySection() {
           className="mb-8"
         >
           <p className="eyebrow mb-3">Unknown Substances</p>
-          <p className="text-sm leading-relaxed max-w-lg" style={{ color: 'rgba(255,255,255,0.4)' }}>
-            Six substances were labelled A to F and tested blind. Here is what the indicator told us about each one.
-          </p>
         </motion.div>
 
         {/* Result cards */}
