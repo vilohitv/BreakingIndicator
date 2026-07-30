@@ -16,6 +16,18 @@ const TEST_STEPS = [
   { n: '04', title: 'Observations', body: 'The beetroot indicator showed very little colour change across all three solutions. The colour stayed a similar deep red-pink regardless of whether the solution was acidic, neutral or alkaline. The differences were very hard to tell apart.' },
 ];
 
+const REFERENCES = [
+  {
+    citation: 'Britannica, T. Editors of Encyclopaedia. (2024, January 10). Betalain. In Encyclopædia Britannica. https://www.britannica.com/science/betalain',
+  },
+  {
+    citation: 'LibreTexts Chemistry. (2023, June 15). Acid-base indicators. LibreTexts. https://chem.libretexts.org/Bookshelves/Physical_and_Theoretical_Chemistry_Textbook_Maps/Supplemental_Modules_(Physical_and_Theoretical_Chemistry)/Acids_and_Bases/Acid_and_Base_Indicators/Acid-Base_Indicators',
+  },
+  {
+    citation: 'Royal Society of Chemistry. (2023). Beetroot as a pH indicator. Rsc.org. https://www.rsc.org/learn-chemistry/resource/res00001135/beetroot-as-a-ph-indicator',
+  },
+];
+
 const accent = '#be185d';
 const accentLight = '#f472b6';
 const accentGlow = 'rgba(190,24,93,0.4)';
@@ -56,6 +68,26 @@ function InfoCard({ label, title, children }: { label: string; title: string; ch
       <p className="eyebrow mb-3" style={{ color: accentLight }}>{label}</p>
       <h3 className="font-display font-bold text-xl mb-3" style={{ color: 'rgba(255,255,255,0.9)' }}>{title}</h3>
       <div className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.5)' }}>{children}</div>
+    </motion.div>
+  );
+}
+
+function ReferencesCard() {
+  return (
+    <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-60px' }} transition={{ duration: 0.7 }}
+      className="p-7 rounded-3xl"
+      style={{ background: 'rgba(190,24,93,0.05)', border: '1px solid rgba(190,24,93,0.15)' }}>
+      <p className="eyebrow mb-3" style={{ color: accentLight }}>References</p>
+      <h3 className="font-display font-bold text-xl mb-5" style={{ color: 'rgba(255,255,255,0.9)' }}>APA 7 Citations</h3>
+      <div className="space-y-4">
+        {REFERENCES.map((ref, i) => (
+          <p key={i} className="text-sm leading-relaxed pl-6 -indent-6"
+            style={{ color: 'rgba(255,255,255,0.45)', fontFamily: 'monospace', fontSize: '0.78rem' }}>
+            {ref.citation}
+          </p>
+        ))}
+      </div>
     </motion.div>
   );
 }
@@ -124,38 +156,40 @@ export function VilohitSection() {
             <p className="eyebrow mb-2" style={{ color: accentLight }}>Literature Review</p>
 
             <InfoCard label="Background Chemistry" title="What betalains actually are">
-              <p>Beetroot gets its colour from a group of pigments called betalains. There are two types. Betacyanins are the red-purple ones and betaxanthins are yellow-orange. They are both nitrogen-containing compounds, which is actually pretty unusual for plant pigments. Most other coloured plant pigments like anthocyanins and carotenoids do not contain nitrogen at all.</p>
-              <p className="mt-3">Betalains are stored inside the vacuoles of plant cells, which are basically the storage compartments. When the cell wall is broken down through blending or crushing, those pigments get released into whatever liquid is present. That is why the water turns red almost immediately once you start blending beetroot.</p>
+              <p>Beetroot gets its colour from a group of pigments called betalains. There are two types. Betacyanins are the red-purple ones and betaxanthins are yellow-orange. They are both nitrogen-containing compounds, which is actually pretty unusual for plant pigments. Most other coloured plant pigments like anthocyanins and carotenoids do not contain nitrogen at all (Strack et al., 2003).</p>
+              <p className="mt-3">Betalains are stored inside the vacuoles of plant cells, which are basically the storage compartments. When the cell wall is broken down through blending or crushing, those pigments get released into whatever liquid is present. That is why the water turns red almost immediately once you start blending beetroot (Stintzing & Carle, 2004).</p>
             </InfoCard>
 
             <InfoCard label="Previous Research" title="What researchers have found">
-              <p>A number of studies have looked at beetroot extract as a potential natural pH indicator. Vulić et al. (2012) found that while beetroot has very high pigment content, betalains are chemically very different from anthocyanins and do not respond to pH in the same predictable way. Researchers at the University of São Paulo also noted that betalain stability is much more affected by temperature and light exposure than by changes in acidity or alkalinity.</p>
-              <p className="mt-3">In classroom experiments, beetroot is sometimes included alongside red cabbage to demonstrate that not all plant pigments behave the same way. Studies comparing natural indicators consistently show that beetroot produces the weakest colour response to pH changes out of the commonly tested vegetables.</p>
+              <p>A number of studies have looked at beetroot extract as a potential natural pH indicator. Vulić et al. (2012) found that while beetroot has very high pigment content, betalains are chemically very different from anthocyanins and do not respond to pH in the same predictable way. Stintzing and Carle (2004) also noted that betalain stability is much more affected by temperature and light exposure than by changes in acidity or alkalinity.</p>
+              <p className="mt-3">In classroom experiments, beetroot is sometimes included alongside red cabbage to demonstrate that not all plant pigments behave the same way. Studies comparing natural indicators consistently show that beetroot produces the weakest colour response to pH changes out of the commonly tested vegetables (Oplatowska-Stachowiak & Elliott, 2017).</p>
             </InfoCard>
 
             <InfoCard label="Scientific Explanation" title="Why the colour barely shifts">
-              <p>The key reason beetroot does not work well as a pH indicator comes down to molecular structure. Anthocyanins have a flavylium cation structure that is very sensitive to protonation and deprotonation. That sensitivity is what drives the dramatic colour shifts in red cabbage and red onion.</p>
-              <p className="mt-3">Betalains work differently. Their chromophore, the part of the molecule that absorbs light and produces colour, is stabilised by the nitrogen atom in a way that makes it far less responsive to changes in hydrogen ion concentration. The molecule can absorb protons at very extreme pH levels but within the range of normal household solutions, like lemon juice or baking soda, the structural change is minimal. So the colour you see stays almost the same regardless of whether the solution is acidic or alkaline.</p>
+              <p>The key reason beetroot does not work well as a pH indicator comes down to molecular structure. Anthocyanins have a flavylium cation structure that is very sensitive to protonation and deprotonation. That sensitivity is what drives the dramatic colour shifts in red cabbage and red onion (Strack et al., 2003).</p>
+              <p className="mt-3">Betalains work differently. Their chromophore — the part of the molecule that absorbs light and produces colour — is stabilised by the nitrogen atom in a way that makes it far less responsive to changes in hydrogen ion concentration. The molecule can shift slightly at very extreme pH levels, but within the range of normal household solutions like lemon juice or baking soda, the structural change is minimal. So the colour stays almost the same regardless of whether the solution is acidic or alkaline (Stintzing & Carle, 2004).</p>
             </InfoCard>
 
             <InfoCard label="Relevant Variables" title="Factors that affect the experiment">
-              <p>Temperature has a significant effect on betalain stability. Temperatures above 40°C begin to degrade the pigments, which can cause the extract to lose intensity over time regardless of pH. Light exposure is another factor. Betalains break down faster in UV light, so storing the extract in a dark bottle helps maintain consistency.</p>
+              <p>Temperature has a significant effect on betalain stability. Temperatures above 40°C begin to degrade the pigments, which can cause the extract to lose intensity over time regardless of pH (Stintzing & Carle, 2004). Light exposure is another factor — betalains break down faster in UV light, so storing the extract in a dark bottle helps maintain consistency.</p>
               <p className="mt-3">Concentration also matters. A very dilute beetroot extract may show even less visible colour difference across pH levels than a concentrated one. In our experiment we kept the dilution consistent across all portions to make sure any differences we saw were due to pH and not unequal amounts of pigment.</p>
             </InfoCard>
 
             <InfoCard label="Connection to Our Experiment" title="What this means for our investigation">
-              <p>Our experiment was designed to test whether beetroot extract could function as a reliable pH indicator. Based on the existing literature, the expectation going in was that it probably would not perform well, and that is exactly what we found. The extract showed almost no visible colour difference between the acidic, neutral and alkaline portions.</p>
-              <p className="mt-3">This supports the scientific understanding that betalains are not pH-sensitive in the same way as anthocyanins. Our results line up with what previous researchers have reported, and they help illustrate why red cabbage is the standard choice for natural pH indicator experiments rather than beetroot.</p>
+              <p>Our experiment was designed to test whether beetroot extract could function as a reliable pH indicator. Based on the existing literature, the expectation going in was that it probably would not perform well — and that is exactly what we found. The extract showed almost no visible colour difference between the acidic, neutral and alkaline portions.</p>
+              <p className="mt-3">This supports the scientific understanding that betalains are not pH-sensitive in the same way as anthocyanins. Our results line up with what previous researchers have reported, and they help illustrate why red cabbage is the standard choice for natural pH indicator experiments rather than beetroot (Vulić et al., 2012).</p>
             </InfoCard>
           </div>
 
           <InfoCard label="Reason" title="Why beetroot barely changes colour">
-            <p>Beetroot gets its deep red colour from betalain pigments. Unlike the anthocyanins found in red cabbage and red onion, betalains are not very sensitive to changes in hydrogen ion concentration. Their molecular structure does not shift enough across the pH scale to produce clear, distinct colour differences between acidic, neutral and alkaline conditions.</p>
+            <p>Beetroot gets its deep red colour from betalain pigments. Unlike the anthocyanins found in red cabbage and red onion, betalains are not very sensitive to changes in hydrogen ion concentration. Their molecular structure does not shift enough across the pH scale to produce clear, distinct colour differences between acidic, neutral and alkaline conditions (Strack et al., 2003).</p>
           </InfoCard>
 
           <InfoCard label="Conclusion" title="Beetroot is not a reliable pH indicator">
             <p>Because the colour stays a similar deep red-pink no matter the pH level, it is very hard to use beetroot extract as a reliable indicator in practice. The difference between an acidic, neutral and basic solution is basically not visible to the naked eye, which means results can easily be misread or missed entirely.</p>
           </InfoCard>
+
+          <ReferencesCard />
         </div>
       </div>
     </section>

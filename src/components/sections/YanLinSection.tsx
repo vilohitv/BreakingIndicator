@@ -32,6 +32,12 @@ const SKIN_TEST_STEPS = [
   { n: '04', title: 'What we saw', body: 'With lemon juice it turned a clear bright pink. With water it stayed deep purple. With baking soda it shifted to a yellowish green. The colour differences were much more distinct than with the flesh extract.' },
 ];
 
+const REFERENCES = [
+  { citation: 'Helmenstine, A. M. (2023, February 7). Red onion pH indicator experiment. ThoughtCo. https://www.thoughtco.com/red-onion-ph-indicator-experiment-606103' },
+  { citation: 'LibreTexts Chemistry. (2023, June 15). Anthocyanins as pH indicators. LibreTexts. https://chem.libretexts.org/Bookshelves/Biological_Chemistry/Supplemental_Modules_(Biological_Chemistry)/Pigments/Anthocyanins' },
+  { citation: 'Science Learning Hub. (2022, August 3). Natural indicators. University of Waikato. https://www.sciencelearn.org.nz/resources/566-natural-indicators' },
+];
+
 const accent = '#7c3aed';
 const accentLight = '#c4b5fd';
 const accentGlow = 'rgba(124,58,237,0.4)';
@@ -72,6 +78,26 @@ function InfoCard({ label, title, children }: { label: string; title: string; ch
       <p className="eyebrow mb-3" style={{ color: accentLight }}>{label}</p>
       <h3 className="font-display font-bold text-xl mb-3" style={{ color: 'rgba(255,255,255,0.9)' }}>{title}</h3>
       <div className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.5)' }}>{children}</div>
+    </motion.div>
+  );
+}
+
+function ReferencesCard() {
+  return (
+    <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-60px' }} transition={{ duration: 0.7 }}
+      className="p-7 rounded-3xl"
+      style={{ background: 'rgba(124,58,237,0.05)', border: '1px solid rgba(124,58,237,0.15)' }}>
+      <p className="eyebrow mb-3" style={{ color: accentLight }}>References</p>
+      <h3 className="font-display font-bold text-xl mb-5" style={{ color: 'rgba(255,255,255,0.9)' }}>APA 7 Citations</h3>
+      <div className="space-y-4">
+        {REFERENCES.map((ref, i) => (
+          <p key={i} className="text-sm leading-relaxed pl-6 -indent-6"
+            style={{ color: 'rgba(255,255,255,0.45)', fontFamily: 'monospace', fontSize: '0.78rem' }}>
+            {ref.citation}
+          </p>
+        ))}
+      </div>
     </motion.div>
   );
 }
@@ -201,40 +227,33 @@ export function YanLinSection() {
             <p className="eyebrow mb-2" style={{ color: accentLight }}>Literature Review</p>
 
             <InfoCard label="Background Chemistry" title="Anthocyanins and how they work">
-              <p>Red onion gets its colour from anthocyanins, a large family of water-soluble pigments found in the cell vacuoles of many plants. The word comes from the Greek anthos meaning flower and kyanos meaning blue, though anthocyanins can produce colours ranging from red all the way through purple to blue depending on the pH of their surroundings.</p>
-              <p className="mt-3">The part of the molecule responsible for its colour-changing behaviour is a positively charged ring structure called the flavylium cation. This structure is unusually reactive with hydrogen ions, which is what makes anthocyanins so useful as natural pH indicators. When the concentration of hydrogen ions changes, the cation either gains or loses protons, and that change in charge alters how the molecule absorbs light, which changes the colour you see.</p>
+              <p>According to the National Library of Medicine, anthocyanins are water-soluble flavonoid pigments commonly found in red onions, fruits, vegetables and other foods with high natural pigment content. They are responsible for the purple and red colours in those plants. The colour produced by an anthocyanin depends on its molecular structure — different structures reflect different colours of light at different pH levels.</p>
+              <p className="mt-3">There are different types of anthocyanins, including pelargonidin, delphinidin and malvidin. Chemically, they are glycosylated derivatives of anthocyanidins — meaning a carbohydrate molecule has been attached to a basic pigment molecule. Their core structure contains a flavylium cation made up of three aromatic rings (A, B and C) connected by a conjugated π-electron system, where electrons can move freely across the molecule. This is what allows anthocyanins to absorb visible light and produce colour. The positively charged oxygen atom in the C ring is particularly important for light absorption.</p>
             </InfoCard>
 
-            <InfoCard label="Previous Research" title="What studies have shown">
-              <p>Anthocyanins from red onion have been studied quite a bit in the context of food science and natural dye research. Fossen et al. (1996) identified several distinct anthocyanin compounds in red onion, the most abundant being cyanidin-3-glucoside and its acylated forms. These compounds were found to show clear colour changes across a pH range of 1 to 10, though the transitions were slightly less dramatic than those seen in red cabbage.</p>
-              <p className="mt-3">Several educational studies have used red onion alongside red cabbage in school experiments to compare indicator sensitivity. The general finding is that red onion works reasonably well as an indicator but tends to show less vivid colour differences in the alkaline range compared to red cabbage. It performs best in acidic conditions where the pink colour is quite distinct.</p>
-            </InfoCard>
-
-            <InfoCard label="Scientific Explanation" title="The mechanism behind the colour change">
-              <p>In a strongly acidic solution, the anthocyanin molecule is fully protonated. The flavylium cation absorbs light in the green part of the spectrum, around 520 nanometres, which means it reflects red and pink light back to your eye. That is why the extract looks bright pink in lemon juice.</p>
-              <p className="mt-3">As the pH rises toward neutral, the cation loses a proton and converts into a neutral quinoidal form. This shifts the absorption peak slightly and the colour becomes purple. In alkaline conditions the molecule undergoes further deprotonation and structural rearrangement into an ionised quinoidal form and then chalcone structures, which absorb different wavelengths and make the extract look yellowish green. Every step of this is reversible, which means adding acid back to an alkaline solution will restore the original colour.</p>
+            <InfoCard label="Scientific Explanation" title="What happens at each pH level">
+              <p><strong style={{ color: 'rgba(255,255,255,0.75)' }}>Acid:</strong> In an acidic solution, anthocyanins exist as the flavylium cation (AH⁺). The conjugated π-electron system allows the molecule to absorb green light, which causes the solution to appear red or pink.</p>
+              <p className="mt-3"><strong style={{ color: 'rgba(255,255,255,0.75)' }}>Neutral:</strong> As pH increases, deprotonation occurs — a hydrogen ion is removed, which changes the shape and colour of the molecule. The flavylium cation converts into a quinonoidal base (A), changing electron distribution and extending electron delocalisation. This shifts the absorption spectrum toward longer wavelengths, so the solution appears purple or blue.</p>
+              <p className="mt-3"><strong style={{ color: 'rgba(255,255,255,0.75)' }}>Alkali:</strong> In alkaline conditions, anthocyanins become very unstable. Hydroxide ions (OH⁻) promote hydration, ring opening and oxidation reactions, forming colourless chalcone intermediates and other degradation products. These reactions disrupt the conjugated π-electron system, which causes fading or the appearance of yellowish degradation products.</p>
             </InfoCard>
 
             <InfoCard label="Relevant Variables" title="Things that could affect the results">
-              <p>Temperature is one of the most important variables. Anthocyanins in red onion are less stable at high temperatures than those in red cabbage, partly because the acylated forms that give them extra stability break down more readily with heat. Preparing the extract with warm rather than boiling water helps preserve the pigment structure.</p>
-              <p className="mt-3">Which part of the onion is used also turns out to matter quite a bit. The outer skin is much richer in anthocyanins than the inner flesh. The flesh contains mostly water and flavonols with a relatively small amount of pigment, while the dry papery skin layers are densely packed with anthocyanins. Using the skin produces a much deeper extract with more distinct colour changes across pH levels.</p>
+              <p>Anthocyanin stability is affected by temperature and light exposure. Prolonged exposure to either can accelerate degradation of the flavylium structure and reduce anthocyanin concentration. In aged red onion skins, this degradation may allow quercetin or yellow degradation products to become more prominent, producing an orange-yellow extract instead of the characteristic purple seen in fresh skins.</p>
             </InfoCard>
 
-            <InfoCard label="Connection to Our Experiment" title="How the research connects to what we did">
-              <p>We tested two variants of the red onion extract, one made from the outer skin and one from the inner flesh, to see which part of the onion worked better as a pH indicator. The skin extract produced a much deeper starting colour and far more readable colour shifts across the three test solutions. The flesh extract showed some response but the differences were subtle enough that they could easily be misread.</p>
-              <p className="mt-3">Based on those results we used the skin extract in our final experiment. This lines up with what the literature suggests about anthocyanin distribution in red onions, and it shows that the part of the plant you extract from can make a real difference to how useful the indicator ends up being.</p>
+            <InfoCard label="Results & Discussion" title="What the literature means for our results">
+              <p>The anthocyanin solution should be purple, but in our experiment the quercetin in the red onion skin caused the extract to turn yellowish orange instead. The red onion indicator changes colour because the anthocyanin pigment (C₁₅H₁₁O₆) gains or loses protons (H⁺ ions) depending on the pH of the solution.</p>
+              <p className="mt-3"><strong style={{ color: 'rgba(255,255,255,0.75)' }}>In vinegar (acid):</strong> Acetic acid dissociates to release free protons. The extra H⁺ ions attach to the anthocyanin and convert it from its yellow form to a red form that reflects pinkish or red light.<br />CH₃COOH ⇌ CH₃COO⁻ + H⁺ &nbsp;·&nbsp; A⁻ + H⁺ → HA</p>
+              <p className="mt-3"><strong style={{ color: 'rgba(255,255,255,0.75)' }}>In baking soda (alkali):</strong> Sodium bicarbonate dissolves into Na⁺ and HCO₃⁻ ions. The bicarbonate reacts with water to produce hydroxide ions (OH⁻), which remove free H⁺ from the solution. The anthocyanin then releases its proton and shifts to the yellow/orange form (A⁻). Because baking soda is a weak alkali, the colour does not change fully to yellow.<br />NaHCO₃ → Na⁺ + HCO₃⁻ &nbsp;·&nbsp; HCO₃⁻ + H₂O ⇌ H₂CO₃ + OH⁻ &nbsp;·&nbsp; HA → A⁻ + H⁺</p>
+              <p className="mt-3"><strong style={{ color: 'rgba(255,255,255,0.75)' }}>In water (neutral):</strong> At pH around 7, H⁺ and OH⁻ from water's self-ionisation are balanced, so the anthocyanin stays as a mixture of HA and A⁻, giving a natural yellow colour.<br />H₂O ⇌ H⁺ + OH⁻ &nbsp;·&nbsp; HA ⇌ A⁻ + H⁺ &nbsp;·&nbsp; OH⁻ + H⁺ → H₂O</p>
             </InfoCard>
           </div>
 
-          <InfoCard label="Reason" title="Why red onion changes colour">
-            <p>Red onion contains anthocyanins, which are one of the most common natural pigments used as pH indicators. You find them in a lot of red, purple and blue fruits and vegetables like red cabbage, purple sweet potatoes and berries. These pigments change their molecular structure depending on the pH of the solution around them, which is what causes the different colours.</p>
-            <p className="mt-3">In acidic solutions, anthocyanins pick up hydrogen ions and form a positively charged flavylium cation, which gives the extract a bright pink or red colour. In neutral solutions the pigment stays purple. In alkaline solutions the anthocyanins lose hydrogen ions and rearrange into different molecular structures, which shifts the colour to a yellowish green.</p>
+          <InfoCard label="Conclusion" title="Red onion works as a pH indicator">
+            <p>Because anthocyanins produce distinct and reversible colour changes at different pH levels, red onion extract can be used as a natural pH indicator. Between the two variants we tested, the skin extract was clearly more effective — the higher anthocyanin concentration in the outer skin produced more vivid and easier-to-read colour changes, which is why it was used in the final version of our experiment.</p>
           </InfoCard>
 
-          <InfoCard label="Conclusion" title="Red onion works as a pH indicator">
-            <p>Because anthocyanins produce distinct and reversible colour changes at different pH levels, red onion extract can be used as a natural pH indicator. The shift from bright pink in acid, to purple in neutral, to yellowish green in alkaline conditions is clear enough to identify the nature of a solution fairly reliably.</p>
-            <p className="mt-3">Between the two variants we tested, the skin extract was clearly more effective. The higher anthocyanin concentration in the outer skin produced more vivid and easier to read colour changes, which is why it was used in the final version of our experiment.</p>
-          </InfoCard>
+          <ReferencesCard />
         </div>
       </div>
     </section>
