@@ -2,66 +2,12 @@ import { motion } from 'framer-motion';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 
 const RESULTS = [
-  {
-    id: 'A',
-    colour: 'Violet',
-    category: 'Neutral',
-    description: 'The indicator stayed violet with no visible shift, which puts it right in the neutral range.',
-    dot: '#7c3aed',
-    glow: 'rgba(124,58,237,0.35)',
-    bg: 'rgba(124,58,237,0.08)',
-    border: 'rgba(124,58,237,0.22)',
-  },
-  {
-    id: 'B',
-    colour: 'Bright Pinkish Red',
-    category: 'Weak Acid',
-    description: 'A clear shift toward pink-red. Not as intense as E but clearly acidic, sitting in the weak acid range.',
-    dot: '#f97316',
-    glow: 'rgba(249,115,22,0.35)',
-    bg: 'rgba(249,115,22,0.08)',
-    border: 'rgba(249,115,22,0.22)',
-  },
-  {
-    id: 'C',
-    colour: 'Deep Dark Blue',
-    category: 'Weak Alkali',
-    description: 'The extract shifted to a deep dark blue, which is characteristic of a mildly alkaline solution.',
-    dot: '#3b82f6',
-    glow: 'rgba(59,130,246,0.35)',
-    bg: 'rgba(59,130,246,0.08)',
-    border: 'rgba(59,130,246,0.22)',
-  },
-  {
-    id: 'D',
-    colour: 'Violet',
-    category: 'Neutral',
-    description: 'Same as A — the indicator stayed a steady violet, indicating a neutral or near-neutral solution.',
-    dot: '#7c3aed',
-    glow: 'rgba(124,58,237,0.35)',
-    bg: 'rgba(124,58,237,0.08)',
-    border: 'rgba(124,58,237,0.22)',
-  },
-  {
-    id: 'E',
-    colour: 'Bright Red',
-    category: 'Strong Acid',
-    description: 'The most dramatic colour change we observed. Bright red is the indicator\'s response to a high concentration of hydrogen ions.',
-    dot: '#dc2626',
-    glow: 'rgba(220,38,38,0.35)',
-    bg: 'rgba(220,38,38,0.08)',
-    border: 'rgba(220,38,38,0.22)',
-  },
-  {
-    id: 'F',
-    colour: 'Yellow-Green',
-    category: 'Strong Alkali',
-    description: 'The anthocyanins broke down into their chalcone form in this solution, producing the yellow-green colour that appears at the high end of the pH scale.',
-    dot: '#16a34a',
-    glow: 'rgba(22,163,74,0.35)',
-    bg: 'rgba(22,163,74,0.08)',
-    border: 'rgba(22,163,74,0.22)',
-  },
+  { id: 'A', colour: 'Violet',          category: 'Neutral',      dot: '#7c3aed', glow: 'rgba(124,58,237,0.35)', bg: 'rgba(124,58,237,0.08)', border: 'rgba(124,58,237,0.22)' },
+  { id: 'B', colour: 'Bright Pinkish Red', category: 'Weak Acid', dot: '#f97316', glow: 'rgba(249,115,22,0.35)', bg: 'rgba(249,115,22,0.08)', border: 'rgba(249,115,22,0.22)' },
+  { id: 'C', colour: 'Deep Dark Blue',  category: 'Weak Alkali',  dot: '#3b82f6', glow: 'rgba(59,130,246,0.35)', bg: 'rgba(59,130,246,0.08)', border: 'rgba(59,130,246,0.22)' },
+  { id: 'D', colour: 'Violet',          category: 'Neutral',      dot: '#7c3aed', glow: 'rgba(124,58,237,0.35)', bg: 'rgba(124,58,237,0.08)', border: 'rgba(124,58,237,0.22)' },
+  { id: 'E', colour: 'Bright Red',      category: 'Strong Acid',  dot: '#dc2626', glow: 'rgba(220,38,38,0.35)',  bg: 'rgba(220,38,38,0.08)',  border: 'rgba(220,38,38,0.22)'  },
+  { id: 'F', colour: 'Yellow-Green',    category: 'Strong Alkali', dot: '#16a34a', glow: 'rgba(22,163,74,0.35)', bg: 'rgba(22,163,74,0.08)', border: 'rgba(22,163,74,0.22)'  },
 ];
 
 export function GallerySection() {
@@ -167,31 +113,14 @@ export function GallerySection() {
               <p className="font-display font-bold text-base mb-1" style={{ color: 'rgba(255,255,255,0.9)' }}>
                 {r.category}
               </p>
-              <p className="font-mono text-xs mb-3" style={{ color: r.dot }}>
+              <p className="font-mono text-xs" style={{ color: r.dot }}>
                 {r.colour}
-              </p>
-              <p className="text-xs leading-relaxed" style={{ color: 'rgba(255,255,255,0.42)' }}>
-                {r.description}
               </p>
             </motion.div>
           ))}
         </div>
 
-        {/* Summary note */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="mt-8 p-6 rounded-2xl text-sm leading-relaxed"
-          style={{
-            background: 'rgba(255,255,255,0.03)',
-            border: '1px solid rgba(255,255,255,0.07)',
-            color: 'rgba(255,255,255,0.4)',
-          }}
-        >
-          A and D both came out neutral, which gave us a useful baseline to compare the other results against. E and B showed the acid range with E being noticeably more intense, and C and F showed the alkaline range with F producing the most extreme shift all the way to yellow-green. The results covered the full spectrum of the pH scale pretty well.
-        </motion.div>
+
       </div>
     </section>
   );

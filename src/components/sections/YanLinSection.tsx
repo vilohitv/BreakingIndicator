@@ -12,7 +12,7 @@ const FLESH_PREP_STEPS = [
 
 const FLESH_TEST_STEPS = [
   { n: '01', title: 'Divide into equal amounts', body: 'The flesh extract was separated into 3 equal portions.' },
-  { n: '02', title: 'Add test solutions', body: 'Lemon juice was added to one portion, distilled water to another, and dissolved baking soda to the last.' },
+  { n: '02', title: 'Add test solutions', body: 'Lemon juice was added to one portion, tap water to another, and dissolved baking soda to the last.' },
   { n: '03', title: 'Observe and record', body: 'The colour change of each portion was observed and written down.' },
   { n: '04', title: 'What we saw', body: 'The colour changes were present but quite faint. In lemon juice it shifted to a very pale pink. In water it stayed a light purple. In baking soda it turned a pale greenish tone. The differences were harder to read clearly compared to the skin extract.' },
 ];
@@ -27,7 +27,7 @@ const SKIN_PREP_STEPS = [
 
 const SKIN_TEST_STEPS = [
   { n: '01', title: 'Divide into equal amounts', body: 'The skin extract was separated into 3 equal portions.' },
-  { n: '02', title: 'Add test solutions', body: 'Lemon juice was added to one portion, distilled water to another, and dissolved baking soda to the last.' },
+  { n: '02', title: 'Add test solutions', body: 'Lemon juice was added to one portion, tap water to another, and dissolved baking soda to the last.' },
   { n: '03', title: 'Observe and record', body: 'The colour change of each portion was observed and written down.' },
   { n: '04', title: 'What we saw', body: 'With lemon juice it turned a clear bright pink. With water it stayed deep purple. With baking soda it shifted to a yellowish green. The colour differences were much more distinct than with the flesh extract.' },
 ];
@@ -170,7 +170,7 @@ export function YanLinSection() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {[
                 { src: '/onion_acid.png', label: 'Acid', caption: 'Lemon juice. The extract shifted to a light peachy pink. The change is subtle but visible compared to the neutral result.', dot: '#ef4444' },
-                { src: '/onion_neutral.png', label: 'Neutral', caption: 'Distilled water. The extract stayed an orange-pink tone, which is the baseline colour of the skin extract on its own.', dot: '#7c3aed' },
+                { src: '/onion_neutral.png', label: 'Neutral', caption: 'Tap water. The extract stayed an orange-pink tone, which is the baseline colour of the skin extract on its own.', dot: '#7c3aed' },
                 { src: '/onion_alkali.png', label: 'Alkali', caption: 'Baking soda. The extract shifted to a slightly deeper orange-brown. Less dramatic than red cabbage but still a noticeable shift from the neutral.', dot: '#3b82f6' },
               ].map((photo, i) => (
                 <motion.div key={photo.label}
@@ -184,7 +184,7 @@ export function YanLinSection() {
                       className="w-full h-48 object-cover block" />
                     <div className="absolute top-3 left-3">
                       <span className="font-mono font-bold text-xs px-2.5 py-1 rounded-full"
-                        style={{ background: `${photo.dot}30`, border: `1px solid ${photo.dot}60`, color: photo.dot }}>
+                        style={{ background: photo.dot, border: '1px solid rgba(0,0,0,0.2)', color: '#fff' }}>
                         {photo.label}
                       </span>
                     </div>

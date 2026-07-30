@@ -60,23 +60,27 @@ export default function App() {
               inset: 0,
               zIndex: 50,
               background: '#04030a',
-              overflowY: 'auto',
-              scrollbarWidth: 'none',
+              // No overflow here — let the inner div handle it
             }}
           >
-            {/* hide webkit scrollbar */}
-            <style>{`
-              .modal-scroll::-webkit-scrollbar { display: none; }
-            `}</style>
-
-            <div className="modal-scroll">
+            {/* Scrollable inner container — plain div, no framer motion */}
+            <div
+              style={{
+                position: 'absolute',
+                inset: 0,
+                overflowY: 'auto',
+                overflowX: 'hidden',
+                WebkitOverflowScrolling: 'touch',
+              }}
+            >
               {/* Close button */}
               <button
                 onClick={closeModal}
                 style={{
-                  position: 'fixed',
+                  position: 'sticky',
                   top: '1.5rem',
-                  right: '1.5rem',
+                  float: 'right',
+                  marginRight: '1.5rem',
                   zIndex: 60,
                   width: '2.5rem',
                   height: '2.5rem',
@@ -84,9 +88,8 @@ export default function App() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  background: 'rgba(255,255,255,0.08)',
-                  backdropFilter: 'blur(12px)',
-                  border: '1px solid rgba(255,255,255,0.12)',
+                  background: 'rgba(255,255,255,0.12)',
+                  border: '1px solid rgba(255,255,255,0.18)',
                   cursor: 'pointer',
                 }}
                 aria-label="Close"
@@ -96,9 +99,12 @@ export default function App() {
                 </svg>
               </button>
 
-              {activeStudent === 'vilohit' && <VilohitSection />}
-              {activeStudent === 'yan-lin' && <YanLinSection />}
-              {activeStudent === 'koen' && <KoenSection />}
+              {/* Clear the float so content flows below the button */}
+              <div style={{ clear: 'both' }}>
+                {activeStudent === 'vilohit' && <VilohitSection />}
+                {activeStudent === 'yan-lin' && <YanLinSection />}
+                {activeStudent === 'koen' && <KoenSection />}
+              </div>
             </div>
           </motion.div>
         )}

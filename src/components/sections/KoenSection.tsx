@@ -92,7 +92,7 @@ export function KoenSection() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {[
                 { src: '/cabbage_acid.jpeg', label: 'Acid', caption: 'Vinegar. The extract shifted from dark purple to a vivid bright red, one of the clearest colour changes we saw in any of the experiments.', dot: '#ef4444' },
-                { src: '/cabbage_neutral.jpeg', label: 'Neutral', caption: 'Distilled water. The extract stayed a steady purple, giving us a clean baseline to compare the other two results against.', dot: '#7c3aed' },
+                { src: '/cabbage_neutral.jpeg', label: 'Neutral', caption: 'Tap water. The extract stayed a steady purple, giving us a clean baseline to compare the other two results against.', dot: '#7c3aed' },
                 { src: '/cabbage_alkali.jpeg', label: 'Alkali', caption: 'Baking soda. The extract shifted to a deep dark blue, which is a strong indicator of an alkaline solution.', dot: '#3b82f6' },
               ].map((photo, i) => (
                 <motion.div key={photo.label}
@@ -106,7 +106,7 @@ export function KoenSection() {
                       className="w-full h-48 object-cover block" />
                     <div className="absolute top-3 left-3">
                       <span className="font-mono font-bold text-xs px-2.5 py-1 rounded-full"
-                        style={{ background: `${photo.dot}30`, border: `1px solid ${photo.dot}60`, color: photo.dot }}>
+                        style={{ background: photo.dot, border: '1px solid rgba(0,0,0,0.2)', color: '#fff' }}>
                         {photo.label}
                       </span>
                     </div>
@@ -138,7 +138,7 @@ export function KoenSection() {
             </InfoCard>
 
             <InfoCard label="Relevant Variables" title="Factors that can affect the results">
-              <p>The pH of the water used to prepare the extract can influence the starting colour of the indicator. Tap water with slightly alkaline minerals might give a slightly more blue-toned extract compared to distilled water. The temperature during preparation also matters. Simmering at around 70 to 80 degrees Celsius is enough to release the pigments without significantly degrading them, while boiling for too long starts to break down the anthocyanin structure.</p>
+              <p>The pH of the water used to prepare the extract can influence the starting colour of the indicator. Tap water with slightly alkaline minerals might give a slightly more blue-toned extract compared to tap water. The temperature during preparation also matters. Simmering at around 70 to 80 degrees Celsius is enough to release the pigments without significantly degrading them, while boiling for too long starts to break down the anthocyanin structure.</p>
               <p className="mt-3">How much of the indicator is added relative to the test solution affects how clearly the colour shows up. Too little and the colour might be too faint to read accurately. Too much and you risk the indicator dominating the pH of the solution and changing the result. Keeping a consistent ratio across all test portions is important for making the results comparable.</p>
             </InfoCard>
 

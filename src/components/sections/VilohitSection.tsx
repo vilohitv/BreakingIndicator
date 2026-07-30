@@ -11,7 +11,7 @@ const PREP_STEPS = [
 
 const TEST_STEPS = [
   { n: '01', title: 'Separate into equal amounts', body: 'The beetroot extract was divided into 3 equal portions, one for each test solution.' },
-  { n: '02', title: 'Add test solutions', body: 'Lemon juice was added to one portion, distilled water to another, and dissolved baking soda to the last.' },
+  { n: '02', title: 'Add test solutions', body: 'Lemon juice was added to one portion, tap water to another, and dissolved baking soda to the last.' },
   { n: '03', title: 'Record observations', body: 'The colour of each portion was observed and recorded after adding the test solution.' },
   { n: '04', title: 'Observations', body: 'The beetroot indicator showed very little colour change across all three solutions. The colour stayed a similar deep red-pink regardless of whether the solution was acidic, neutral or alkaline. The differences were very hard to tell apart.' },
 ];
@@ -93,7 +93,7 @@ export function VilohitSection() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {[
                 { src: '/beetroot_acid.jpeg', label: 'Acid', caption: 'Lemon juice. The colour barely shifted from the original deep red-pink.', dot: '#ef4444' },
-                { src: '/beetroot_neutral.jpeg', label: 'Neutral', caption: 'Distilled water. Stayed a similar red-pink, almost indistinguishable from the acid result.', dot: '#7c3aed' },
+                { src: '/beetroot_neutral.jpeg', label: 'Neutral', caption: 'Tap water. Stayed a similar red-pink, almost indistinguishable from the acid result.', dot: '#7c3aed' },
                 { src: '/beetroot_base.jpeg', label: 'Base', caption: 'Baking soda. A very slight shift toward a cooler pink-purple, but still hard to tell apart.', dot: '#3b82f6' },
               ].map((photo, i) => (
                 <motion.div key={photo.label}
@@ -107,7 +107,7 @@ export function VilohitSection() {
                       className="w-full h-48 object-cover block" />
                     <div className="absolute top-3 left-3">
                       <span className="font-mono font-bold text-xs px-2.5 py-1 rounded-full"
-                        style={{ background: `${photo.dot}30`, border: `1px solid ${photo.dot}60`, color: photo.dot }}>
+                        style={{ background: photo.dot, border: '1px solid rgba(0,0,0,0.2)', color: '#fff' }}>
                         {photo.label}
                       </span>
                     </div>
