@@ -59,8 +59,8 @@ function StepList({ steps }: { steps: { n: string; title: string; body: string }
               <span className="font-mono font-bold text-xs" style={{ color: accentLight }}>{step.n}</span>
             </div>
             <div className="flex-1 pb-2">
-              <h3 className="font-display font-bold text-lg mb-2" style={{ color: 'rgba(255,255,255,0.9)' }}>{step.title}</h3>
-              <p className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.45)' }}>{step.body}</p>
+              <h3 className="font-display font-bold text-lg mb-2" style={{ color: 'rgba(30,15,60,0.90)' }}>{step.title}</h3>
+              <p className="text-sm leading-relaxed" style={{ color: 'rgba(30,15,60,0.50)' }}>{step.body}</p>
             </div>
           </motion.div>
         ))}
@@ -76,8 +76,8 @@ function InfoCard({ label, title, children }: { label: string; title: string; ch
       className="p-7 rounded-3xl"
       style={{ background: 'rgba(124,58,237,0.07)', border: '1px solid rgba(124,58,237,0.2)' }}>
       <p className="eyebrow mb-3" style={{ color: accentLight }}>{label}</p>
-      <h3 className="font-display font-bold text-xl mb-3" style={{ color: 'rgba(255,255,255,0.9)' }}>{title}</h3>
-      <div className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.5)' }}>{children}</div>
+      <h3 className="font-display font-bold text-xl mb-3" style={{ color: 'rgba(30,15,60,0.90)' }}>{title}</h3>
+      <div className="text-sm leading-relaxed" style={{ color: 'rgba(30,15,60,0.50)' }}>{children}</div>
     </motion.div>
   );
 }
@@ -89,11 +89,11 @@ function ReferencesCard() {
       className="p-7 rounded-3xl"
       style={{ background: 'rgba(124,58,237,0.05)', border: '1px solid rgba(124,58,237,0.15)' }}>
       <p className="eyebrow mb-3" style={{ color: accentLight }}>References</p>
-      <h3 className="font-display font-bold text-xl mb-5" style={{ color: 'rgba(255,255,255,0.9)' }}>APA 7 Citations</h3>
+      <h3 className="font-display font-bold text-xl mb-5" style={{ color: 'rgba(30,15,60,0.90)' }}>APA 7 Citations</h3>
       <div className="space-y-4">
         {REFERENCES.map((ref, i) => (
           <p key={i} className="text-sm leading-relaxed pl-6 -indent-6"
-            style={{ color: 'rgba(255,255,255,0.45)', fontFamily: 'monospace', fontSize: '0.78rem' }}>
+            style={{ color: 'rgba(30,15,60,0.50)', fontFamily: 'monospace', fontSize: '0.78rem' }}>
             {ref.citation}
           </p>
         ))}
@@ -119,7 +119,7 @@ export function YanLinSection() {
           transition={{ duration: 0.8 }} className="mb-20">
           <p className="eyebrow mb-4">Yan Lin</p>
           <h2 className="font-display font-bold leading-none mb-6" style={{ fontSize: 'clamp(2.4rem, 5.5vw, 4.5rem)' }}>
-            <span style={{ color: 'rgba(255,255,255,0.9)' }}>Red Onion </span>
+            <span style={{ color: 'rgba(30,15,60,0.90)' }}>Red Onion </span>
             <span style={{ backgroundImage: `linear-gradient(135deg, ${accent}, ${accentLight})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Indicator</span>
           </h2>
         </motion.div>
@@ -138,7 +138,7 @@ export function YanLinSection() {
                   style={{
                     background: variant === v ? 'rgba(124,58,237,0.25)' : 'rgba(124,58,237,0.06)',
                     border: variant === v ? '1px solid rgba(124,58,237,0.5)' : '1px solid rgba(124,58,237,0.15)',
-                    color: variant === v ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.45)',
+                    color: variant === v ? 'rgba(30,15,60,0.95)' : 'rgba(30,15,60,0.50)',
                     boxShadow: variant === v ? '0 0 20px rgba(124,58,237,0.2)' : 'none',
                   }}
                 >
@@ -161,7 +161,7 @@ export function YanLinSection() {
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
                 className="mt-5 p-5 rounded-2xl text-sm leading-relaxed"
-                style={{ background: 'rgba(124,58,237,0.05)', border: '1px solid rgba(124,58,237,0.12)', color: 'rgba(255,255,255,0.45)' }}
+                style={{ background: 'rgba(124,58,237,0.05)', border: '1px solid rgba(124,58,237,0.12)', color: 'rgba(30,15,60,0.50)' }}
               >
                 {variant === 'skin'
                   ? 'We went with the outer skin for the final experiment. It just worked better. The colour was richer and the changes were much easier to read across all three test solutions.'
@@ -208,7 +208,7 @@ export function YanLinSection() {
                   viewport={{ once: true, margin: '-40px' }}
                   transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
                   className="rounded-2xl overflow-hidden"
-                  style={{ border: '1px solid rgba(255,255,255,0.08)' }}>
+                  style={{ border: '1px solid rgba(124,58,237,0.10)' }}>
                   <div className="relative">
                     <img src={photo.src} alt={`Red onion indicator in ${photo.label}`}
                       className="w-full h-48 object-cover block" />
@@ -220,7 +220,7 @@ export function YanLinSection() {
                     </div>
                   </div>
                   <div className="p-4" style={{ background: 'rgba(124,58,237,0.05)' }}>
-                    <p className="text-xs leading-relaxed" style={{ color: 'rgba(255,255,255,0.45)' }}>{photo.caption}</p>
+                    <p className="text-xs leading-relaxed" style={{ color: 'rgba(30,15,60,0.50)' }}>{photo.caption}</p>
                   </div>
                 </motion.div>
               ))}
@@ -236,9 +236,9 @@ export function YanLinSection() {
             </InfoCard>
 
             <InfoCard label="Scientific Explanation" title="What happens at each pH level">
-              <p><strong style={{ color: 'rgba(255,255,255,0.75)' }}>Acid:</strong> In acid, the anthocyanin exists as the flavylium cation (AH⁺). The π-electron system absorbs green light so the solution looks red or pink.</p>
-              <p className="mt-3"><strong style={{ color: 'rgba(255,255,255,0.75)' }}>Neutral:</strong> As pH rises, a hydrogen ion gets removed. The flavylium cation converts into a quinonoidal base (A). This changes how electrons are distributed across the molecule and shifts the absorption to longer wavelengths, so the colour moves to purple or blue.</p>
-              <p className="mt-3"><strong style={{ color: 'rgba(255,255,255,0.75)' }}>Alkali:</strong> Alkaline conditions are rough on anthocyanins. The OH⁻ ions drive hydration and ring-opening reactions that break down the structure into colourless chalcone intermediates. The π-electron system gets disrupted and the colour either fades or shifts to a yellowish degradation product.</p>
+              <p><strong style={{ color: 'rgba(30,15,60,0.75)' }}>Acid:</strong> In acid, the anthocyanin exists as the flavylium cation (AH⁺). The π-electron system absorbs green light so the solution looks red or pink.</p>
+              <p className="mt-3"><strong style={{ color: 'rgba(30,15,60,0.75)' }}>Neutral:</strong> As pH rises, a hydrogen ion gets removed. The flavylium cation converts into a quinonoidal base (A). This changes how electrons are distributed across the molecule and shifts the absorption to longer wavelengths, so the colour moves to purple or blue.</p>
+              <p className="mt-3"><strong style={{ color: 'rgba(30,15,60,0.75)' }}>Alkali:</strong> Alkaline conditions are rough on anthocyanins. The OH⁻ ions drive hydration and ring-opening reactions that break down the structure into colourless chalcone intermediates. The π-electron system gets disrupted and the colour either fades or shifts to a yellowish degradation product.</p>
             </InfoCard>
 
             <InfoCard label="Relevant Variables" title="Things that could affect the results">
@@ -247,14 +247,14 @@ export function YanLinSection() {
 
             <InfoCard label="Results & Discussion" title="What the literature means for our results">
               <p>The anthocyanin solution should be purple, but in our experiment the quercetin in the red onion skin caused the extract to turn yellowish orange instead. The red onion indicator changes colour because the anthocyanin pigment (C₁₅H₁₁O₆) gains or loses protons (H⁺ ions) depending on the pH of the solution.</p>
-              <p className="mt-3"><strong style={{ color: 'rgba(255,255,255,0.75)' }}>In vinegar (acid):</strong> Acetic acid dissociates to release free protons. The extra H⁺ ions attach to the anthocyanin and convert it from its yellow form to a red form that reflects pinkish or red light.<br />CH₃COOH ⇌ CH₃COO⁻ + H⁺ &nbsp;·&nbsp; A⁻ + H⁺ → HA</p>
-              <p className="mt-3"><strong style={{ color: 'rgba(255,255,255,0.75)' }}>In baking soda (alkali):</strong> Sodium bicarbonate dissolves into Na⁺ and HCO₃⁻ ions. The bicarbonate reacts with water to produce hydroxide ions (OH⁻), which remove free H⁺ from the solution. The anthocyanin then releases its proton and shifts to the yellow/orange form (A⁻). Because baking soda is a weak alkali, the colour does not change fully to yellow.<br />NaHCO₃ → Na⁺ + HCO₃⁻ &nbsp;·&nbsp; HCO₃⁻ + H₂O ⇌ H₂CO₃ + OH⁻ &nbsp;·&nbsp; HA → A⁻ + H⁺</p>
-              <p className="mt-3"><strong style={{ color: 'rgba(255,255,255,0.75)' }}>In water (neutral):</strong> At pH around 7, H⁺ and OH⁻ from water's self-ionisation are balanced, so the anthocyanin stays as a mixture of HA and A⁻, giving a natural yellow colour.<br />H₂O ⇌ H⁺ + OH⁻ &nbsp;·&nbsp; HA ⇌ A⁻ + H⁺ &nbsp;·&nbsp; OH⁻ + H⁺ → H₂O</p>
+              <p className="mt-3"><strong style={{ color: 'rgba(30,15,60,0.75)' }}>In vinegar (acid):</strong> Acetic acid dissociates to release free protons. The extra H⁺ ions attach to the anthocyanin and convert it from its yellow form to a red form that reflects pinkish or red light.<br />CH₃COOH ⇌ CH₃COO⁻ + H⁺ &nbsp;·&nbsp; A⁻ + H⁺ → HA</p>
+              <p className="mt-3"><strong style={{ color: 'rgba(30,15,60,0.75)' }}>In baking soda (alkali):</strong> Sodium bicarbonate dissolves into Na⁺ and HCO₃⁻ ions. The bicarbonate reacts with water to produce hydroxide ions (OH⁻), which remove free H⁺ from the solution. The anthocyanin then releases its proton and shifts to the yellow/orange form (A⁻). Because baking soda is a weak alkali, the colour does not change fully to yellow.<br />NaHCO₃ → Na⁺ + HCO₃⁻ &nbsp;·&nbsp; HCO₃⁻ + H₂O ⇌ H₂CO₃ + OH⁻ &nbsp;·&nbsp; HA → A⁻ + H⁺</p>
+              <p className="mt-3"><strong style={{ color: 'rgba(30,15,60,0.75)' }}>In water (neutral):</strong> At pH around 7, H⁺ and OH⁻ from water's self-ionisation are balanced, so the anthocyanin stays as a mixture of HA and A⁻, giving a natural yellow colour.<br />H₂O ⇌ H⁺ + OH⁻ &nbsp;·&nbsp; HA ⇌ A⁻ + H⁺ &nbsp;·&nbsp; OH⁻ + H⁺ → H₂O</p>
             </InfoCard>
           </div>
 
           <InfoCard label="Conclusion" title="Red onion works as a pH indicator">
-            <p>Red onion works as an indicator. The colour changes are clear enough to read and they are reversible. The skin extract was much better than the flesh version, which is what the literature suggested would happen. We used the skin extract in the final experiment and got readable results across all three test solutions.</p>
+            <p>Red onion works as an indicator. The colour changes are clear enough to read. The skin extract was much better than the flesh version, which is what the literature suggested would happen. We used the skin extract in the final experiment and got readable results across all three test solutions.</p>
           </InfoCard>
 
           <ReferencesCard />

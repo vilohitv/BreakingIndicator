@@ -84,7 +84,7 @@ export const PH_LEVELS: PHLevel[] = [
 export const FAQS: FAQ[] = [
   {
     question: 'What are anthocyanins and why do they change colour?',
-    answer: 'They are pigments found naturally in a lot of red and purple plants: red cabbage, blueberries, red onion, that sort of thing. The reason they change colour is down to a part of the molecule called the flavylium cation, which picks up or drops protons depending on how acidic the solution is. In acid it absorbs green light so it looks red. Add base, it loses protons, the structure shifts, and the colour walks up through purple and blue. At very high pH it goes yellow. The whole thing is driven by equilibrium so it is reversible too.',
+    answer: 'They are pigments found naturally in a lot of red and purple plants: red cabbage, blueberries, red onion, that sort of thing. The reason they change colour is down to a part of the molecule called the flavylium cation, which picks up or drops protons depending on how acidic the solution is. In acid it absorbs green light so it looks red. Add base, it loses protons, the structure shifts, and the colour walks up through purple and blue. At very high pH it goes yellow.',
   },
   {
     question: 'How do I prepare the natural pH indicator?',

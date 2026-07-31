@@ -20,12 +20,6 @@ const CONCEPTS = [
     body: 'Drop the indicator into an acid and it turns red because the anthocyanins are fully protonated and absorb green light. Keep raising the pH and the colour walks through purple, then blue, then yellow-green by the time you hit strong base.',
     tag: 'pH range 1 to 14',
   },
-  {
-    n: '04', title: 'Reversibility',
-    color: '#fbbf24', glow: 'rgba(251,191,36,0.2)',
-    body: 'None of the colour changes are permanent. Add acid back to a blue solution and it goes red again. We actually tested this a few times because it is genuinely satisfying to watch the colour snap back.',
-    tag: 'Reversible · Equilibrium',
-  },
 ];
 
 function ConceptCard({ c, i }: { c: typeof CONCEPTS[0]; i: number }) {
@@ -37,9 +31,9 @@ function ConceptCard({ c, i }: { c: typeof CONCEPTS[0]; i: number }) {
       transition={{ duration: 0.75, delay: i * 0.11, ease: [0.22,1,0.36,1] }}
       className="group relative rounded-3xl overflow-hidden hover-float"
       style={{
-        background: 'linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.015) 100%)',
-        border: '1px solid rgba(255,255,255,0.07)',
-        boxShadow: '0 1px 0 0 rgba(255,255,255,0.07) inset, 0 24px 64px rgba(0,0,0,0.5)',
+        background: 'linear-gradient(145deg, rgba(124,58,237,0.06) 0%, rgba(255,255,255,0.015) 100%)',
+        border: '1px solid rgba(124,58,237,0.09)',
+        boxShadow: '0 1px 0 0 rgba(124,58,237,0.09) inset, 0 24px 64px rgba(0,0,0,0.5)',
       }}>
 
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl pointer-events-none"
@@ -52,10 +46,10 @@ function ConceptCard({ c, i }: { c: typeof CONCEPTS[0]; i: number }) {
           <span className="font-mono font-bold" style={{ fontSize: '11px', color: c.color, letterSpacing: '0.08em' }}>{c.n}</span>
         </div>
 
-        <h3 className="font-display font-bold text-xl mb-3" style={{ color: 'rgba(255,255,255,0.92)' }}>
+        <h3 className="font-display font-bold text-xl mb-3" style={{ color: 'rgba(30,15,60,0.92)' }}>
           {c.title}
         </h3>
-        <p className="text-sm leading-relaxed mb-5" style={{ color: 'rgba(255,255,255,0.45)' }}>
+        <p className="text-sm leading-relaxed mb-5" style={{ color: 'rgba(30,15,60,0.50)' }}>
           {c.body}
         </p>
       </div>
@@ -79,9 +73,9 @@ export function HowItWorksSection() {
             style={{ fontSize: 'clamp(2.4rem, 5.5vw, 4.5rem)' }}>
             <span className="text-gradient">How It</span>
             <br />
-            <span style={{ color: 'rgba(255,255,255,0.9)' }}>Works</span>
+            <span style={{ color: 'rgba(30,15,60,0.90)' }}>Works</span>
           </h2>
-          <p className="text-sm leading-relaxed max-w-lg" style={{ color: 'rgba(255,255,255,0.4)' }}>
+          <p className="text-sm leading-relaxed max-w-lg" style={{ color: 'rgba(30,15,60,0.45)' }}>
 A quick rundown of the chemistry and what is actually going on inside the solution when the colour changes.
           </p>
         </motion.div>
@@ -103,11 +97,10 @@ A quick rundown of the chemistry and what is actually going on inside the soluti
           <div className="absolute top-0 left-1/4 right-1/4 h-px"
             style={{ background: 'linear-gradient(90deg, transparent, rgba(167,139,250,0.5), transparent)' }} />
           <p className="eyebrow text-center mb-5">Reaction Summary</p>
-          <p className="font-mono text-sm text-center" style={{ color: 'rgba(255,255,255,0.55)' }}>
+          <p className="font-mono text-sm text-center" style={{ color: 'rgba(30,15,60,0.55)' }}>
             Anthocyanin + H⁺ (acid) → Red Form · Low pH
           </p>
-          <p className="font-mono text-center mt-5" style={{ fontSize: '11px', color: 'rgba(255,255,255,0.22)' }}>
-            All of this goes backwards too. Add acid to the green end and it walks all the way back to red.
+          <p className="font-mono text-center mt-5" style={{ fontSize: '11px', color: 'rgba(30,15,60,0.25)' }}>
           </p>
         </motion.div>
       </div>

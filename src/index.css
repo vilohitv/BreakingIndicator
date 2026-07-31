@@ -6,22 +6,22 @@
 
 /* ─── Design tokens ─────────────────────────────────────────── */
 :root {
-  --space:       #04030a;
-  --deep:        #080614;
-  --surface:     #0e0b1e;
-  --lift:        #14102a;
-  --border:      rgba(255,255,255,0.07);
-  --border-lit:  rgba(167,139,250,0.25);
+  --space:       #e9e4f7;
+  --deep:        #ddd6f3;
+  --surface:     #ede9fb;
+  --lift:        #f3f0fd;
+  --border:      rgba(100,70,200,0.12);
+  --border-lit:  rgba(124,58,237,0.35);
   --violet:      #7c3aed;
-  --violet-mid:  #9f6ef5;
-  --violet-hi:   #c4b5fd;
-  --emerald:     #34d399;
-  --emerald-lo:  rgba(52,211,153,0.15);
-  --rose:        #fb7185;
-  --amber:       #fbbf24;
-  --text-hi:     rgba(255,255,255,0.92);
-  --text-mid:    rgba(255,255,255,0.52);
-  --text-lo:     rgba(255,255,255,0.24);
+  --violet-mid:  #6d28d9;
+  --violet-hi:   #4c1d95;
+  --emerald:     #059669;
+  --emerald-lo:  rgba(5,150,105,0.15);
+  --rose:        #e11d48;
+  --amber:       #d97706;
+  --text-hi:     rgba(30,15,60,0.92);
+  --text-mid:    rgba(30,15,60,0.55);
+  --text-lo:     rgba(30,15,60,0.30);
   --r:           16px;
   --r-lg:        24px;
   --r-xl:        32px;
@@ -32,7 +32,7 @@ html { scroll-behavior:auto; overflow-x: hidden; scrollbar-width: none; }
 html::-webkit-scrollbar { display: none; }
 
 body {
-  background: var(--space);
+  background: #e9e4f7;
   color: var(--text-hi);
   font-family: 'DM Sans', system-ui, sans-serif;
   overflow-x: hidden;
@@ -48,7 +48,7 @@ body {
 
 /* Base glass — subtle, receding */
 .glass {
-  background: rgba(14,11,30,0.6);
+  background: rgba(233,228,247,0.92);
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
   border: 1px solid var(--border);
@@ -56,37 +56,37 @@ body {
 
 /* Lifted glass — slightly brighter, for cards */
 .glass-card {
-  background: linear-gradient(135deg, rgba(255,255,255,0.055) 0%, rgba(255,255,255,0.02) 100%);
+  background: linear-gradient(135deg, rgba(124,58,237,0.07) 0%, rgba(255,255,255,0.02) 100%);
   backdrop-filter: blur(40px) saturate(200%);
   -webkit-backdrop-filter: blur(40px) saturate(200%);
   border: 1px solid rgba(255,255,255,0.09);
   box-shadow: 
-    0 1px 0 0 rgba(255,255,255,0.08) inset,
-    0 -1px 0 0 rgba(0,0,0,0.4) inset,
-    0 24px 80px rgba(0,0,0,0.6),
-    0 4px 16px rgba(0,0,0,0.4);
+    0 1px 0 0 rgba(124,58,237,0.10) inset,
+    
+    0 4px 20px rgba(124,58,237,0.10),
+    0 1px 6px rgba(124,58,237,0.06);
 }
 
 /* Glow card — lit from inside */
 .glass-glow {
-  background: linear-gradient(135deg, rgba(124,58,237,0.12) 0%, rgba(14,11,30,0.7) 60%);
+  background: linear-gradient(135deg, rgba(124,58,237,0.12) 0%, rgba(233,228,247,0.80) 60%);
   backdrop-filter: blur(40px) saturate(200%);
   -webkit-backdrop-filter: blur(40px) saturate(200%);
   border: 1px solid rgba(167,139,250,0.2);
   box-shadow:
     0 0 0 1px rgba(124,58,237,0.08),
-    0 1px 0 0 rgba(255,255,255,0.1) inset,
-    0 32px 100px rgba(0,0,0,0.7),
+    0 1px 0 0 rgba(124,58,237,0.10) inset,
+    0 4px 24px rgba(124,58,237,0.10),
     0 0 80px rgba(124,58,237,0.08);
 }
 
 /* Frosted panel — thick blur, high transparency */
 .glass-frost {
-  background: rgba(255,255,255,0.03);
+  background: rgba(124,58,237,0.05);
   backdrop-filter: blur(60px) saturate(160%) brightness(1.1);
   -webkit-backdrop-filter: blur(60px) saturate(160%) brightness(1.1);
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 0 0 1px rgba(255,255,255,0.04) inset;
+  border: 1px solid rgba(124,58,237,0.10);
+  box-shadow: 0 0 0 1px rgba(124,58,237,0.05) inset;
 }
 
 /* ─── Typography ─────────────────────────────────────────────── */
@@ -171,7 +171,7 @@ canvas { display: block; }
   position: fixed;
   width: 600px; height: 600px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(124,58,237,0.07) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 65%);
   pointer-events: none;
   z-index: 1;
   transform: translate(-50%, -50%);
@@ -222,7 +222,7 @@ canvas { display: block; }
 }
 .hover-float:hover {
   transform: translateY(-6px);
-  box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 40px rgba(124,58,237,0.12);
+  box-shadow: 0 4px 20px rgba(124,58,237,0.10), 0 0 40px rgba(124,58,237,0.12);
 }
 
 /* ─── Animated gradient border ───────────────────────────────── */
@@ -277,7 +277,7 @@ canvas { display: block; }
 
 /* ─── Shimmer skeleton-ish highlight ─────────────────────────── */
 .shimmer-line {
-  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.06) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(124,58,237,0.07) 50%, transparent 100%);
   background-size: 200% 100%;
   animation: shimmer 3s ease infinite;
 }
@@ -285,8 +285,8 @@ canvas { display: block; }
 /* ─── Spatial grid bg ────────────────────────────────────────── */
 .grid-bg {
   background-image:
-    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    linear-gradient(rgba(124,58,237,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124,58,237,0.04) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 

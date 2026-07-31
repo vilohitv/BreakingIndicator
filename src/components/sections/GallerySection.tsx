@@ -33,10 +33,10 @@ export function GallerySection() {
             className="font-display font-bold leading-none mb-6"
             style={{ fontSize: 'clamp(2.4rem, 5.5vw, 4.5rem)' }}
           >
-            <span style={{ color: 'rgba(255,255,255,0.9)' }}>pH </span>
+            <span style={{ color: 'rgba(30,15,60,0.90)' }}>pH </span>
             <span className="text-gradient">Test Results</span>
           </h2>
-          <p className="text-sm leading-relaxed max-w-md" style={{ color: 'rgba(255,255,255,0.4)' }}>
+          <p className="text-sm leading-relaxed max-w-md" style={{ color: 'rgba(30,15,60,0.45)' }}>
             We tested our combined indicator on six unknown substances and identified each one based on the colour it produced. The photo below shows the actual beakers from the experiment.
           </p>
         </motion.div>
@@ -47,7 +47,7 @@ export function GallerySection() {
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.9, delay: 0.15 }}
           className="relative rounded-3xl overflow-hidden mb-14"
-          style={{ border: '1px solid rgba(255,255,255,0.08)' }}
+          style={{ border: '1px solid rgba(124,58,237,0.10)' }}
         >
           <img
             src="/ph_test.jpg"
@@ -69,9 +69,6 @@ export function GallerySection() {
           className="mb-8"
         >
           <p className="eyebrow mb-3">Unknown Substances</p>
-          <p className="text-sm leading-relaxed max-w-lg" style={{ color: 'rgba(255,255,255,0.4)' }}>
-            Six substances were labelled A to F and tested blind. Here is what the indicator told us about each one.
-          </p>
         </motion.div>
 
         {/* Result cards */}
@@ -110,7 +107,7 @@ export function GallerySection() {
                   style={{ background: r.dot, boxShadow: `0 0 10px ${r.glow}` }} />
               </div>
 
-              <p className="font-display font-bold text-base mb-1" style={{ color: 'rgba(255,255,255,0.9)' }}>
+              <p className="font-display font-bold text-base mb-1" style={{ color: 'rgba(30,15,60,0.90)' }}>
                 {r.category}
               </p>
               <p className="font-mono text-xs" style={{ color: r.dot }}>
