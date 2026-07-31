@@ -84,11 +84,11 @@ export const PH_LEVELS: PHLevel[] = [
 export const FAQS: FAQ[] = [
   {
     question: 'What are anthocyanins and why do they change colour?',
-    answer: 'They are pigments found naturally in a lot of red and purple plants — red cabbage, blueberries, red onion, that sort of thing. The reason they change colour is down to a part of the molecule called the flavylium cation, which picks up or drops protons depending on how acidic the solution is. In acid it absorbs green light so it looks red. Add base, it loses protons, the structure shifts, and the colour walks up through purple and blue. At very high pH it goes yellow. The whole thing is driven by equilibrium so it is reversible too.',
+    answer: 'They are pigments found naturally in a lot of red and purple plants: red cabbage, blueberries, red onion, that sort of thing. The reason they change colour is down to a part of the molecule called the flavylium cation, which picks up or drops protons depending on how acidic the solution is. In acid it absorbs green light so it looks red. Add base, it loses protons, the structure shifts, and the colour walks up through purple and blue. At very high pH it goes yellow. The whole thing is driven by equilibrium so it is reversible too.',
   },
   {
     question: 'How do I prepare the natural pH indicator?',
-    answer: 'Chop up about 100g of red cabbage and simmer it in 300ml of water for 10 minutes or so until the water turns a deep purple. Strain out the bits and leave it to cool. Repeat with 50g of red onion and 50g of beetroot separately, then mix all three liquids together. That is your indicator — it should be a dark purplish colour.',
+    answer: 'Chop up about 100g of red cabbage and simmer it in 300ml of water for 10 minutes or so until the water turns a deep purple. Strain out the bits and leave it to cool. Repeat with 50g of red onion and 50g of beetroot separately, then mix all three liquids together. That is your indicator. It should be a dark purplish colour.',
   },
   {
     question: 'How accurate is this compared to litmus paper?',
@@ -96,15 +96,15 @@ export const FAQS: FAQ[] = [
   },
   {
     question: 'Can the indicator be preserved for later use?',
-    answer: 'Yeah, just seal it in a glass bottle and stick it in the fridge. It keeps for a week or two that way. If you want it to last longer, add around 10% rubbing alcohol to slow down degradation, or freeze small portions in an ice cube tray — those keep for up to three months. Avoid leaving it in direct light or anywhere warm, both speed up breakdown.',
+    answer: 'Yeah, just seal it in a glass bottle and stick it in the fridge. It keeps for a week or two that way. If you want it to last longer, add around 10% rubbing alcohol to slow down degradation, or freeze small portions in an ice cube tray, which keep for up to three months. Avoid leaving it in direct light or anywhere warm, both speed up breakdown.',
   },
   {
     question: 'Why do some household bases not produce the expected colour?',
-    answer: 'Not all bases work the same way. Bleach, for instance, is an oxidiser — it does not just change the pH, it destroys the pigment entirely and the liquid just goes clear. Some cleaning products also have surfactants that interfere with the pigment structure. Stick to simple stuff like baking soda or washing soda if you want consistent results.',
+    answer: 'Not all bases work the same way. Bleach, for instance, is an oxidiser. It does not just change the pH. It destroys the pigment entirely and the liquid just goes clear. Some cleaning products also have surfactants that interfere with the pigment structure. Stick to simple stuff like baking soda or washing soda if you want consistent results.',
   },
   {
     question: 'Is this safe to use with children?',
-    answer: 'The indicator itself is just vegetable juice so it is fine. What you test with is a different story. Strong acids and bases are corrosive and will burn skin. If kids are involved, keep the test solutions to mild household things — vinegar, lemon juice, baking soda — and have them wear gloves. No concentrated lab acids or bases.',
+    answer: 'The indicator itself is just vegetable juice so it is fine. What you test with is a different story. Strong acids and bases are corrosive and will burn skin. If kids are involved, keep the test solutions to mild household things like vinegar, lemon juice and baking soda, and have them wear gloves. No concentrated lab acids or bases.',
   },
 ];
 
@@ -112,28 +112,28 @@ export const PROCESS_STEPS: ProcessStep[] = [
   {
     step: 1,
     title: 'Prepare the Indicator',
-    description: 'Simmer red cabbage, red onion and beetroot separately in water for about 10 minutes each until the water picks up a strong colour. Strain out the solids, combine the three liquids — you should end up with a dark purplish solution.',
+    description: 'Simmer red cabbage, red onion and beetroot separately in water for about 10 minutes each until the water picks up a strong colour. Strain out the solids and combine the three liquids. You should end up with a dark purplish solution.',
     icon: '1',
     duration: '15 min',
   },
   {
     step: 2,
     title: 'Prepare Test Solutions',
-    description: 'Fill small clear glasses or test tubes with whatever you want to test. Vinegar, lemon juice, tap water and baking soda solution are good starting points — easy to get and cover the acid-to-base range nicely.',
+    description: 'Fill small clear glasses or test tubes with whatever you want to test. Vinegar, lemon juice, tap water and baking soda solution are good starting points. They are easy to get and cover the acid-to-base range nicely.',
     icon: '2',
     duration: '5 min',
   },
   {
     step: 3,
     title: 'Add the Indicator',
-    description: 'Add 2 to 3ml of indicator to each solution and give it a gentle swirl. The colour change usually happens almost immediately — sometimes within a second of mixing.',
+    description: 'Add 2 to 3ml of indicator to each solution and give it a gentle swirl. The colour change usually happens almost immediately, sometimes within a second of mixing.',
     icon: '3',
     duration: '2 min',
   },
   {
     step: 4,
     title: 'Compare and Record',
-    description: 'Hold each glass against a white background and compare it to the chart. Write down the colour you see. Even small differences in shade are worth noting — they can tell you whether something is a weak or strong acid or base.',
+    description: 'Hold each glass against a white background and compare it to the chart. Write down the colour you see. Even small differences in shade are worth noting. They can tell you whether something is a weak or strong acid or base.',
     icon: '4',
     duration: '5 min',
   },

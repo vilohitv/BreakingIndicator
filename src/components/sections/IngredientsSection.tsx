@@ -8,14 +8,14 @@ const DETAILS = [
     id: 'red-cabbage',
     contrib: 90,
     contribLabel: 'Primary indicator compound',
-    research: 'Out of everything we tried, red cabbage had the strongest reaction to pH changes by a long way. The colour shifts are big enough to read clearly without any equipment — bright red in acids, yellow-green in strong base. It was an obvious choice for the main ingredient.',
+    research: 'Out of everything we tried, red cabbage had the strongest reaction to pH changes by a long way. The colour shifts are big enough to read clearly without any equipment: bright red in acids, yellow-green in strong base. It was an obvious choice for the main ingredient.',
     bgGradient: 'linear-gradient(145deg, rgba(139,26,94,0.18) 0%, rgba(14,11,30,0.8) 100%)',
   },
   {
     id: 'red-onion',
     contrib: 5,
     contribLabel: 'Stability enhancer',
-    research: 'We added red onion mainly for stability. Its flavonoids slow down pigment breakdown, so the indicator holds its colour for longer instead of fading after a day or two. You only need a tiny amount for this — 5% of the total mix does the job.',
+    research: 'We added red onion mainly for stability. Its flavonoids slow down pigment breakdown, so the indicator holds its colour for longer instead of fading after a day or two. You only need a tiny amount for this. Five percent of the total mix does the job.',
     bgGradient: 'linear-gradient(145deg, rgba(107,26,58,0.18) 0%, rgba(14,11,30,0.8) 100%)',
   },
   {

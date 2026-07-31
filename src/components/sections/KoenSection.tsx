@@ -150,7 +150,7 @@ export function KoenSection() {
 
             <InfoCard label="Background Chemistry" title="Red cabbage and its pigments">
               <p>Red cabbage has one of the highest anthocyanin concentrations of any food plant. The main one is cyanidin-3-diglucoside-5-glucoside, but there are several others present too. That combination is why red cabbage has become the go-to natural acid-base indicator for school experiments.</p>
-              <p className="mt-3">The anthocyanins sit inside the vacuoles of the plant's cells. Break those cell walls down — by crushing, blending or heating in water — and a dark purplish liquid comes out. That is the indicator.</p>
+              <p className="mt-3">The anthocyanins sit inside the vacuoles of the plant's cells. Break those cell walls down by crushing, blending or heating in water and a dark purplish liquid comes out. That is the indicator.</p>
             </InfoCard>
 
             <InfoCard label="Previous Research" title="What researchers have found about red cabbage">
@@ -159,23 +159,23 @@ export function KoenSection() {
             </InfoCard>
 
             <InfoCard label="Scientific Explanation" title="Why the colour changes so dramatically">
-              <p>It all comes down to the flavylium cation. At low pH (1 to 3) the cation is fully protonated and the extract goes red. As pH rises, it loses hydrogen ions and converts into a quinoidal base — that is the purple you see around neutral. Push it higher and you get an ionised form that looks blue. Go above pH 10 and the whole ring structure rearranges into a chalcone, which gives you the green and yellow colours.</p>
-              <p className="mt-3">None of it is permanent. Drop some acid into the green solution and it walks backwards through blue, purple and eventually back to red. We tested this a couple of times — it is one of the more satisfying things to watch happen.</p>
+              <p>It all comes down to the flavylium cation. At low pH (1 to 3) the cation is fully protonated and the extract goes red. As pH rises, it loses hydrogen ions and converts into a quinoidal base, which is the purple you see around neutral. Push it higher and you get an ionised form that looks blue. Go above pH 10 and the whole ring structure rearranges into a chalcone, which gives you the green and yellow colours.</p>
+              <p className="mt-3">None of it is permanent. Drop some acid into the green solution and it walks backwards through blue, purple and eventually back to red. We tested this a couple of times. It is one of the more satisfying things to watch happen.</p>
             </InfoCard>
 
             <InfoCard label="Relevant Variables" title="Factors that can affect the results">
-              <p>The water you use to make the extract affects the starting colour. Tap water that is slightly alkaline can push the indicator toward blue before you have even added anything. Temperature matters too — boiling gets more pigment out, but if you keep it boiling for too long you start breaking down the anthocyanin structure. We stuck to a gentle simmer for about 10 minutes.</p>
+              <p>The water you use to make the extract affects the starting colour. Tap water that is slightly alkaline can push the indicator toward blue before you have even added anything. Temperature matters too. Boiling gets more pigment out, but if you keep it boiling for too long you start breaking down the anthocyanin structure. We stuck to a gentle simmer for about 10 minutes.</p>
               <p className="mt-3">How much indicator you add to each test sample is also important. Too little and the colour is too faint to read. Too much and the indicator changes the pH of the thing you are trying to test, which defeats the point. We kept the number of drops identical across all samples.</p>
             </InfoCard>
 
             <InfoCard label="Connection to Our Experiment" title="How this connects to our investigation">
-              <p>We tested the extract against vinegar, water and baking soda solution. Pink with vinegar, stayed purple in water, went dark blue in baking soda. All three were easy to read without squinting or comparing closely — the differences were obvious.</p>
+              <p>We tested the extract against vinegar, water and baking soda solution. Pink with vinegar, stayed purple in water, went dark blue in baking soda. All three were easy to read without squinting or comparing closely. The differences were obvious.</p>
               <p className="mt-3">Out of our three experiments, red cabbage was the clearest by a significant margin. The beetroot barely moved. The red onion worked but the colours were subtler. Red cabbage was the one where results were immediately obvious just from looking.</p>
             </InfoCard>
           </div>
 
           <InfoCard label="Reason" title="Why red cabbage changes colour">
-            <p>Red cabbage contains anthocyanin (C₁₅H₁₁O⁺) — a pigment that is unusually sensitive to pH. At low pH it picks up hydrogen ions and forms a positively charged flavylium cation that absorbs blue-green light, which is why the solution looks red. As pH rises the molecule drops those ions, its structure shifts, and the colour moves through purple, then blue, then yellow-green at the strongly alkaline end.</p>
+            <p>Red cabbage contains anthocyanin (C₁₅H₁₁O⁺), a pigment that is unusually sensitive to pH. At low pH it picks up hydrogen ions and forms a positively charged flavylium cation that absorbs blue-green light, which is why the solution looks red. As pH rises the molecule drops those ions, its structure shifts, and the colour moves through purple, then blue, then yellow-green at the strongly alkaline end.</p>
           </InfoCard>
 
           <InfoCard label="Chemical Reactions" title="What happens at each pH level">

@@ -3,10 +3,10 @@ import { useScrollReveal } from '../../hooks/useScrollReveal';
 
 const PREP_STEPS = [
   { n: '01', title: 'Gather the beetroots', body: 'We grabbed 5 fresh beetroots from the supermarket. Nothing fancy, just regular ones.' },
-  { n: '02', title: 'Cut into pieces', body: 'Each beetroot was cut into roughly 8 pieces — 40 pieces total. Smaller chunks blend more evenly and let more pigment out.' },
+  { n: '02', title: 'Cut into pieces', body: 'Each beetroot was cut into roughly 8 pieces, 40 in total. Smaller chunks blend more evenly and let more pigment out.' },
   { n: '03', title: 'Add water', body: '50ml of water went in before blending. Without it the blender just spins the chunks around without doing much.' },
-  { n: '04', title: 'Blend', body: 'Blended it all until smooth. This breaks open the cell walls and releases the betalain pigments into the water — you can see the liquid go very dark red pretty fast.' },
-  { n: '05', title: 'Filter the liquid', body: 'Poured it through a filter to separate the pulp from the liquid. What came through was a deep red solution — that is the indicator.' },
+  { n: '04', title: 'Blend', body: 'Blended it all until smooth. This breaks open the cell walls and releases the betalain pigments into the water. You can see the liquid go very dark red pretty fast.' },
+  { n: '05', title: 'Filter the liquid', body: 'Poured it through a filter to separate the pulp from the liquid. What came through was a deep red solution, and that is the indicator.' },
 ];
 
 const TEST_STEPS = [
@@ -156,33 +156,33 @@ export function VilohitSection() {
             <p className="eyebrow mb-2" style={{ color: accentLight }}>Literature Review</p>
 
             <InfoCard label="Background Chemistry" title="What betalains actually are">
-              <p>Beetroot gets its colour from pigments called betalains. There are two kinds — betacyanins give the red-purple colour, and betaxanthins are yellow-orange. What makes them unusual is that they contain nitrogen. Most plant pigments, like anthocyanins and carotenoids, do not (Strack et al., 2003).</p>
-              <p className="mt-3">These pigments sit inside the vacuoles of the plant's cells. When you blend or crush the beetroot the cell walls break and the pigments spill out into the water — which is why it goes red so quickly (Stintzing & Carle, 2004).</p>
+              <p>Beetroot gets its colour from pigments called betalains. There are two kinds: betacyanins give the red-purple colour and betaxanthins are yellow-orange. What makes them unusual is that they contain nitrogen. Most plant pigments, like anthocyanins and carotenoids, do not (Strack et al., 2003).</p>
+              <p className="mt-3">These pigments sit inside the vacuoles of the plant's cells. When you blend or crush the beetroot the cell walls break and the pigments spill out into the water, which is why it goes red so quickly (Stintzing & Carle, 2004).</p>
             </InfoCard>
 
             <InfoCard label="Previous Research" title="What researchers have found">
-              <p>A few studies have looked at whether beetroot works as a natural pH indicator. Vulić et al. (2012) found that even though beetroot is really high in pigment, betalains are chemically different enough from anthocyanins that they just do not respond to pH the same way. Stintzing and Carle (2004) pointed out that what actually affects betalain stability is temperature and light — not acidity (Oplatowska-Stachowiak & Elliott, 2017).</p>
+              <p>A few studies have looked at whether beetroot works as a natural pH indicator. Vulić et al. (2012) found that even though beetroot is really high in pigment, betalains are chemically different enough from anthocyanins that they just do not respond to pH the same way. Stintzing and Carle (2004) pointed out that what actually affects betalain stability is temperature and light, not acidity (Oplatowska-Stachowiak & Elliott, 2017).</p>
               <p className="mt-3">In a lot of classroom experiments beetroot gets included alongside red cabbage specifically to show that not all plant pigments work the same. And across every comparison study we found, beetroot consistently came last for pH sensitivity.</p>
             </InfoCard>
 
             <InfoCard label="Scientific Explanation" title="Why the colour barely shifts">
-              <p>It comes down to the molecular structure. Anthocyanins have that flavylium cation that reacts strongly to gaining or losing protons — that's what makes the colour jump so obviously in red cabbage. Betalains do not have that (Strack et al., 2003).</p>
-              <p className="mt-3">Their chromophore — the part that absorbs light and gives them colour — is stabilised by the nitrogen atom in a way that makes it much less reactive to hydrogen ion concentration. You can get a shift at extreme pH if you push far enough, but in the range of normal household substances like lemon juice or baking soda? Almost nothing moves. The colour just stays (Stintzing & Carle, 2004).</p>
+              <p>It comes down to the molecular structure. Anthocyanins have that flavylium cation that reacts strongly to gaining or losing protons. That is what makes the colour jump so obviously in red cabbage. Betalains do not have that (Strack et al., 2003).</p>
+              <p className="mt-3">Their chromophore, the part that absorbs light and gives them colour, is stabilised by the nitrogen atom in a way that makes it much less reactive to hydrogen ion concentration. You can get a shift at extreme pH if you push far enough, but in the range of normal household substances like lemon juice or baking soda? Almost nothing moves. The colour just stays (Stintzing & Carle, 2004).</p>
             </InfoCard>
 
             <InfoCard label="Relevant Variables" title="Factors that affect the experiment">
-              <p>Heat is a big one — above 40°C betalains start breaking down, so the extract loses its intensity over time no matter what the pH is doing (Stintzing & Carle, 2004). UV light does the same thing, just slower. We stored ours in a dark bottle for that reason.</p>
+              <p>Heat is a big one. Above 40°C betalains start breaking down, so the extract loses its intensity over time no matter what the pH is doing (Stintzing & Carle, 2004). UV light does the same thing, just slower. We stored ours in a dark bottle for that reason.</p>
               <p className="mt-3">How concentrated the extract is also affects how visible any colour change would be. We made sure all three portions came from the same batch and had the same dilution, so the results were at least comparable to each other even if they were not very dramatic.</p>
             </InfoCard>
 
             <InfoCard label="Connection to Our Experiment" title="What this means for our investigation">
-              <p>Going into this we half expected it not to work based on what the research said. And it did not. The three portions looked almost identical — there was no clear way to tell which was the acid, which was neutral and which was the base just by looking at the colour.</p>
-              <p className="mt-3">This fits with what Vulić et al. (2012) and others found. Betalains are just not pH-sensitive the way anthocyanins are. It is actually a useful result in a way — it shows that picking the wrong plant can mean your indicator tells you nothing at all.</p>
+              <p>Going into this we half expected it not to work based on what the research said. And it did not. The three portions looked almost identical there was no clear way to tell which was the acid, which was neutral and which was the base just from looking.</p>
+              <p className="mt-3">This fits with what Vulić et al. (2012) and others found. Betalains are just not pH-sensitive the way anthocyanins are. It is actually a useful result in a way. It shows that picking the wrong plant can mean your indicator tells you nothing at all.</p>
             </InfoCard>
           </div>
 
           <InfoCard label="Reason" title="Why beetroot barely changes colour">
-            <p>Beetroot's deep red comes from betalains, not anthocyanins. And that is the problem. Betalains are not sensitive to hydrogen ions the way anthocyanins are — their structure does not shift enough across the pH range to produce any colour change you could actually read (Strack et al., 2003).</p>
+            <p>Beetroot's deep red comes from betalains, not anthocyanins. And that is the problem. Betalains are not sensitive to hydrogen ions the way anthocyanins are. Their structure does not shift enough across the pH range to produce any colour change you could actually read (Strack et al., 2003).</p>
           </InfoCard>
 
           <InfoCard label="Conclusion" title="Beetroot is not a reliable pH indicator">

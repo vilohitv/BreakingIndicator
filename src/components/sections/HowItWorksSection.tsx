@@ -5,13 +5,13 @@ const CONCEPTS = [
   {
     n: '01', title: 'Anthocyanins',
     color: '#7c3aed', glow: 'rgba(124,58,237,0.2)',
-    body: 'Basically just pigments that live inside plant cells and dissolve in water. The bit that makes them useful is a charged ring structure called the flavylium cation — it reacts really easily with hydrogen ions, which is what triggers the colour changes.',
+    body: 'Basically just pigments that live inside plant cells and dissolve in water. The bit that makes them useful is a charged ring structure called the flavylium cation, which reacts really easily with hydrogen ions, which is what triggers the colour changes.',
     tag: 'Flavonoids · Flavylium cation',
   },
   {
     n: '02', title: 'Natural Pigments',
     color: '#ec4899', glow: 'rgba(236,72,153,0.2)',
-    body: 'You do not need a lab to get these out — just simmer the vegetable in water and the pigments dissolve straight in. No synthesis, nothing complicated. And the end result is completely safe to handle.',
+    body: 'You do not need a lab to get these out. Just simmer the vegetable in water and the pigments dissolve straight in. No synthesis, nothing complicated. And the end result is completely safe to handle.',
     tag: 'Betalains · Flavonoids',
   },
   {
@@ -83,7 +83,7 @@ export function HowItWorksSection() {
             <span style={{ color: 'rgba(255,255,255,0.9)' }}>Works</span>
           </h2>
           <p className="text-sm leading-relaxed max-w-lg" style={{ color: 'rgba(255,255,255,0.4)' }}>
-A quick rundown of the chemistry — what is actually going on inside the solution when the colour changes.
+A quick rundown of the chemistry and what is actually going on inside the solution when the colour changes.
           </p>
         </motion.div>
 

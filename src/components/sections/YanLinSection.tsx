@@ -5,7 +5,7 @@ import { useScrollReveal } from '../../hooks/useScrollReveal';
 const FLESH_PREP_STEPS = [
   { n: '01', title: 'Peel and chop the flesh', body: 'Removed the outer skin and put it aside. Chopped the inner flesh into small pieces.' },
   { n: '02', title: 'Place in bowl', body: 'Put the pieces into a bowl.' },
-  { n: '03', title: 'Add warm water and crush', body: 'Added warm water and crushed the flesh. The water went a faint purple — not very dark.' },
+  { n: '03', title: 'Add warm water and crush', body: 'Added warm water and crushed the flesh. The water went a faint purple, not very dark.' },
   { n: '04', title: 'Strain the mixture', body: 'Strained out the solids.' },
   { n: '05', title: 'Extract is ready', body: 'The liquid was noticeably paler than the skin version. We tested it anyway to compare.' },
 ];
@@ -18,7 +18,7 @@ const FLESH_TEST_STEPS = [
 ];
 
 const SKIN_PREP_STEPS = [
-  { n: '01', title: 'Separate the skin', body: 'Peeled off the dry papery outer layers of the red onion and set them aside. The skin is where most of the anthocyanins are — the flesh does not have nearly as much.' },
+  { n: '01', title: 'Separate the skin', body: 'Peeled off the dry papery outer layers of the red onion and set them aside. The skin is where most of the anthocyanins are. The flesh does not have nearly as much.' },
   { n: '02', title: 'Place in bowl', body: 'Put the skin pieces into a bowl.' },
   { n: '03', title: 'Add warm water and crush', body: 'Added warm water and crushed the skin against the bowl until the water went a deep purple colour.' },
   { n: '04', title: 'Strain the mixture', body: 'Strained it through a sieve into another container to get rid of the solid bits.' },
@@ -164,7 +164,7 @@ export function YanLinSection() {
                 style={{ background: 'rgba(124,58,237,0.05)', border: '1px solid rgba(124,58,237,0.12)', color: 'rgba(255,255,255,0.45)' }}
               >
                 {variant === 'skin'
-                  ? 'We went with the outer skin for the final experiment. It just worked better — the colour was richer and the changes were much easier to read across all three test solutions.'
+                  ? 'We went with the outer skin for the final experiment. It just worked better. The colour was richer and the changes were much easier to read across all three test solutions.'
                   : 'Tested the flesh as a comparison. It does react but the colour is a lot lighter and the changes are harder to pick up. Not ideal for a classroom setting.'}
               </motion.div>
             </AnimatePresence>
@@ -196,10 +196,10 @@ export function YanLinSection() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {(variant === 'skin' ? [
                 { src: '/onion_acid.png', label: 'Acid', caption: 'Lemon juice. Shifted to a light peachy pink. Subtle but visible compared to the neutral.', dot: '#ef4444' },
-                { src: '/onion_neutral.png', label: 'Neutral', caption: 'Tap water. Stayed an orange-pink tone — the baseline colour of the skin extract.', dot: '#7c3aed' },
+                { src: '/onion_neutral.png', label: 'Neutral', caption: 'Tap water. Stayed an orange-pink tone, the baseline colour of the skin extract.', dot: '#7c3aed' },
                 { src: '/onion_alkali.png', label: 'Alkali', caption: 'Baking soda. Shifted to a slightly deeper orange-brown. Not as dramatic as red cabbage but still a clear change.', dot: '#3b82f6' },
               ] : [
-                { src: '/onion_flesh_acid.png', label: 'Acid', caption: 'Lemon juice. Turned a faint pink — barely any pigment in the flesh extract so the colour is very dilute.', dot: '#ef4444' },
+                { src: '/onion_flesh_acid.png', label: 'Acid', caption: 'Lemon juice. Turned a faint pink. Barely any pigment in the flesh extract so the colour is very dilute.', dot: '#ef4444' },
                 { src: '/onion_flesh_neutral.png', label: 'Neutral', caption: 'Tap water. Almost colourless with just a very faint pink tinge. Hard to call it a result.', dot: '#7c3aed' },
                 { src: '/onion_flesh_alkali.png', label: 'Alkali', caption: 'Baking soda. A pale yellow-green. The change happened but you really have to look for it.', dot: '#3b82f6' },
               ]).map((photo, i) => (
@@ -231,8 +231,8 @@ export function YanLinSection() {
             <p className="eyebrow mb-2" style={{ color: accentLight }}>Literature Review</p>
 
             <InfoCard label="Background Chemistry" title="Anthocyanins and how they work">
-              <p>According to the National Library of Medicine, anthocyanins are water-soluble flavonoid pigments found in red onions and a lot of other red, purple and blue plant foods. They are what gives those plants their colour. The exact shade depends on the molecular structure of the anthocyanin — different structures absorb different wavelengths of light, which is why the colour shifts with pH.</p>
-              <p className="mt-3">There are several types, including pelargonidin, delphinidin and malvidin. Chemically they are glycosylated anthocyanidins, which just means a carbohydrate has been attached to a basic pigment molecule. The core is a flavylium cation made of three aromatic rings connected by a π-electron system — electrons that move freely across the molecule and allow it to absorb visible light. The oxygen atom in the C ring carries a positive charge and is largely responsible for the colour you see.</p>
+              <p>According to the National Library of Medicine, anthocyanins are water-soluble flavonoid pigments found in red onions and a lot of other red, purple and blue plant foods. They are what gives those plants their colour. The exact shade depends on the molecular structure of the anthocyanin. Different structures absorb different wavelengths of light, which is why the colour shifts with pH.</p>
+              <p className="mt-3">There are several types, including pelargonidin, delphinidin and malvidin. Chemically they are glycosylated anthocyanidins, which just means a carbohydrate has been attached to a basic pigment molecule. The core is a flavylium cation made of three aromatic rings connected by a π-electron system, where electrons move freely across the molecule and allow it to absorb visible light. The oxygen atom in the C ring carries a positive charge and is largely responsible for the colour you see.</p>
             </InfoCard>
 
             <InfoCard label="Scientific Explanation" title="What happens at each pH level">
@@ -254,7 +254,7 @@ export function YanLinSection() {
           </div>
 
           <InfoCard label="Conclusion" title="Red onion works as a pH indicator">
-            <p>Red onion works as an indicator — the colour changes are clear enough to read and they are reversible. The skin extract was much better than the flesh version, which is what the literature suggested would happen. We used the skin extract in the final experiment and got readable results across all three test solutions.</p>
+            <p>Red onion works as an indicator. The colour changes are clear enough to read and they are reversible. The skin extract was much better than the flesh version, which is what the literature suggested would happen. We used the skin extract in the final experiment and got readable results across all three test solutions.</p>
           </InfoCard>
 
           <ReferencesCard />

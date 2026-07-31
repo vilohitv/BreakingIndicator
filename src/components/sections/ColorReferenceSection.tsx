@@ -29,10 +29,7 @@ function PHCard({ level, index }: { level: typeof PH_LEVELS[0]; index: number })
           opacity: hovered ? 1 : 0,
         }} />
 
-      <div className="relative h-3 w-full"
-        style={{ background: level.color, boxShadow: `0 0 20px ${level.color}` }} />
-      <div className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: 'rgba(255,255,255,0.4)' }} />
+
 
       <div className="relative z-10 p-5">
         <div className="flex items-start justify-end mb-5">
