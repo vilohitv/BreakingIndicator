@@ -94,7 +94,7 @@ export function FAQSection() {
             <span style={{ color: 'rgba(255,255,255,0.9)' }}>Asked</span>
           </h2>
           <p className="text-sm leading-relaxed max-w-md" style={{ color: 'rgba(255,255,255,0.4)' }}>
-            Questions that came up during the project, along with the answers we found.
+            Common questions about the indicator, its chemistry, and how to use it effectively.
           </p>
         </motion.div>
 

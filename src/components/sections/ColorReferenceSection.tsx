@@ -92,8 +92,26 @@ export function ColorReferenceSection() {
             <span style={{ color: 'rgba(255,255,255,0.9)' }}>Chart</span>
           </h2>
           <p className="text-sm leading-relaxed max-w-md" style={{ color: 'rgba(255,255,255,0.4)' }}>
-            Match the colour of your indicator to the chart below. Each card shows what to expect at that part of the pH scale.
+  Hold your test tube up to a white background and match the colour against these. It will not give you an exact number but it narrows it down pretty well.
           </p>
+        </motion.div>
+
+        <motion.div initial={{ opacity: 0, scaleX: 0 }} whileInView={{ opacity: 1, scaleX: 1 }}
+          viewport={{ once: true }} transition={{ duration: 1.2, ease: [0.22,1,0.36,1] }}
+          style={{ transformOrigin: 'left' }} className="mb-16">
+          <div className="relative h-20 rounded-3xl overflow-hidden ph-spectrum"
+            style={{ boxShadow: '0 0 60px rgba(124,58,237,0.2), 0 8px 40px rgba(0,0,0,0.6)' }}>
+            <div className="absolute inset-0"
+              style={{ background: 'linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, transparent 50%)' }} />
+            <div className="absolute inset-0 flex items-center justify-between px-6">
+              {['Strong Acid','Weak Acid','Neutral','Weak Base','Strong Base'].map(l => (
+                <span key={l} className="font-mono font-bold text-white/80 drop-shadow-lg hidden sm:block"
+                  style={{ fontSize: '11px', letterSpacing: '0.06em' }}>{l}</span>
+              ))}
+            </div>
+            <div className="absolute inset-0 rounded-3xl" style={{ border: '1px solid rgba(255,255,255,0.15)' }} />
+            <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'rgba(255,255,255,0.25)' }} />
+          </div>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">

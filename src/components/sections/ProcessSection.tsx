@@ -60,7 +60,7 @@ export function ProcessSection() {
             <span className="text-gradient-green">Experiment</span>
           </h2>
           <p className="text-sm leading-relaxed max-w-md" style={{ color: 'rgba(255,255,255,0.4)' }}>
-            Four steps to run the experiment. The whole thing takes under half an hour once the extracts are ready.
+  Four steps. The first one takes the longest but the rest move quickly once you have the indicator ready.
           </p>
         </motion.div>
 

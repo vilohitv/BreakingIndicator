@@ -5,20 +5,26 @@ const CONCEPTS = [
   {
     n: '01', title: 'Anthocyanins',
     color: '#7c3aed', glow: 'rgba(124,58,237,0.2)',
-    body: 'Water-soluble pigments found inside plant cells. Their core structure — the flavylium cation — is unusually sensitive to hydrogen ions, which is what drives the colour changes. Add acid and the molecule picks up protons. Add base and it loses them. The colour follows.',
+    body: 'Basically just pigments that live inside plant cells and dissolve in water. The bit that makes them useful is a charged ring structure called the flavylium cation — it reacts really easily with hydrogen ions, which is what triggers the colour changes.',
     tag: 'Flavonoids · Flavylium cation',
   },
   {
     n: '02', title: 'Natural Pigments',
     color: '#ec4899', glow: 'rgba(236,72,153,0.2)',
-    body: 'No synthesis required. A short simmer in water is enough to pull the anthocyanins out of the plant cells and into the liquid. The result is entirely food-safe and can be made from things you would find in any kitchen.',
+    body: 'You do not need a lab to get these out — just simmer the vegetable in water and the pigments dissolve straight in. No synthesis, nothing complicated. And the end result is completely safe to handle.',
     tag: 'Betalains · Flavonoids',
   },
   {
     n: '03', title: 'Acid-Base Reaction',
     color: '#34d399', glow: 'rgba(52,211,153,0.2)',
-    body: 'In acid the anthocyanins are fully protonated — they absorb green light and look red. As pH rises they shed hydrogen ions, and the colour tracks through purple, blue, green and eventually yellow-green at the strongly alkaline end.',
+    body: 'Drop the indicator into an acid and it turns red because the anthocyanins are fully protonated and absorb green light. Keep raising the pH and the colour walks through purple, then blue, then yellow-green by the time you hit strong base.',
     tag: 'pH range 1 to 14',
+  },
+  {
+    n: '04', title: 'Reversibility',
+    color: '#fbbf24', glow: 'rgba(251,191,36,0.2)',
+    body: 'None of the colour changes are permanent. Add acid back to a blue solution and it goes red again. We actually tested this a few times because it is genuinely satisfying to watch the colour snap back.',
+    tag: 'Reversible · Equilibrium',
   },
 ];
 
@@ -77,8 +83,33 @@ export function HowItWorksSection() {
             <span style={{ color: 'rgba(255,255,255,0.9)' }}>Works</span>
           </h2>
           <p className="text-sm leading-relaxed max-w-lg" style={{ color: 'rgba(255,255,255,0.4)' }}>
-            From the molecular structure to the colour you see in the beaker. Here is what is actually happening when the indicator changes.
+A quick rundown of the chemistry — what is actually going on inside the solution when the colour changes.
           </p>
+        </motion.div>
+
+        <motion.div initial={{ opacity: 0, scaleX: 0 }} whileInView={{ opacity: 1, scaleX: 1 }}
+          viewport={{ once: true }} transition={{ duration: 1.1, ease: [0.22,1,0.36,1] }}
+          style={{ transformOrigin: 'left' }}
+          className="mb-20 relative">
+          <div className="relative h-14 rounded-2xl overflow-hidden ph-spectrum"
+            style={{ boxShadow: '0 0 40px rgba(124,58,237,0.2), 0 8px 32px rgba(0,0,0,0.5)' }}>
+            <div className="absolute inset-0" style={{
+              background: 'linear-gradient(to bottom, rgba(255,255,255,0.08), transparent 60%)',
+            }} />
+            <div className="absolute inset-0 flex items-center justify-between px-5">
+              {['1','2','3','4','5','6','7','8','9','10','11','12','13','14'].map(n => (
+                <span key={n} className="font-mono font-bold text-white/75 drop-shadow-lg" style={{ fontSize: '11px' }}>{n}</span>
+              ))}
+            </div>
+            <div className="absolute inset-0 rounded-2xl" style={{ border: '1px solid rgba(255,255,255,0.12)' }} />
+            <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'rgba(255,255,255,0.2)' }} />
+          </div>
+          <div className="flex justify-between mt-2 px-1">
+            {['Strong Acid', 'Weak Acid', 'Neutral', 'Weak Base', 'Strong Base'].map(l => (
+              <span key={l} className="font-mono text-center hidden sm:block"
+                style={{ fontSize: '9px', color: 'rgba(255,255,255,0.28)', letterSpacing: '0.06em' }}>{l}</span>
+            ))}
+          </div>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -100,7 +131,7 @@ export function HowItWorksSection() {
             Anthocyanin + H⁺ (acid) → Red Form · Low pH
           </p>
           <p className="font-mono text-center mt-5" style={{ fontSize: '11px', color: 'rgba(255,255,255,0.22)' }}>
-            Fully reversible. The equilibrium shifts with every pH change.
+            All of this goes backwards too. Add acid to the green end and it walks all the way back to red.
           </p>
         </motion.div>
       </div>

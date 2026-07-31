@@ -8,21 +8,21 @@ const DETAILS = [
     id: 'red-cabbage',
     contrib: 90,
     contribLabel: 'Primary indicator compound',
-    research: 'Red cabbage does most of the work. Its anthocyanin content is high enough to produce vivid, readable colour changes across the full pH range — from bright red in strong acid all the way to yellow-green in strong base. No other common vegetable matches it for range or clarity.',
+    research: 'Out of everything we tried, red cabbage had the strongest reaction to pH changes by a long way. The colour shifts are big enough to read clearly without any equipment — bright red in acids, yellow-green in strong base. It was an obvious choice for the main ingredient.',
     bgGradient: 'linear-gradient(145deg, rgba(139,26,94,0.18) 0%, rgba(14,11,30,0.8) 100%)',
   },
   {
     id: 'red-onion',
     contrib: 5,
     contribLabel: 'Stability enhancer',
-    research: 'Red onion is in there for longevity. The flavonoids in the skin slow down how quickly the anthocyanins break down, which means the indicator stays usable for longer without losing colour intensity. A small amount is enough — it is not contributing much to the pH response itself.',
+    research: 'We added red onion mainly for stability. Its flavonoids slow down pigment breakdown, so the indicator holds its colour for longer instead of fading after a day or two. You only need a tiny amount for this — 5% of the total mix does the job.',
     bgGradient: 'linear-gradient(145deg, rgba(107,26,58,0.18) 0%, rgba(14,11,30,0.8) 100%)',
   },
   {
     id: 'beetroot',
     contrib: 5,
     contribLabel: 'Depth and contrast agent',
-    research: 'Beetroot runs on betalain pigments, not anthocyanins, so it does not respond to pH directly. What it does do is add depth to the overall colour, making small differences around the neutral range easier to pick out. Without it, results near pH 7 would be harder to read.',
+    research: 'Beetroot is in there for a different reason to the other two. Its betalain pigments are not great pH indicators on their own, but they add depth to the colour and make it easier to spot small differences around neutral pH where everything otherwise looks a bit similar.',
     bgGradient: 'linear-gradient(145deg, rgba(92,10,40,0.18) 0%, rgba(14,11,30,0.8) 100%)',
   },
 ];
@@ -140,7 +140,7 @@ export function IngredientsSection() {
             <span className="text-gradient-green">Ingredients</span>
           </h2>
           <p className="text-sm leading-relaxed max-w-md" style={{ color: 'rgba(255,255,255,0.4)' }}>
-            Three vegetables, three different roles. Tap any card to see what each one is actually doing in the mixture.
+  Three vegetables, each doing a different job. Tap any card to see the reasoning behind it.
           </p>
         </motion.div>
 
