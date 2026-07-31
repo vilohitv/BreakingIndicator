@@ -9,21 +9,21 @@ const DETAILS = [
     contrib: 90,
     contribLabel: 'Primary indicator compound',
     research: 'Out of everything we tried, red cabbage had the strongest reaction to pH changes by a long way. The colour shifts are big enough to read clearly without any equipment: bright red in acids, yellow-green in strong base. It was an obvious choice for the main ingredient.',
-    bgGradient: 'linear-gradient(145deg, rgba(139,26,94,0.18) 0%, rgba(233,228,247,0.90) 100%)',
+    bgGradient: 'linear-gradient(145deg, rgba(139,26,94,0.18) 0%, rgba(26,16,53,0.90) 100%)',
   },
   {
     id: 'red-onion',
     contrib: 5,
     contribLabel: 'Stability enhancer',
     research: 'We added red onion mainly for stability. Its flavonoids slow down pigment breakdown, so the indicator holds its colour for longer instead of fading after a day or two. You only need a tiny amount for this. Five percent of the total mix does the job.',
-    bgGradient: 'linear-gradient(145deg, rgba(107,26,58,0.18) 0%, rgba(233,228,247,0.90) 100%)',
+    bgGradient: 'linear-gradient(145deg, rgba(107,26,58,0.18) 0%, rgba(26,16,53,0.90) 100%)',
   },
   {
     id: 'beetroot',
     contrib: 5,
     contribLabel: 'Depth and contrast agent',
     research: 'Beetroot is in there for a different reason to the other two. Its betalain pigments are not great pH indicators on their own, but they add depth to the colour and make it easier to spot small differences around neutral pH where everything otherwise looks a bit similar.',
-    bgGradient: 'linear-gradient(145deg, rgba(92,10,40,0.18) 0%, rgba(233,228,247,0.90) 100%)',
+    bgGradient: 'linear-gradient(145deg, rgba(92,10,40,0.18) 0%, rgba(26,16,53,0.90) 100%)',
   },
 ];
 
@@ -62,17 +62,17 @@ function IngCard({ veg, detail, i }: { veg: typeof VEGETABLES[0]; detail: typeof
               style={{ background: veg.glowColor, boxShadow: `0 0 20px ${veg.glowColor}60` }} />
 
             <div className="flex-1">
-              <h3 className="font-display font-bold text-2xl mb-2" style={{ color: 'rgba(30,15,60,0.95)' }}>
+              <h3 className="font-display font-bold text-2xl mb-2" style={{ color: 'rgba(255,255,255,0.95)' }}>
                 {veg.name}
               </h3>
-              <p className="text-sm leading-relaxed" style={{ color: 'rgba(30,15,60,0.48)' }}>
+              <p className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.48)' }}>
                 {veg.reason.substring(0, 130)}…
               </p>
             </div>
 
             <div className="mt-5">
               <div className="flex justify-between items-center mb-2">
-                <span className="font-mono" style={{ fontSize: '11px', color: 'rgba(30,15,60,0.35)' }}>
+                <span className="font-mono" style={{ fontSize: '11px', color: 'rgba(255,255,255,0.35)' }}>
                   {detail.contribLabel}
                 </span>
                 <span className="font-mono font-bold text-sm" style={{ color: veg.glowColor }}>
@@ -88,7 +88,7 @@ function IngCard({ veg, detail, i }: { veg: typeof VEGETABLES[0]; detail: typeof
               </div>
             </div>
 
-            <p className="font-mono text-center mt-4" style={{ fontSize: '10px', color: 'rgba(30,15,60,0.22)' }}>
+            <p className="font-mono text-center mt-4" style={{ fontSize: '10px', color: 'rgba(255,255,255,0.22)' }}>
               Tap to find out why →
             </p>
           </div>
@@ -109,10 +109,10 @@ function IngCard({ veg, detail, i }: { veg: typeof VEGETABLES[0]; detail: typeof
 
           <div className="p-7 h-full flex flex-col relative z-10 overflow-y-auto">
             <p className="eyebrow mb-4" style={{ color: veg.glowColor }}>Why we chose it</p>
-            <p className="text-sm leading-relaxed flex-1" style={{ color: 'rgba(30,15,60,0.60)' }}>
+            <p className="text-sm leading-relaxed flex-1" style={{ color: 'rgba(255,255,255,0.60)' }}>
               {detail.research}
             </p>
-            <p className="font-mono text-center mt-4" style={{ fontSize: '10px', color: 'rgba(30,15,60,0.22)' }}>
+            <p className="font-mono text-center mt-4" style={{ fontSize: '10px', color: 'rgba(255,255,255,0.22)' }}>
               ← Tap to flip back
             </p>
           </div>
@@ -136,10 +136,10 @@ export function IngredientsSection() {
           <p className="eyebrow mb-4">Components</p>
           <h2 className="font-display font-bold leading-none mb-6"
             style={{ fontSize: 'clamp(2.4rem, 5.5vw, 4.5rem)' }}>
-            <span style={{ color: 'rgba(30,15,60,0.90)' }}>The </span>
+            <span style={{ color: 'rgba(255,255,255,0.90)' }}>The </span>
             <span className="text-gradient-green">Ingredients</span>
           </h2>
-          <p className="text-sm leading-relaxed max-w-md" style={{ color: 'rgba(30,15,60,0.45)' }}>
+          <p className="text-sm leading-relaxed max-w-md" style={{ color: 'rgba(255,255,255,0.45)' }}>
   Three vegetables, each doing a different job. Tap any card to see the reasoning behind it.
           </p>
         </motion.div>

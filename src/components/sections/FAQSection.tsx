@@ -15,7 +15,7 @@ function FAQItem({ faq, i, open, onToggle }: {
         className="relative rounded-2xl overflow-hidden transition-all duration-300"
         style={{
           background: open
-            ? 'linear-gradient(135deg, rgba(124,58,237,0.08) 0%, rgba(233,228,247,0.80) 100%)'
+            ? 'linear-gradient(135deg, rgba(124,58,237,0.08) 0%, rgba(26,16,53,0.80) 100%)'
             : 'rgba(124,58,237,0.04)',
           border: open ? '1px solid rgba(124,58,237,0.25)' : '1px solid rgba(124,58,237,0.07)',
           boxShadow: open ? '0 0 40px rgba(124,58,237,0.08)' : 'none',
@@ -34,13 +34,13 @@ function FAQItem({ faq, i, open, onToggle }: {
             style={{
               background: open ? 'rgba(124,58,237,0.25)' : 'rgba(124,58,237,0.06)',
               border: open ? '1px solid rgba(167,139,250,0.35)' : '1px solid rgba(124,58,237,0.10)',
-              color: open ? '#c4b5fd' : 'rgba(30,15,60,0.35)',
+              color: open ? '#c4b5fd' : 'rgba(255,255,255,0.35)',
             }}>
             {String(i + 1).padStart(2, '0')}
           </span>
 
           <span className="flex-1 text-sm font-medium leading-snug transition-colors duration-300"
-            style={{ color: open ? 'rgba(30,15,60,0.92)' : 'rgba(30,15,60,0.60)' }}>
+            style={{ color: open ? 'rgba(255,255,255,0.92)' : 'rgba(255,255,255,0.60)' }}>
             {faq.question}
           </span>
 
@@ -48,7 +48,7 @@ function FAQItem({ faq, i, open, onToggle }: {
             className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0"
             style={{ background: open ? 'rgba(124,58,237,0.2)' : 'rgba(124,58,237,0.05)', border: '1px solid rgba(124,58,237,0.07)' }}>
             <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-              <path d="M5 1v8M1 5h8" stroke={open ? '#a78bfa' : 'rgba(30,15,60,0.40)'} strokeWidth="1.4" strokeLinecap="round"/>
+              <path d="M5 1v8M1 5h8" stroke={open ? '#a78bfa' : 'rgba(255,255,255,0.40)'} strokeWidth="1.4" strokeLinecap="round"/>
             </svg>
           </motion.div>
         </button>
@@ -61,7 +61,7 @@ function FAQItem({ faq, i, open, onToggle }: {
               className="overflow-hidden">
               <div className="px-6 pb-6 pl-[4.5rem]"
                 style={{ borderTop: '1px solid rgba(124,58,237,0.06)' }}>
-                <p className="text-sm leading-relaxed pt-4" style={{ color: 'rgba(30,15,60,0.55)' }}>
+                <p className="text-sm leading-relaxed pt-4" style={{ color: 'rgba(255,255,255,0.55)' }}>
                   {faq.answer}
                 </p>
               </div>
@@ -91,9 +91,9 @@ export function FAQSection() {
             style={{ fontSize: 'clamp(2.4rem, 5.5vw, 4.5rem)' }}>
             <span className="text-gradient">Frequently</span>
             <br />
-            <span style={{ color: 'rgba(30,15,60,0.90)' }}>Asked</span>
+            <span style={{ color: 'rgba(255,255,255,0.90)' }}>Asked</span>
           </h2>
-          <p className="text-sm leading-relaxed max-w-md" style={{ color: 'rgba(30,15,60,0.45)' }}>
+          <p className="text-sm leading-relaxed max-w-md" style={{ color: 'rgba(255,255,255,0.45)' }}>
             Common questions about the indicator, its chemistry, and how to use it effectively.
           </p>
         </motion.div>

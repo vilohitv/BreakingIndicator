@@ -42,8 +42,8 @@ function StepList({ steps }: { steps: typeof PREP_STEPS }) {
               <span className="font-mono font-bold text-xs" style={{ color: accentLight }}>{step.n}</span>
             </div>
             <div className="flex-1 pb-2">
-              <h3 className="font-display font-bold text-lg mb-2" style={{ color: 'rgba(30,15,60,0.90)' }}>{step.title}</h3>
-              <p className="text-sm leading-relaxed" style={{ color: 'rgba(30,15,60,0.50)' }}>{step.body}</p>
+              <h3 className="font-display font-bold text-lg mb-2" style={{ color: 'rgba(255,255,255,0.90)' }}>{step.title}</h3>
+              <p className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.50)' }}>{step.body}</p>
             </div>
           </motion.div>
         ))}
@@ -59,8 +59,8 @@ function InfoCard({ label, title, children }: { label: string; title: string; ch
       className="p-7 rounded-3xl"
       style={{ background: 'rgba(22,163,74,0.07)', border: '1px solid rgba(22,163,74,0.2)' }}>
       <p className="eyebrow mb-3" style={{ color: accentLight }}>{label}</p>
-      <h3 className="font-display font-bold text-xl mb-3" style={{ color: 'rgba(30,15,60,0.90)' }}>{title}</h3>
-      <div className="text-sm leading-relaxed" style={{ color: 'rgba(30,15,60,0.50)' }}>{children}</div>
+      <h3 className="font-display font-bold text-xl mb-3" style={{ color: 'rgba(255,255,255,0.90)' }}>{title}</h3>
+      <div className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.50)' }}>{children}</div>
     </motion.div>
   );
 }
@@ -72,11 +72,11 @@ function ReferencesCard() {
       className="p-7 rounded-3xl"
       style={{ background: 'rgba(22,163,74,0.05)', border: '1px solid rgba(22,163,74,0.15)' }}>
       <p className="eyebrow mb-3" style={{ color: accentLight }}>References</p>
-      <h3 className="font-display font-bold text-xl mb-5" style={{ color: 'rgba(30,15,60,0.90)' }}>APA 7 Citations</h3>
+      <h3 className="font-display font-bold text-xl mb-5" style={{ color: 'rgba(255,255,255,0.90)' }}>APA 7 Citations</h3>
       <div className="space-y-4">
         {REFERENCES.map((ref, i) => (
           <p key={i} className="text-sm leading-relaxed pl-6 -indent-6"
-            style={{ color: 'rgba(30,15,60,0.50)', fontFamily: 'monospace', fontSize: '0.78rem' }}>
+            style={{ color: 'rgba(255,255,255,0.50)', fontFamily: 'monospace', fontSize: '0.78rem' }}>
             {ref.citation}
           </p>
         ))}
@@ -97,7 +97,7 @@ export function KoenSection() {
           transition={{ duration: 0.8 }} className="mb-20">
           <p className="eyebrow mb-4">Koen</p>
           <h2 className="font-display font-bold leading-none mb-6" style={{ fontSize: 'clamp(2.4rem, 5.5vw, 4.5rem)' }}>
-            <span style={{ color: 'rgba(30,15,60,0.90)' }}>Red Cabbage </span>
+            <span style={{ color: 'rgba(255,255,255,0.90)' }}>Red Cabbage </span>
             <span style={{ backgroundImage: `linear-gradient(135deg, ${accent}, ${accentLight})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Indicator</span>
           </h2>
         </motion.div>
@@ -138,7 +138,7 @@ export function KoenSection() {
                     </div>
                   </div>
                   <div className="p-4" style={{ background: 'rgba(22,163,74,0.05)' }}>
-                    <p className="text-xs leading-relaxed" style={{ color: 'rgba(30,15,60,0.50)' }}>{photo.caption}</p>
+                    <p className="text-xs leading-relaxed" style={{ color: 'rgba(255,255,255,0.50)' }}>{photo.caption}</p>
                   </div>
                 </motion.div>
               ))}
@@ -188,10 +188,10 @@ export function KoenSection() {
                 <div key={r.form} className="p-3 rounded-xl" style={{ background: 'rgba(124,58,237,0.05)', border: '1px solid rgba(124,58,237,0.07)' }}>
                   <div className="flex items-center gap-2 mb-1">
                     <div className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ background: r.dot }} />
-                    <span className="font-semibold text-xs" style={{ color: 'rgba(30,15,60,0.85)' }}>{r.form}</span>
+                    <span className="font-semibold text-xs" style={{ color: 'rgba(255,255,255,0.85)' }}>{r.form}</span>
                   </div>
-                  <p className="text-xs font-mono" style={{ color: 'rgba(30,15,60,0.45)' }}>{r.formula}</p>
-                  <p className="text-xs mt-0.5" style={{ color: 'rgba(30,15,60,0.40)' }}>{r.ph} · {r.colour}</p>
+                  <p className="text-xs font-mono" style={{ color: 'rgba(255,255,255,0.45)' }}>{r.formula}</p>
+                  <p className="text-xs mt-0.5" style={{ color: 'rgba(255,255,255,0.40)' }}>{r.ph} · {r.colour}</p>
                 </div>
               ))}
             </div>
@@ -207,8 +207,8 @@ export function KoenSection() {
                 <div key={r.meaning} className="flex items-center gap-3">
                   <div className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ background: r.dot }} />
                   <span style={{ color: 'rgba(255,255,255,0.7)' }}>{r.colour}</span>
-                  <span style={{ color: 'rgba(30,15,60,0.35)' }}>·</span>
-                  <span style={{ color: 'rgba(30,15,60,0.50)' }}>{r.meaning}</span>
+                  <span style={{ color: 'rgba(255,255,255,0.35)' }}>·</span>
+                  <span style={{ color: 'rgba(255,255,255,0.50)' }}>{r.meaning}</span>
                 </div>
               ))}
             </div>

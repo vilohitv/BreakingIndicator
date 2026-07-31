@@ -19,7 +19,7 @@ function PHCard({ level, index }: { level: typeof PH_LEVELS[0]; index: number })
 
       <div className="absolute inset-0 transition-opacity duration-500"
         style={{
-          background: `linear-gradient(160deg, ${level.color}16 0%, rgba(233,228,247,0.85) 60%)`,
+          background: `linear-gradient(160deg, ${level.color}16 0%, rgba(26,16,53,0.85) 60%)`,
           opacity: hovered ? 1 : 0.7,
         }} />
 
@@ -45,7 +45,7 @@ function PHCard({ level, index }: { level: typeof PH_LEVELS[0]; index: number })
             transition={{ duration: 0.3 }} />
         </div>
 
-        <h3 className="font-display font-bold text-lg mb-1" style={{ color: 'rgba(30,15,60,0.92)' }}>
+        <h3 className="font-display font-bold text-lg mb-1" style={{ color: 'rgba(255,255,255,0.92)' }}>
           {level.label}
         </h3>
         <p className="font-mono text-xs mb-4" style={{ color: level.color }}>
@@ -54,12 +54,12 @@ function PHCard({ level, index }: { level: typeof PH_LEVELS[0]; index: number })
 
 
 
-        <p className="font-mono mb-2" style={{ fontSize: '9px', color: 'rgba(30,15,60,0.32)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+        <p className="font-mono mb-2" style={{ fontSize: '9px', color: 'rgba(255,255,255,0.32)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
           Examples
         </p>
         <ul className="space-y-1.5">
           {level.examples.map(ex => (
-            <li key={ex} className="flex items-center gap-2 text-xs" style={{ color: 'rgba(30,15,60,0.55)' }}>
+            <li key={ex} className="flex items-center gap-2 text-xs" style={{ color: 'rgba(255,255,255,0.55)' }}>
               <span className="w-1 h-1 rounded-full flex-shrink-0" style={{ background: level.color }} />
               {ex}
             </li>
@@ -86,9 +86,9 @@ export function ColorReferenceSection() {
             style={{ fontSize: 'clamp(2.4rem, 5.5vw, 4.5rem)' }}>
             <span className="text-gradient">Colour</span>
             <br />
-            <span style={{ color: 'rgba(30,15,60,0.90)' }}>Chart</span>
+            <span style={{ color: 'rgba(255,255,255,0.90)' }}>Chart</span>
           </h2>
-          <p className="text-sm leading-relaxed max-w-md" style={{ color: 'rgba(30,15,60,0.45)' }}>
+          <p className="text-sm leading-relaxed max-w-md" style={{ color: 'rgba(255,255,255,0.45)' }}>
   Hold your test tube up to a white background and match the colour against these. It will not give you an exact number but it narrows it down pretty well.
           </p>
         </motion.div>

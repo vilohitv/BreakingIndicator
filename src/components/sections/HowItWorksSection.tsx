@@ -46,10 +46,10 @@ function ConceptCard({ c, i }: { c: typeof CONCEPTS[0]; i: number }) {
           <span className="font-mono font-bold" style={{ fontSize: '11px', color: c.color, letterSpacing: '0.08em' }}>{c.n}</span>
         </div>
 
-        <h3 className="font-display font-bold text-xl mb-3" style={{ color: 'rgba(30,15,60,0.92)' }}>
+        <h3 className="font-display font-bold text-xl mb-3" style={{ color: 'rgba(255,255,255,0.92)' }}>
           {c.title}
         </h3>
-        <p className="text-sm leading-relaxed mb-5" style={{ color: 'rgba(30,15,60,0.50)' }}>
+        <p className="text-sm leading-relaxed mb-5" style={{ color: 'rgba(255,255,255,0.50)' }}>
           {c.body}
         </p>
       </div>
@@ -73,9 +73,9 @@ export function HowItWorksSection() {
             style={{ fontSize: 'clamp(2.4rem, 5.5vw, 4.5rem)' }}>
             <span className="text-gradient">How It</span>
             <br />
-            <span style={{ color: 'rgba(30,15,60,0.90)' }}>Works</span>
+            <span style={{ color: 'rgba(255,255,255,0.90)' }}>Works</span>
           </h2>
-          <p className="text-sm leading-relaxed max-w-lg" style={{ color: 'rgba(30,15,60,0.45)' }}>
+          <p className="text-sm leading-relaxed max-w-lg" style={{ color: 'rgba(255,255,255,0.45)' }}>
 A quick rundown of the chemistry and what is actually going on inside the solution when the colour changes.
           </p>
         </motion.div>
@@ -97,10 +97,10 @@ A quick rundown of the chemistry and what is actually going on inside the soluti
           <div className="absolute top-0 left-1/4 right-1/4 h-px"
             style={{ background: 'linear-gradient(90deg, transparent, rgba(167,139,250,0.5), transparent)' }} />
           <p className="eyebrow text-center mb-5">Reaction Summary</p>
-          <p className="font-mono text-sm text-center" style={{ color: 'rgba(30,15,60,0.55)' }}>
+          <p className="font-mono text-sm text-center" style={{ color: 'rgba(255,255,255,0.55)' }}>
             Anthocyanin + H⁺ (acid) → Red Form · Low pH
           </p>
-          <p className="font-mono text-center mt-5" style={{ fontSize: '11px', color: 'rgba(30,15,60,0.25)' }}>
+          <p className="font-mono text-center mt-5" style={{ fontSize: '11px', color: 'rgba(255,255,255,0.25)' }}>
           </p>
         </motion.div>
       </div>

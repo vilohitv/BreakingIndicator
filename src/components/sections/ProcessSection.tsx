@@ -16,7 +16,7 @@ function StepCard({ step, i }: { step: typeof PROCESS_STEPS[0]; i: number }) {
       className={`group relative rounded-3xl overflow-hidden hover-float ${i % 2 === 0 ? 'md:ml-0 md:mr-auto' : 'md:ml-auto md:mr-0'}`}
       style={{
         width: '100%', maxWidth: '420px',
-        background: `linear-gradient(145deg, ${col}0f 0%, rgba(233,228,247,0.85) 100%)`,
+        background: `linear-gradient(145deg, ${col}0f 0%, rgba(26,16,53,0.85) 100%)`,
         border: `1px solid ${col}20`,
         boxShadow: `0 1px 0 rgba(124,58,237,0.07) inset, 0 24px 60px rgba(0,0,0,0.5)`,
       }}>
@@ -34,7 +34,7 @@ function StepCard({ step, i }: { step: typeof PROCESS_STEPS[0]; i: number }) {
             {step.step}
           </div>
         </div>
-        <h3 className="font-display font-bold text-xl" style={{ color: 'rgba(30,15,60,0.92)' }}>
+        <h3 className="font-display font-bold text-xl" style={{ color: 'rgba(255,255,255,0.92)' }}>
           {step.title}
         </h3>
       </div>
@@ -56,10 +56,10 @@ export function ProcessSection() {
           <p className="eyebrow mb-4">Step by Step</p>
           <h2 className="font-display font-bold leading-none mb-6"
             style={{ fontSize: 'clamp(2.4rem, 5.5vw, 4.5rem)' }}>
-            <span style={{ color: 'rgba(30,15,60,0.90)' }}>The </span>
+            <span style={{ color: 'rgba(255,255,255,0.90)' }}>The </span>
             <span className="text-gradient-green">Experiment</span>
           </h2>
-          <p className="text-sm leading-relaxed max-w-md" style={{ color: 'rgba(30,15,60,0.45)' }}>
+          <p className="text-sm leading-relaxed max-w-md" style={{ color: 'rgba(255,255,255,0.45)' }}>
   Four steps. The first one takes the longest but the rest move quickly once you have the indicator ready.
           </p>
         </motion.div>
@@ -78,7 +78,7 @@ export function ProcessSection() {
                 <motion.div
                   initial={{ scale: 0, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }}
                   viewport={{ once: true }} transition={{ delay: i * 0.12 + 0.2, type: 'spring', stiffness: 280 }}
-                  className="relative z-10 w-12 h-12 rounded-full flex items-center justify-center font-display font-bold text-base text-purple-950 flex-shrink-0"
+                  className="relative z-10 w-12 h-12 rounded-full flex items-center justify-center font-display font-bold text-base text-white flex-shrink-0"
                   style={{
                     background: `linear-gradient(135deg, ${col}, ${col}99)`,
                     boxShadow: `0 0 0 4px rgba(14,11,30,1), 0 0 30px ${col}60`,
@@ -103,13 +103,13 @@ export function ProcessSection() {
               <motion.div key={step.step} className="flex gap-4"
                 initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.09 }}>
-                <div className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-purple-950 flex-shrink-0 text-sm"
+                <div className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-white flex-shrink-0 text-sm"
                   style={{ background: `linear-gradient(135deg, ${col}, ${col}88)`, boxShadow: `0 0 20px ${col}50` }}>
                   {step.step}
                 </div>
                 <div className="flex-1 rounded-2xl p-4 relative overflow-hidden"
                   style={{ background: `${col}0c`, border: `1px solid ${col}20` }}>
-                  <h3 className="font-display font-bold text-base" style={{ color: 'rgba(30,15,60,0.90)' }}>{step.title}</h3>
+                  <h3 className="font-display font-bold text-base" style={{ color: 'rgba(255,255,255,0.90)' }}>{step.title}</h3>
                 </div>
               </motion.div>
             );
