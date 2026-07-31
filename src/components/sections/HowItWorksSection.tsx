@@ -45,8 +45,7 @@ function ConceptCard({ c, i }: { c: typeof CONCEPTS[0]; i: number }) {
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl pointer-events-none"
         style={{ background: `radial-gradient(ellipse at top left, ${c.glow}, transparent 65%)` }} />
 
-      <div className="absolute top-0 left-6 right-6 h-px"
-        style={{ background: `linear-gradient(90deg, transparent, ${c.color}60, transparent)` }} />
+
 
       <div className="p-7 relative z-10">
         <div className="mb-5">
@@ -87,30 +86,7 @@ A quick rundown of the chemistry and what is actually going on inside the soluti
           </p>
         </motion.div>
 
-        <motion.div initial={{ opacity: 0, scaleX: 0 }} whileInView={{ opacity: 1, scaleX: 1 }}
-          viewport={{ once: true }} transition={{ duration: 1.1, ease: [0.22,1,0.36,1] }}
-          style={{ transformOrigin: 'left' }}
-          className="mb-20 relative">
-          <div className="relative h-14 rounded-2xl overflow-hidden ph-spectrum"
-            style={{ boxShadow: '0 0 40px rgba(124,58,237,0.2), 0 8px 32px rgba(0,0,0,0.5)' }}>
-            <div className="absolute inset-0" style={{
-              background: 'linear-gradient(to bottom, rgba(255,255,255,0.08), transparent 60%)',
-            }} />
-            <div className="absolute inset-0 flex items-center justify-between px-5">
-              {['1','2','3','4','5','6','7','8','9','10','11','12','13','14'].map(n => (
-                <span key={n} className="font-mono font-bold text-white/75 drop-shadow-lg" style={{ fontSize: '11px' }}>{n}</span>
-              ))}
-            </div>
-            <div className="absolute inset-0 rounded-2xl" style={{ border: '1px solid rgba(255,255,255,0.12)' }} />
-            <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'rgba(255,255,255,0.2)' }} />
-          </div>
-          <div className="flex justify-between mt-2 px-1">
-            {['Strong Acid', 'Weak Acid', 'Neutral', 'Weak Base', 'Strong Base'].map(l => (
-              <span key={l} className="font-mono text-center hidden sm:block"
-                style={{ fontSize: '9px', color: 'rgba(255,255,255,0.28)', letterSpacing: '0.06em' }}>{l}</span>
-            ))}
-          </div>
-        </motion.div>
+
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {CONCEPTS.map((c, i) => <ConceptCard key={c.n} c={c} i={i} />)}
